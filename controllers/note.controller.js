@@ -276,11 +276,12 @@ const noteRepartition = async (req, res) => {
     }
 
     try {
-        if (!req.user || req.user.user.role !== "ADMIN") {
+        if (!req.user || req.user.user.user.role !="ADMIN") {
             return res.status(403).json({ message: "Accès refusé" })
         }
 
         const admin_id = req.user.profil.id
+        // console.log("admin_id:", admin_id)
 
         if (!admin_id) {
             return res.status(400).json({ message: 'Administrateur invalide' })

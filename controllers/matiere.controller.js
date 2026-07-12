@@ -2,7 +2,7 @@ const {prisma }= require('../lib/prisma')
 
 
 const getAllMatieres = async (req, res) => {
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -23,7 +23,7 @@ const getAllMatieres = async (req, res) => {
     }
 }
 const createMatiere = async (req, res) => {
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -56,7 +56,7 @@ const createMatiere = async (req, res) => {
 }
 
 const updateMatiere = async (req, res) => {
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -105,7 +105,7 @@ const updateMatiere = async (req, res) => {
 }
 
 const deleteMatiere = async (req, res) => {
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id

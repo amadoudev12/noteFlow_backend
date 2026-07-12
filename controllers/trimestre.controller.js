@@ -1,7 +1,7 @@
 const { prisma } = require("../lib/prisma")
 
 const postTrimestreController = async (req, res) => {
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const body = req.body
@@ -42,7 +42,7 @@ const getTrimestres = async (req, res) => {
 }
 
 const deleteTrimestre = async (req, res) => {
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const id = req.params.id

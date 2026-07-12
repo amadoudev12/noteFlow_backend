@@ -12,16 +12,28 @@ const loginController = async (req, res) => {
     console.log("login:",login, mot_passe)
     try {
         // Rechercher l'utilisateur
-        const user = await prisma.user.findUnique({
-            where: { login },
-            select: {
-                id: true,
-                login: true,
-                mot_passe: true,
-                role: true,
-                firstLogin: true
+        const user = await prisma.compteInstitutionnel.findUnique({
+            where : {
+                login
+            },
+            select : {
+                id:true,
+                login:true,
+                mot_passe:true,
+                user:true,
+                firstLogin:true
             }
         })
+        // const user = await prisma.user.findUnique({
+        //     where: { login },
+        //     select: {
+        //         id: true,
+        //         login: true,
+        //         mot_passe: true,
+        //         role: true,
+        //         firstLogin: true
+        //     }
+        // })
 
         if (!user) {
             logger.warn(`Tentative de connexion échouée: utilisateur ${login} non trouvé`)
@@ -44,19 +56,19 @@ const loginController = async (req, res) => {
         const profileSelect = { matricule: true, nom: true, prenom: true }
         const profileSelectAdmin = { id: true, nom: true, prenom: true }
 
-        if (user.role === "ELEVE") {
+        if (user.user.role === "ELEVE") {
             profil = await prisma.eleve.findUnique({
-                where: { userId: user.id },
+                where: { userId: user.user.id},
                 select: profileSelect
             })
-        } else if (user.role === "ENSEIGNANT") {
+        } else if (user.user.role === "ENSEIGNANT") {
             profil = await prisma.enseignant.findUnique({
-                where: { userId: user.id },
+                where: { userId:user.user.id },
                 select: profileSelect
             })
-        } else if (user.role === "ADMIN") {
+        } else if (user.user.role === "ADMIN") {
             profil = await prisma.administrateur.findUnique({
-                where: { userId: user.id },
+                where: { userId: user.user.id },
                 select: {
                     ...profileSelectAdmin,
                     etablissement: {
@@ -80,7 +92,7 @@ const loginController = async (req, res) => {
             message: `Bienvenue ${profil?.nom || "utilisateur"}`,
             token,
             firstLogin: user.firstLogin,
-            role: user.role
+            role: user.user.role
         })
     } catch (err) {
         logger.error('Erreur lors de la connexion', { error: err.message, login })
@@ -119,7 +131,7 @@ const modificationController = async (req, res) => {
         const hashPass = await bcrypt.hash(password, level_hash)
 
         // Mettre à jour l'utilisateur dans une transaction
-        const updatedUser = await prisma.user.update({
+        const updatedUser = await prisma.compteInstitutionnel.update({
             where: { id: userId },
             data: {
                 login,
@@ -130,7 +142,7 @@ const modificationController = async (req, res) => {
             select: {
                 id: true,
                 login: true,
-                role: true
+                user:true
             }
         })
 
@@ -146,12 +158,12 @@ const modificationController = async (req, res) => {
         let profil = null
         if (req.user.user.role  === "ELEVE") {
             profil = await prisma.eleve.findUnique({
-                where: { userId: updatedUser.id },
+                where: { userId: updatedUser.user.id },
                 select: profileSelect
             })
         } else{
             profil = await prisma.enseignant.findUnique({
-                where: { userId: user.id },
+                where: { userId: updatedUser.user.id },
                 select: profileSelect
             })
         } 

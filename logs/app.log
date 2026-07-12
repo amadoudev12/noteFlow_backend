@@ -7959,3 +7959,1341 @@
 {"timestamp":"2026-06-27T23:39:48.757Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
 {"timestamp":"2026-06-27T23:39:48.830Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
 {"timestamp":"2026-06-27T23:39:49.953Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:02:05.999Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-05T19:06:15.644Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:06:15.672Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:06:15.708Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:06:15.751Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:07:16.153Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:07:16.464Z","level":"WARN","message":"Tentative de connexion échouée: mauvais mot de passe pour delhadjamadou670@gmail.com","data":{}}
+{"timestamp":"2026-07-05T19:11:49.357Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-05T19:13:12.776Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:18.466Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:18.754Z","level":"INFO","message":"Connexion réussie: delhadjamadou670@gmail.com","data":{}}
+{"timestamp":"2026-07-05T19:13:18.930Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:18.938Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:18.966Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.033Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.051Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.059Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.067Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.076Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.085Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.154Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.202Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.210Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.218Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.225Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.233Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:19.241Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:22.495Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:22.510Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:39.309Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:39.347Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:44.690Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:44.702Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:46.796Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:46.807Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:47.695Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:48.972Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:48.983Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:49.737Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:51.032Z","level":"INFO","message":"[GET] /admin/cinq-meilleurByclasse","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:51.057Z","level":"INFO","message":"[GET] /admin/cinq-meilleurByclasse","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:52.017Z","level":"INFO","message":"[GET] /admin/mauvais-eleves-classe","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:52.032Z","level":"INFO","message":"[GET] /admin/mauvais-eleves-classe","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:53.392Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:13:53.410Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:06.873Z","level":"INFO","message":"[POST] /matieres/add","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:08.416Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:15.961Z","level":"INFO","message":"[POST] /classe/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:18.869Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:18.877Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:35.757Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:50.656Z","level":"INFO","message":"[POST] /enseignants/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:56.617Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:56.621Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:56.626Z","level":"INFO","message":"[GET] /enseignants/etablissement","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:56.634Z","level":"INFO","message":"[GET] /affectation/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:56.651Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:56.676Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:56.695Z","level":"INFO","message":"[GET] /enseignants/etablissement","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:14:56.700Z","level":"INFO","message":"[GET] /affectation/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:11.535Z","level":"INFO","message":"[POST] /affectation/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:14.067Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:14.072Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:14.080Z","level":"INFO","message":"[GET] /enseignants/etablissement","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:14.087Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:14.093Z","level":"INFO","message":"[GET] /affectation/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:14.111Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:14.116Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:14.122Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:14.144Z","level":"INFO","message":"[GET] /enseignants/etablissement","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:14.150Z","level":"INFO","message":"[GET] /affectation/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.565Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.606Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.626Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.639Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.644Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.652Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.660Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.717Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.781Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.788Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.800Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.831Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.884Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:15.910Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.507Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.512Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.527Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.563Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.584Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.590Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.594Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.606Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.629Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.645Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.693Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.698Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.704Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.711Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.743Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:15:52.748Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.213Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.216Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.235Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.265Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.287Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.295Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.309Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.316Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.328Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.350Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.361Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.380Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.398Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.432Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.448Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:00.454Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:16:58.373Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-05T19:17:01.652Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-05T19:17:03.200Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.210Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.229Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.383Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.527Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.534Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.540Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.548Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.569Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.603Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.611Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.654Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.661Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.819Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.835Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:03.971Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:17:14.034Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-05T19:18:06.369Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:18:06.635Z","level":"INFO","message":"Connexion réussie: PROF001","data":{}}
+{"timestamp":"2026-07-05T19:18:25.243Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:19:55.522Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:19:55.534Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:19:55.548Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:19:55.626Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:19:55.632Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:19:55.645Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:02.300Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:02.317Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:04.574Z","level":"INFO","message":"[GET] /classe/liste-classe/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:04.595Z","level":"INFO","message":"[GET] /classe/liste-classe/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:16.143Z","level":"INFO","message":"[POST] /note/create-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:16.227Z","level":"INFO","message":"Notes créées avec succès: 4 notes","data":{}}
+{"timestamp":"2026-07-05T19:20:18.841Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:18.857Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:19.595Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:19.600Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:19.605Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:19.648Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:19.658Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:19.665Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:23.288Z","level":"INFO","message":"[POST] /note/eleves/notes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:23.299Z","level":"INFO","message":"[POST] /note/eleves/notes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:37.324Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:37.329Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:37.336Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:37.376Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:37.383Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:37.394Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:20:40.428Z","level":"INFO","message":"[POST] /note/liste-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:21:15.107Z","level":"INFO","message":"[POST] /note/liste-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:21:41.471Z","level":"INFO","message":"[POST] /note/liste-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:30.800Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:31.025Z","level":"INFO","message":"Connexion réussie: EL001","data":{}}
+{"timestamp":"2026-07-05T19:22:44.802Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:45.057Z","level":"INFO","message":"Première connexion complétée: diallo","data":{}}
+{"timestamp":"2026-07-05T19:22:45.991Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:46.003Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:46.008Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:46.013Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:46.078Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:46.092Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:46.113Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:46.180Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:46.261Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:22:46.433Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.191Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.197Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.217Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.343Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.363Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.369Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.377Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.387Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.399Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.448Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.688Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.694Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.700Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.707Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.752Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:01.905Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:09.129Z","level":"INFO","message":"[GET] /admin/cinq-meilleurByclasse","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:09.299Z","level":"INFO","message":"[GET] /admin/cinq-meilleurByclasse","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:10.901Z","level":"INFO","message":"[GET] /admin/mauvais-eleves-classe","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:11.018Z","level":"INFO","message":"[GET] /admin/mauvais-eleves-classe","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:14.366Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:14.375Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:17.322Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:17.336Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:17.345Z","level":"INFO","message":"[GET] /trimestres/active","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:17.358Z","level":"INFO","message":"[GET] /trimestres/active","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:17.371Z","level":"INFO","message":"[GET] /classe/stat-classe/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:17.381Z","level":"INFO","message":"[GET] /classe/moyenne/matiere/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:17.389Z","level":"INFO","message":"[GET] /classe/repartition/notes/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:17.399Z","level":"INFO","message":"[GET] /classe/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:24.847Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:24.856Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:23:26.583Z","level":"INFO","message":"[GET] /bulletin/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:24:00.311Z","level":"INFO","message":"[POST] /eleves/bulletin","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:24:00.537Z","level":"INFO","message":"[GET] /favicon.ico","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:24:06.112Z","level":"INFO","message":"[GET] /eleves/certificat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.030Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.034Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.043Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.047Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.278Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.296Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.303Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.311Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.358Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.374Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.397Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.458Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.576Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.810Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.816Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.855Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.860Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.869Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:25:17.896Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:46.249Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:46.465Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:46.473Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:46.506Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.218Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.222Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.225Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.228Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.251Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.263Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.269Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.275Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.280Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.288Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.292Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.301Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.308Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.314Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.335Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.340Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.342Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.388Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.436Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T19:35:47.499Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T22:38:08.154Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T22:38:08.173Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T22:38:08.177Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T22:38:08.180Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T22:38:08.215Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T22:38:08.235Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T22:38:08.264Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T22:38:08.334Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T22:38:08.404Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-05T22:38:08.474Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:27:58.264Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-06T15:31:28.550Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-06T15:31:31.809Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-06T15:31:38.916Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-06T15:37:58.904Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:58.910Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:58.977Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.122Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.135Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.141Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.157Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.163Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.167Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.172Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.280Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.286Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.292Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.295Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.302Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:37:59.343Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.126Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.132Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.143Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.228Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.248Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.254Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.259Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.264Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.272Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.303Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.495Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.503Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.508Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.514Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.543Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:03.691Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.307Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.312Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.325Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.489Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.506Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.511Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.521Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.525Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.536Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.563Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.740Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.746Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.752Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.758Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.766Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:40:36.927Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:41:55.711Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:41:55.715Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:41:55.718Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:41:55.744Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:41:55.747Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:41:55.751Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:14.233Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:14.237Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:14.243Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:14.273Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:14.277Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:14.284Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:49.018Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:49.021Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:49.026Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:49.045Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:49.049Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:42:49.052Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:43:02.052Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:43:02.056Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:43:02.060Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:43:02.088Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:43:02.095Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:43:02.100Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:44:06.190Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:44:06.470Z","level":"INFO","message":"Connexion réussie: PROF002","data":{}}
+{"timestamp":"2026-07-06T15:44:30.614Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:07.215Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:07.220Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:07.227Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:07.266Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:07.282Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:07.300Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:11.874Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:11.878Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:11.883Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:11.916Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:11.923Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:11.928Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:19.743Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:19.757Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:21.704Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:21.709Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:21.716Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:21.742Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:21.748Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:45:21.762Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:46:56.932Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:46:57.137Z","level":"INFO","message":"Connexion réussie: DialloA","data":{}}
+{"timestamp":"2026-07-06T15:48:53.213Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:50:56.294Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-06T15:50:59.456Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-06T15:51:06.699Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-06T15:51:09.143Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-06T15:51:12.485Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-06T15:51:14.434Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:14.453Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:14.462Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:14.538Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:14.548Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:14.555Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:19.673Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:19.678Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:19.685Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:19.721Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:19.728Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:51:19.746Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:52:02.038Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:52:02.396Z","level":"INFO","message":"Connexion réussie: DialloAm","data":{}}
+{"timestamp":"2026-07-06T15:52:30.989Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:52:31.337Z","level":"INFO","message":"Première connexion complétée: Diall","data":{}}
+{"timestamp":"2026-07-06T15:52:32.078Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:52:32.084Z","level":"INFO","message":"[GET] /note/getNote/PROF002","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:52:32.094Z","level":"INFO","message":"[GET] /eleves/PROF002","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:52:32.105Z","level":"INFO","message":"[GET] /eleves/note-matiere/PROF002","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:52:32.131Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:52:32.156Z","level":"INFO","message":"[GET] /note/getNote/PROF002","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:52:32.191Z","level":"INFO","message":"[GET] /eleves/PROF002","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:52:32.853Z","level":"INFO","message":"[GET] /eleves/note-matiere/PROF002","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:54:48.533Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:54:48.544Z","level":"WARN","message":"Tentative de connexion échouée: utilisateur DialloAm non trouvé","data":{}}
+{"timestamp":"2026-07-06T15:54:52.015Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:54:52.021Z","level":"WARN","message":"Tentative de connexion échouée: utilisateur DialloA non trouvé","data":{}}
+{"timestamp":"2026-07-06T15:55:04.203Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:55:04.394Z","level":"INFO","message":"Connexion réussie: Diall","data":{}}
+{"timestamp":"2026-07-06T15:55:04.509Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:55:04.514Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:55:04.518Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:55:04.548Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:55:04.554Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:55:04.561Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:55:29.981Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T15:55:30.207Z","level":"INFO","message":"Connexion réussie: PROF003","data":{}}
+{"timestamp":"2026-07-06T16:00:31.560Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:00:31.826Z","level":"INFO","message":"Première connexion complétée: traore","data":{}}
+{"timestamp":"2026-07-06T16:00:31.905Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:00:31.910Z","level":"INFO","message":"[GET] /note/getNote/PROF003","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:00:31.914Z","level":"INFO","message":"[GET] /eleves/PROF003","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:00:31.919Z","level":"INFO","message":"[GET] /eleves/note-matiere/PROF003","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:00:31.948Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:00:31.952Z","level":"INFO","message":"[GET] /note/getNote/PROF003","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:00:31.956Z","level":"INFO","message":"[GET] /eleves/PROF003","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:00:31.963Z","level":"INFO","message":"[GET] /eleves/note-matiere/PROF003","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:03:00.002Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:03:00.212Z","level":"INFO","message":"Connexion réussie: traore","data":{}}
+{"timestamp":"2026-07-06T16:03:00.341Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:03:00.344Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:03:00.349Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:03:00.378Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:03:00.382Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:03:00.399Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:03:37.799Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:03:37.996Z","level":"INFO","message":"Connexion réussie: traore","data":{}}
+{"timestamp":"2026-07-06T16:03:59.831Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:04:00.105Z","level":"INFO","message":"Première connexion complétée: traoreD","data":{}}
+{"timestamp":"2026-07-06T16:09:08.898Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:09:09.109Z","level":"INFO","message":"Connexion réussie: traoreD","data":{}}
+{"timestamp":"2026-07-06T16:09:34.136Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:09:34.398Z","level":"INFO","message":"Première connexion complétée: traoreM","data":{}}
+{"timestamp":"2026-07-06T16:18:32.639Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:18:32.843Z","level":"INFO","message":"Connexion réussie: traoreM","data":{}}
+{"timestamp":"2026-07-06T16:18:52.905Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:18:53.177Z","level":"INFO","message":"Première connexion complétée: doyoM","data":{}}
+{"timestamp":"2026-07-06T16:18:56.708Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:18:56.714Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:18:56.727Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:18:56.743Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:18:56.749Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:18:56.759Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:12.317Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:12.325Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:12.337Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:12.348Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:12.353Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:12.363Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:51.210Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:51.217Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:51.226Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:51.236Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:51.246Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:51.300Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:52.624Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:52.629Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:52.641Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:52.650Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:52.660Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:19:52.670Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:20:17.886Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:20:18.080Z","level":"INFO","message":"Connexion réussie: jean","data":{}}
+{"timestamp":"2026-07-06T16:20:18.216Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:20:18.220Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:20:18.227Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:20:18.263Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:20:18.286Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:20:18.295Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:20:56.355Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:20:56.548Z","level":"INFO","message":"Connexion réussie: doyoM","data":{}}
+{"timestamp":"2026-07-06T16:21:10.990Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:21:11.263Z","level":"INFO","message":"Première connexion complétée: DODOD","data":{}}
+{"timestamp":"2026-07-06T16:21:18.334Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:21:18.343Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:21:18.356Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:21:18.362Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:21:18.371Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:21:18.378Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:22:14.805Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:22:14.811Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:22:14.821Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:22:14.830Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:22:14.837Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:22:14.846Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:22:49.292Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:22:49.493Z","level":"INFO","message":"Connexion réussie: DODOD","data":{}}
+{"timestamp":"2026-07-06T16:23:04.989Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:23:05.282Z","level":"INFO","message":"Première connexion complétée: DODODOD","data":{}}
+{"timestamp":"2026-07-06T16:23:05.365Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:23:05.370Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:23:05.377Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:23:05.383Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:23:05.389Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:23:05.395Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:24:00.101Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:24:00.318Z","level":"INFO","message":"Connexion réussie: jean","data":{}}
+{"timestamp":"2026-07-06T16:24:18.037Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:24:18.309Z","level":"INFO","message":"Première connexion complétée: koffi","data":{}}
+{"timestamp":"2026-07-06T16:24:18.393Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:24:18.399Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:24:18.406Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:24:18.413Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:24:18.416Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:24:18.423Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:37.583Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:37.591Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:37.599Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:37.608Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:37.612Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:37.619Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:38.736Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:38.741Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:38.751Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:38.758Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:38.764Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:38.772Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:40.325Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:40.330Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:40.341Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:40.350Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:40.355Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:40.364Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:41.101Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:41.105Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:41.114Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:41.122Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:41.129Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:41.136Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:56.877Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:57.068Z","level":"INFO","message":"Connexion réussie: Koffi","data":{}}
+{"timestamp":"2026-07-06T16:25:57.208Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:57.213Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:57.219Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:57.310Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:57.329Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:25:57.338Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:26:55.324Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:26:55.328Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:26:55.333Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:26:55.362Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:26:55.374Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:26:55.379Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:28:22.363Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:28:22.578Z","level":"INFO","message":"Connexion réussie: koffi","data":{}}
+{"timestamp":"2026-07-06T16:28:38.224Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:28:38.482Z","level":"INFO","message":"Première connexion complétée: jean","data":{}}
+{"timestamp":"2026-07-06T16:28:38.595Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:28:38.600Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:28:38.605Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:28:38.624Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:28:38.632Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:28:38.647Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:27.594Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:27.602Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:27.618Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:27.648Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:27.655Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:27.662Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.070Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.080Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.092Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.207Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.250Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.259Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.273Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.310Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.325Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.354Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.505Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.513Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.521Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.595Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.604Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:31:28.728Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:11.639Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:11.645Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:11.650Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:11.679Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:11.685Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:11.690Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.119Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.125Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.140Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.233Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.262Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.321Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.364Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.404Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.430Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.481Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.782Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.790Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.819Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.826Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.832Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T16:33:12.839Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.097Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.102Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.114Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.195Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.206Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.212Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.217Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.224Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.230Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.255Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.440Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.448Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.460Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.465Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.494Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:32.626Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:36.953Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:36.958Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:36.970Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.051Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.056Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.063Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.069Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.074Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.082Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.112Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.322Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.327Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.337Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.343Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.349Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:43:37.483Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:45:49.748Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:46:16.701Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:46:16.707Z","level":"WARN","message":"Tentative de connexion échouée: utilisateur amadoughost@gmail.com non trouvé","data":{}}
+{"timestamp":"2026-07-06T19:46:39.873Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:46:39.878Z","level":"WARN","message":"Tentative de connexion échouée: utilisateur amadoughost@gmail.com non trouvé","data":{}}
+{"timestamp":"2026-07-06T19:46:56.973Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:46:56.977Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:46:56.983Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:46:57.010Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:46:57.022Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:46:57.027Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:10.919Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.115Z","level":"INFO","message":"Connexion réussie: amadoughost2004@gmail.com","data":{}}
+{"timestamp":"2026-07-06T19:47:11.249Z","level":"INFO","message":"[GET] /etablissements/9","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.263Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.319Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.334Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.341Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.346Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.351Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.379Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.451Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.471Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.478Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.484Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.491Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.496Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:11.527Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:31.261Z","level":"INFO","message":"[GET] /etablissements/9","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:36.016Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:36.032Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:37.954Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:37.966Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:39.830Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:39.839Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:41.498Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.170Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.222Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.238Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.244Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.251Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.274Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.280Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.301Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.332Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.340Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.346Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.350Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.371Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:47:44.379Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:18.296Z","level":"INFO","message":"[GET] /admin/cinq-meilleurByclasse","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:18.315Z","level":"INFO","message":"[GET] /admin/cinq-meilleurByclasse","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:19.740Z","level":"INFO","message":"[GET] /admin/mauvais-eleves-classe","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:19.756Z","level":"INFO","message":"[GET] /admin/mauvais-eleves-classe","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:20.785Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:22.180Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:22.188Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:23.549Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:23.558Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:25.451Z","level":"INFO","message":"[GET] /admin/mauvais-eleves-classe","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:25.465Z","level":"INFO","message":"[GET] /admin/mauvais-eleves-classe","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:27.107Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:27.119Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:28.631Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:31.673Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:31.685Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:41.484Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:41.490Z","level":"INFO","message":"[GET] /enseignants/etablissement","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:41.498Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:41.503Z","level":"INFO","message":"[GET] /affectation/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:41.517Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:41.523Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:41.529Z","level":"INFO","message":"[GET] /enseignants/etablissement","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:41.535Z","level":"INFO","message":"[GET] /affectation/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.375Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.421Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.442Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.447Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.454Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.479Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.485Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.508Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.533Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.540Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.546Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.552Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.573Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:48:44.580Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:10.913Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-06T19:51:13.186Z","level":"INFO","message":"[GET] /etablissements/9","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.213Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.325Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.344Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.356Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.365Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.381Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.423Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.438Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.505Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.511Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.518Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.526Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.536Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:13.564Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:51:33.220Z","level":"INFO","message":"[GET] /etablissements/9","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:33.100Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:33.129Z","level":"WARN","message":"Tentative de connexion échouée: utilisateur EL001 non trouvé","data":{}}
+{"timestamp":"2026-07-06T19:55:41.358Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:41.364Z","level":"WARN","message":"Tentative de connexion échouée: utilisateur EL001 non trouvé","data":{}}
+{"timestamp":"2026-07-06T19:55:56.685Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:56.885Z","level":"INFO","message":"Connexion réussie: diallo","data":{}}
+{"timestamp":"2026-07-06T19:55:56.969Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:56.976Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:56.981Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:56.988Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:57.076Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:57.083Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:57.117Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:57.186Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:57.265Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:55:57.339Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:07.594Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:07.601Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:07.608Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:07.616Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:07.663Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:07.676Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:07.695Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:07.760Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:07.833Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:07.904Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:09.764Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:09.768Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:09.772Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:09.776Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:09.805Z","level":"INFO","message":"[GET] /eleves/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:09.818Z","level":"INFO","message":"[GET] /note/getNote/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:09.831Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL001","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:09.892Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:09.963Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:10.033Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:17.938Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:17.955Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:51.268Z","level":"INFO","message":"[POST] /matieres/add","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:56:54.413Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:57:02.497Z","level":"INFO","message":"[POST] /classe/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:57:11.234Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:57:11.254Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:57:38.567Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:59:38.523Z","level":"INFO","message":"[POST] /enseignants/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:59:40.851Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T19:59:48.742Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:01:29.136Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:21.735Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:29.678Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.259Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.278Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.283Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.290Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.366Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.387Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.426Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.437Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.479Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.539Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.545Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.578Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:02:30.639Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:04.182Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:04.386Z","level":"INFO","message":"Connexion réussie: PROF005","data":{}}
+{"timestamp":"2026-07-06T20:03:29.989Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:30.257Z","level":"INFO","message":"Première connexion complétée: marco","data":{}}
+{"timestamp":"2026-07-06T20:03:30.391Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:30.396Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:30.400Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:30.431Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:30.442Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:30.451Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:35.867Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:35.872Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:35.877Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:35.901Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:35.906Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:35.916Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:43.788Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:43.793Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:43.799Z","level":"INFO","message":"[GET] /enseignants/etablissement","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:43.809Z","level":"INFO","message":"[GET] /affectation/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:43.825Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:43.831Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:43.843Z","level":"INFO","message":"[GET] /enseignants/etablissement","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:03:43.848Z","level":"INFO","message":"[GET] /affectation/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:12.524Z","level":"INFO","message":"[POST] /affectation/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:18.430Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:18.435Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:18.441Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:18.474Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:18.479Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:18.491Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:21.702Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:21.717Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:23.981Z","level":"INFO","message":"[GET] /classe/liste-classe/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:24.000Z","level":"INFO","message":"[GET] /classe/liste-classe/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:42.181Z","level":"INFO","message":"[POST] /note/create-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:42.252Z","level":"INFO","message":"Notes créées avec succès: 4 notes","data":{}}
+{"timestamp":"2026-07-06T20:04:45.033Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:45.046Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:45.518Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:45.523Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:45.527Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:45.553Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:45.558Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:45.572Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:48.193Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:48.196Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:48.199Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:48.231Z","level":"INFO","message":"[GET] /enseignants/classe-enseigner","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:48.236Z","level":"INFO","message":"[GET] /enseignants/nombre-eleves-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:04:48.241Z","level":"INFO","message":"[GET] /enseignants/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:03.513Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:03.706Z","level":"INFO","message":"Connexion réussie: EL005","data":{}}
+{"timestamp":"2026-07-06T20:05:18.838Z","level":"INFO","message":"[PUT] /user/premiere-connexion","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:19.054Z","level":"INFO","message":"Première connexion complétée: OUATTARA","data":{}}
+{"timestamp":"2026-07-06T20:05:19.149Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:19.155Z","level":"INFO","message":"[GET] /note/getNote/EL005","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:19.159Z","level":"INFO","message":"[GET] /eleves/EL005","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:19.164Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL005","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:19.216Z","level":"INFO","message":"[GET] /eleves/EL005","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:19.224Z","level":"INFO","message":"[GET] /note/getNote/EL005","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:19.248Z","level":"INFO","message":"[GET] /eleves/note-matiere/EL005","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:19.306Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:19.376Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-06T20:05:19.446Z","level":"INFO","message":"[GET] /eleves/rang","data":{"ip":"::1"}}
+{"timestamp":"2026-07-10T20:02:39.133Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:03:34.302Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:05:22.646Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:05:27.742Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:05:35.860Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:13:18.722Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:13:27.470Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:13:38.137Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:13:47.514Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:14:27.706Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:14:32.280Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:14:41.598Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:15:20.104Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:16:07.759Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:16:18.619Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:16:43.952Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:17:03.494Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:17:06.778Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:19:18.188Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:19:20.036Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:19:21.361Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:19:24.751Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:19:26.428Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:19:39.494Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:19:49.866Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:19:53.105Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:19:54.762Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:19:57.329Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:23:14.973Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:23:25.159Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:25:52.415Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:25:58.104Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:26:02.599Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:26:52.309Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:26:56.916Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:27:22.834Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:27:28.061Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:27:31.658Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:27:32.637Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:27:36.412Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:29:01.132Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:29:06.264Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:29:29.066Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:29:34.986Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:31:08.103Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-10T20:32:54.401Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:33:01.524Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:33:06.649Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:34:13.114Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:34:19.207Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:34:22.991Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-10T20:34:28.064Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:06:22.854Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:08:26.006Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T21:12:57.254Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:13:06.369Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:13:28.630Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:13:30.506Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:13:37.206Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:14:42.875Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T21:22:20.322Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:22:23.365Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:22:28.934Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:23:28.783Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T21:25:07.756Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:25:50.400Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T21:29:03.657Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:31:36.707Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:31:40.551Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:31:54.428Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:31:58.581Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:32:02.999Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:32:06.562Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:32:35.994Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:32:39.385Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:32:45.173Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:32:50.156Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:32:54.476Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:33:00.893Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:33:38.823Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T21:34:37.593Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:34:51.305Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:35:06.637Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:39:06.824Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T21:50:17.975Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:50:50.504Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T21:51:18.006Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:51:19.585Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:51:25.478Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:51:29.278Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:51:37.150Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:52:01.375Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:52:18.614Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:52:23.496Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:52:24.807Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T21:55:28.587Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T21:57:40.813Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:41:34.553Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:42:26.599Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T23:43:07.401Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:44:10.414Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:44:20.426Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:47:43.648Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:47:47.089Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:47:57.217Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:48:17.107Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:48:23.636Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:48:28.208Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:48:42.368Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:48:49.017Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:48:54.241Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:48:57.014Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:49:01.521Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:49:10.392Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:49:17.604Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:49:50.432Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T23:53:11.495Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:53:14.210Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:55:33.289Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:56:33.376Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-11T23:59:23.241Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:59:44.568Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:59:48.958Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:59:53.598Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:59:55.082Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-11T23:59:57.611Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:00:00.792Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:00:06.337Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:00:07.787Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:00:19.022Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:00:24.932Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:00:26.749Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:00:29.496Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:00:40.587Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:01:00.158Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:03:05.823Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:05:07.432Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:31.377Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:32.719Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:33.313Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:33.607Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:33.848Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:34.072Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:34.305Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:34.523Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:34.742Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:34.961Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:35.184Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:35.399Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:35.639Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:35.871Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:36.128Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:36.359Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:36.603Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:36.876Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:37.142Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:37.381Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:37.621Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:37.868Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:38.091Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:38.317Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:38.504Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:05:38.752Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:08:11.766Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:08:25.023Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:08:31.194Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:08:35.681Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:08:44.023Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:08:45.123Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:08:53.166Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:08:58.016Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:09:05.316Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:09:12.080Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:09:19.074Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:09:27.353Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:09:48.546Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:09:54.906Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:10:00.913Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:10:41.814Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:10:45.600Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:10:48.430Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:10:58.515Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:11:05.607Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:11:07.806Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:11:12.169Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:11:51.045Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:11:58.969Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:12:05.299Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:12:40.553Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:12:42.671Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:12:51.395Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:12:56.254Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:14:06.645Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:14:15.984Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:17:09.068Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:17:44.424Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:17:45.702Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:17:59.190Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:18:00.316Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:18:03.165Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:18:06.951Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:18:10.884Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:18:16.107Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:19:06.798Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:19:10.125Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:19:11.169Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:19:18.710Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:19:55.885Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:20:02.469Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:20:11.411Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:20:11.664Z","level":"WARN","message":"Tentative de connexion échouée: mauvais mot de passe pour collège les pingouins@cp-001.edu","data":{}}
+{"timestamp":"2026-07-12T00:20:36.994Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:20:38.825Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:20:38.917Z","level":"WARN","message":"Tentative de connexion échouée: mauvais mot de passe pour collège les pingouins@cp-001.edu","data":{}}
+{"timestamp":"2026-07-12T00:20:39.755Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:20:39.952Z","level":"WARN","message":"Tentative de connexion échouée: mauvais mot de passe pour collège les pingouins@cp-001.edu","data":{}}
+{"timestamp":"2026-07-12T00:20:48.447Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:20:48.648Z","level":"WARN","message":"Tentative de connexion échouée: mauvais mot de passe pour collège les pingouins@cp-001.edu","data":{}}
+{"timestamp":"2026-07-12T00:21:02.021Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:21:45.332Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:21:47.819Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:21:48.914Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:22:42.356Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:23:03.579Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:23:03.840Z","level":"INFO","message":"Connexion réussie: college marie blanche@cmb-001.edu","data":{}}
+{"timestamp":"2026-07-12T00:25:24.541Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.549Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.563Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.568Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.582Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.594Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.604Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.623Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.634Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.640Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.647Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.651Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.657Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.665Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.670Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:24.674Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.756Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.761Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.765Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.772Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.790Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.796Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.802Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.813Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.817Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.822Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.826Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.833Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.837Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.841Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.850Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:30.854Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:38.514Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:25:38.528Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:01.601Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:03.383Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:04.581Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:05.223Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:05.469Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:05.666Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:05.878Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:06.066Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:10.375Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:11.252Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:11.499Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:11.681Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:15.224Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:15.228Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:15.236Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:15.243Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:37.691Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:38.608Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:38.895Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:40.802Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:40.806Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:40.815Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:40.821Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:41.823Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:41.827Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:41.835Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:26:41.840Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:27:03.749Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:27:05.103Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:27:56.760Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:27:57.473Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:28:49.374Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:28:50.420Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:28:57.792Z","level":"INFO","message":"[POST] /trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:28:57.870Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:03.432Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:03.446Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:03.459Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:03.464Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.811Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.823Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.847Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.856Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.864Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.871Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.882Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.913Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.919Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.926Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.932Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.937Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.944Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:09.954Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:19.366Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:19.375Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:31.160Z","level":"INFO","message":"[POST] /matieres/add","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:29:56.010Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:29:57.525Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:30:03.757Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:30:31.649Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:30:53.958Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:31:07.519Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:31:16.814Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:32:15.371Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:32:23.737Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:32:38.459Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:32:40.730Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:32:44.645Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:32:56.343Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:33:06.652Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:33:20.451Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:33:34.844Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:34:17.446Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:34:33.035Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:34:45.612Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:34:53.581Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:35:05.836Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:35:17.877Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:35:26.541Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:35:33.456Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:35:42.122Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:35:51.606Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:35:59.886Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:36:09.779Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:36:18.778Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:36:21.221Z","level":"INFO","message":"[POST] /matieres/add","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:23.825Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:23.832Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:23.843Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:23.855Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:25.829Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:25.834Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:25.848Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:25.859Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:27.050Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:27.060Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:27.077Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:27.082Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:56.535Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:36:58.954Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:58.975Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:59.011Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:36:59.024Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:01.519Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:12.579Z","level":"INFO","message":"[POST] /classe/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.523Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.616Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.643Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.654Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.661Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.669Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.677Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.729Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.797Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.802Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.808Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.816Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.822Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:16.830Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:21.933Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:21.944Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:23.508Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:23.518Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:23.527Z","level":"INFO","message":"[GET] /trimestres/active","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:23.535Z","level":"INFO","message":"[GET] /trimestres/active","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:23.547Z","level":"INFO","message":"[GET] /classe/stat-classe/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:23.554Z","level":"INFO","message":"[GET] /classe/moyenne/matiere/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:23.563Z","level":"INFO","message":"[GET] /classe/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:23.570Z","level":"INFO","message":"[GET] /classe/repartition/notes/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:34.603Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:34.611Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:50.049Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:37:59.516Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:40:30.344Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:40:30.351Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:40:30.363Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:40:30.368Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:40:41.975Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:42:42.186Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:42:47.765Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:42:49.206Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:42:51.804Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:42:58.088Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:43:06.153Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:43:11.345Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:43:12.915Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:43:20.360Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:43:32.982Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:43:33.008Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:43:33.034Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:43:33.039Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:44:00.930Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:44:33.018Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:44:38.513Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:44:38.539Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:44:38.559Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:44:38.575Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:44:49.626Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:16.244Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:45:31.037Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:45:34.809Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:34.826Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:34.858Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:34.867Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:45.988Z","level":"INFO","message":"[POST] /eleves/import","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:48.196Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:48.209Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:48.223Z","level":"INFO","message":"[GET] /trimestres/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:48.232Z","level":"INFO","message":"[GET] /trimestres/active","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:48.244Z","level":"INFO","message":"[GET] /trimestres/active","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:48.261Z","level":"INFO","message":"[GET] /classe/stat-classe/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:48.274Z","level":"INFO","message":"[GET] /classe/moyenne/matiere/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:48.293Z","level":"INFO","message":"[GET] /classe/repartition/notes/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:45:48.300Z","level":"INFO","message":"[GET] /classe/1","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:46:00.908Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:46:00.925Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:47:40.407Z","level":"INFO","message":"[POST] /enseignants/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:48:33.632Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:48:42.397Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:48:53.392Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:48:54.391Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:49:00.638Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:49:08.903Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:49:50.607Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:49:59.202Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:50:04.309Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:50:04.328Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:50:04.360Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:50:04.366Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:50:11.133Z","level":"INFO","message":"[POST] /enseignants/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:50:39.522Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:50:42.663Z","level":"INFO","message":"[POST] /enseignants/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:50:46.022Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:50:46.032Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:50:46.054Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:50:46.061Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:51:12.336Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:51:13.772Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:51:15.362Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:51:23.600Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-07-12T00:51:57.330Z","level":"INFO","message":"[POST] /enseignants/create","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:52:27.801Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:52:27.810Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:52:27.833Z","level":"INFO","message":"[GET] /etablissements/2","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:52:27.839Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-07-12T00:55:03.157Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}

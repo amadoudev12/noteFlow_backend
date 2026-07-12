@@ -10,7 +10,7 @@ const createClasse = async (req, res) => {
         }
 
         //Vérifier rôle
-        if (req.user.user.role !== "ADMIN") {
+        if (req.user.user.user.role !="ADMIN") {
             return res.status(403).json({ message: "Accès refusé" });
         }
         //Vérifier établissement
@@ -101,7 +101,7 @@ const listeClasses = async (req,res) => {
 }
 
 const listeClasseByEtabblissement = async (req, res)=>{
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un proffesseur"})
     }
     const id = req.user.profil.etablissement.id
@@ -232,7 +232,7 @@ const moyenneMatiereClasseController = async(req, res)=>{
 }
 
 const updateClasse = async (req, res) => {
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -282,7 +282,7 @@ const updateClasse = async (req, res) => {
 
 
 const deleteClasse = async (req, res) => {
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id

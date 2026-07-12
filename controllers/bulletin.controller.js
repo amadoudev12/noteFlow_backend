@@ -4,7 +4,7 @@ const { generateClasseBulletins } = require("../utils/generate")
 
 
 const genererBulletinClasse = async (req, res)=> {
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const id_classe = req.params.id

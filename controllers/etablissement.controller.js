@@ -75,6 +75,9 @@ const moyenneGeneralesEtablissemetEvolution = async (req,res)=> {
         })
         const moyennes = await prisma.bulletin.groupBy({
             by: ['idtrimestre','id_etablissement'],
+            where:{
+                id_etablissement:etablissement.id
+            },
             _avg: {
                 moyenneGenerale: true,
             },
@@ -98,7 +101,7 @@ const moyenneGeneralesEtablissemetEvolution = async (req,res)=> {
 
 // moyenne des classes 
 const moyennesClasseEtablissement = async (req, res)=>{
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -130,7 +133,7 @@ const moyennesClasseEtablissement = async (req, res)=>{
 // moyenne par matiere de l'etablissement 
 
 const moyenneMatieres = async (req, res)=>{
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id

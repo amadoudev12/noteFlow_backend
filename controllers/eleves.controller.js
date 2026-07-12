@@ -17,7 +17,9 @@ const createEleveController = async (req, res) => {
     if (!classe) {
         return res.status(404).json("aucune classe sélectionnée");
     }
+    const idEtablissement = req.user.profil.etablissement.id
     try {
+        const etablissement = await prisma.etablissement.findUnique({where:{id:idEtablissement}})
         const annee = await prisma.anneeAcademique.findFirst({where:{actif:true}})
         const filename = req.file.filename
         const wb = xlsx.readFile(`./uploads/imports/${filename}`)
@@ -25,27 +27,19 @@ const createEleveController = async (req, res) => {
         const sheet = wb.Sheets[sheetName]
         const eleves = xlsx.utils.sheet_to_json(sheet)
         for (let row of eleves) {
-            let user = await prisma.user.findUnique({
-                where: { login: row.matricule }
-            })
-            
-            // verifions le user 
-                if (!user) {
-                    const hashPass = await bcrypt.hash(row.matricule, 10);
-                    user = await prisma.user.create({
-                        data: {
-                            login: row.matricule,
-                            mot_passe: hashPass,
-                            role: "ELEVE"
-                        }
-                    })
-                }
-            //Vérifions si élève existe
+            const login = `${row.prenom.toLowerCase().trim()}@${etablissement.nom.toLowerCase().trim()}.edu`
+            const hashPass = await bcrypt.hash(login, 10);
             let eleve = await prisma.eleve.findUnique({
-                where: { matricule: row.matricule }
-            });
-            console.log(eleve)
+                where : {
+                    matricule:row.matricule
+                }
+            })
             if (!eleve) {
+                const user = await prisma.user.create({
+                    data: {
+                        role: "ELEVE"
+                    }
+                })
                 eleve = await prisma.eleve.create({
                     data: {
                         matricule: row.matricule,
@@ -64,17 +58,24 @@ const createEleveController = async (req, res) => {
                         userId: user.id
                     }
                 })
-
+                //INSCRIPTION 
+                await prisma.inscription.create({
+                    data: {
+                        matricule_eleve: eleve.matricule,
+                        id_classe: Number(classe),
+                        id_annee_academique: Number(annee.id),
+                        id_etablissement:idEtablissement
+                    }
+                })
+                await prisma.compteInstitutionnel.create({
+                    data : {
+                        login:login,
+                        mot_passe:hashPass,
+                        etalissementid:etablissement.id,
+                        userId:user.id
+                    }
+                })
             }
-            //INSCRIPTION 
-            await prisma.inscription.create({
-                data: {
-                    matricule_eleve: eleve.matricule,
-                    id_classe: Number(classe),
-                    id_annee_academique: Number(annee.id)
-                }
-            })
-            // await sendEmail(eleve.nom, eleve.email, eleve.matricule, eleve.matricule)
         }
         return res.status(201).json({
             message: "les élèves ont été ajoutés avec succès ✅"

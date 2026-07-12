@@ -33,25 +33,34 @@ enum Justifie {
 }
 model User {
   id         Int     @id @default(autoincrement())
-  login      String  @unique
-  mot_passe  String
-  role       Role
-  firstLogin Boolean @default(true)
-  signatureComplete Boolean @default(false)
-  
-  signature Signature?
+  role Role
   eleve       Eleve?
   enseignant  Enseignant?
   admin Administrateur?
+  compteInstitutionnel compteInstitutionnel[]
 }
+model compteInstitutionnel {
+  id          Int @id @default(autoincrement())
+  login      String  @unique
+  mot_passe  String
+  
+  firstLogin Boolean @default(true)
+  signatureComplete Boolean @default(false)
+  userId  Int
+  etalissementid  Int
+  user User @relation(fields: [userId], references: [id])
+  etablissement Etablissement @relation(fields: [etalissementid], references: [id])
 
+  signature Signature[]
+}
 model Signature {
   id        Int      @id @default(autoincrement())
   url       String
-  user_id   Int      @unique
-  user      User     @relation(fields: [user_id], references: [id])
+  comteInstitutionnelId Int
   createAt  DateTime @default(now())
   updateAt  DateTime @updatedAt
+
+  compteInstitutionnel compteInstitutionnel @relation(fields: [comteInstitutionnelId], references: [id])
 }
 
 model Eleve {
@@ -196,7 +205,7 @@ model Etablissement {
   nom     String
   adresse String
   phone   String?
-  email   String?
+  email   String?   @unique
   code    String
   statut  String
   directeur String
@@ -206,6 +215,8 @@ model Etablissement {
   enseignants   EnseignantEtablissement[]
   Matieres Matiere[]
   bulletin Bulletin[]
+  inscription Inscription[]
+  compteInstitutionnel compteInstitutionnel[]
 }
 
 model Bulletin {
@@ -256,10 +267,12 @@ model Inscription {
   matricule_eleve       String
   id_classe             Int
   id_annee_academique   Int
+  id_etablissement      Int
   dateInscription       DateTime @default(now())
   eleve   Eleve   @relation(fields: [matricule_eleve], references: [matricule])
   classe  Classe  @relation(fields: [id_classe], references: [id])
   annee   AnneeAcademique @relation(fields: [id_annee_academique], references: [id])
+  etablissement Etablissement @relation(fields: [id_etablissement], references: [id])
   notes Note[]
   @@unique([matricule_eleve, id_annee_academique])
 }

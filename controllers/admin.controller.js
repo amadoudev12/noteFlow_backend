@@ -45,63 +45,77 @@ const register = async (req, res) => {
     return res.status(400).json({ message: 'La signature est obligatoire.' });
   }
 
-  // ── 2. Email unique ────────────────────────────────────────
-  const emailExiste = await prisma.user.findUnique({
-    where: { login: admin.email },
-  });
-  if (emailExiste) {
-    return res.status(409).json({ message: 'Un compte avec cet email existe déjà.' });
-  }
+ 
 
-  // ── 3. Code établissement unique ───────────────────────────
-  const codeExiste = await prisma.etablissement.findFirst({
-    where: { code: etablissement.code },
-  });
-  if (codeExiste) {
-    return res.status(409).json({ message: 'Ce code établissement est déjà utilisé.' });
-  }
-
-  // ── 4. Transaction Prisma ──────────────────────────────────
+  // ── 4. Transaction Prisma 
   try {
+     // ── 2. Email unique
+    const emailExiste = await prisma.etablissement.findUnique({
+        where: { email: admin.email },
+    });
+    if (emailExiste) {
+        return res.status(409).json({ message: 'Un compte avec cet email existe déjà.' });
+    }
+
+    // ── 3. Code établissement unique 
+    const codeExiste = await prisma.etablissement.findFirst({
+        where: { code: etablissement.code },
+    });
+    if (codeExiste) {
+        return res.status(409).json({ message: 'Ce code établissement est déjà utilisé.' });
+    }
     const motPasseHash = await bcrypt.hash(admin.mot_passe, 10);
     const fileSignature = `/uploads/signatures/${signaturePath}`
     const result = await prisma.$transaction(async (tx) => {
-      const user = await tx.user.create({
-        data: {
-          login:     admin.email,
-          mot_passe: motPasseHash,
-          role:      'ADMIN',
-        },
-      });
+        const nom = etablissement.nom
+            .trim()
+            .toLowerCase()
+            .normalize("NFD")
+        const login = `${nom}@${etablissement.code.trim().toLowerCase()}.edu`
+        const hashPass = await bcrypt.hash(admin.mot_passe, 10)
 
-      const administrateur = await tx.administrateur.create({
-        data: {
-          nom:       admin.nom,
-          prenom:    admin.prenom,
-          email:     admin.email,  
-          userId:    user.id,
-        },
-      });
-
-      const etab = await tx.etablissement.create({
-        data: {
-          nom:       etablissement.nom,
-          directeur: etablissement.directeur,
-          adresse:   etablissement.adresse,
-          phone:     etablissement.phone ?? null,
-          email:     etablissement.email ?? null,
-          code:      etablissement.code,
-          statut:    etablissement.statut,
-          admin_id:  administrateur.id,
-        },
-      });
-      const signature = await tx.signature.create({
-        data : {
-            url:fileSignature,
-            user_id:user.id
-        }
-      })
-      return { user, administrateur, etab };
+        const user = await tx.user.create({
+            data: {
+                role: 'ADMIN',
+            },
+        });
+        console.log("user:",user)
+        const administrateur = await tx.administrateur.create({
+            data: {
+            nom:       admin.nom,
+            prenom:    admin.prenom,
+            email:     admin.email,  
+            userId:    user.id,
+            },
+        });
+        console.log("administrateur:",administrateur)
+        const etab = await tx.etablissement.create({
+            data: {
+            nom:       etablissement.nom,
+            directeur: etablissement.directeur,
+            adresse:   etablissement.adresse,
+            phone:     etablissement.phone ?? null,
+            email:     etablissement.email ?? null,
+            code:      etablissement.code,
+            statut:    etablissement.statut,
+            admin_id:  administrateur.id
+            },
+        });
+        const compteI = await tx.compteInstitutionnel.create({
+            data : {
+                login:login,
+                mot_passe:hashPass,
+                userId:user.id,
+                etalissementid:etab.id
+            }
+        })
+        const signature = await tx.signature.create({
+            data : {
+                url:fileSignature,
+                comteInstitutionnelId:compteI.id
+            }
+        })
+        return { user, administrateur, etab };
     });
 
     // ── 5. JWT ─────────────────────────────────────────────
@@ -148,7 +162,7 @@ const register = async (req, res) => {
 
 
 const StatEtablissement = async (req, res) => {
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -199,7 +213,7 @@ const StatEtablissement = async (req, res) => {
 
 
 const listePlusFaiblesMoyennes = async (req, res)=>{
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -222,7 +236,7 @@ const listePlusFaiblesMoyennes = async (req, res)=>{
     }
 }
 const listePlusFortesMoyennes = async (req, res)=>{
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -249,7 +263,7 @@ const listePlusFortesMoyennes = async (req, res)=>{
 // recupere le nombre d'eleves faibles par clase 
 
 const NombreEleveFaiblesByClasseController = async(req, res)=>{
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -274,7 +288,7 @@ const NombreEleveFaiblesByClasseController = async(req, res)=>{
 // recupere le nombre d'eleves forts par clase 
 
 const NombreEleveFortByClasseController = async(req, res)=>{
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -299,7 +313,7 @@ const NombreEleveFortByClasseController = async(req, res)=>{
 
 
 const meilleureByClasseController = async(req, res)=>{
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -328,7 +342,7 @@ const meilleureByClasseController = async(req, res)=>{
     }
 }
 const mauvaisByClasseController = async(req, res)=>{
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id

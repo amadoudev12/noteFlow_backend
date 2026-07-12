@@ -3,8 +3,7 @@ const xlsx = require('xlsx')
 const bcrypt = require('bcrypt');
 const sendEmail = require('../services/sendEmail');
 const createEnseignantController = async (req, res) => {
-
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -20,46 +19,30 @@ const createEnseignantController = async (req, res) => {
         const annee = await prisma.anneeAcademique.findFirst({
             where: { actif: true }
         });
-
         const filename = req.file.filename;
         const wb = xlsx.readFile(`./uploads/imports/${filename}`);
         const sheetName = wb.SheetNames[0];
         const sheet = wb.Sheets[sheetName];
         const enseignants = xlsx.utils.sheet_to_json(sheet);
         for (let enseignant of enseignants) {
-
+            const etablissement = await prisma.etablissement.findUnique({where:{id:idEtablissement}})
+            const login = `${enseignant.prenom.toLowerCase().trim()}@${etablissement.nom.toLowerCase().trim()}.edu`
+            const hashPass = await bcrypt.hash(login, 10)
             //sécuriser matricule
             const matricule = enseignant.matricule?.toString().trim();
-
             // if (!matricule) continue;
-
-            // chercher user
-            let user = await prisma.user.findUnique({
-                where: { login: matricule }
-            });
-
-            // créer user si inexistant
-            if (!user) {
-                const hashPass = await bcrypt.hash(matricule, 10);
-                user = await prisma.user.create({
+            // vérifier enseignant   
+            let enseignantExist = await prisma.enseignant.findUnique(({
+                where : {
+                    matricule:matricule
+                }
+            }))
+            if (!enseignantExist) {
+                const user = await prisma.user.create({
                     data: {
-                        login: matricule,
-                        mot_passe: hashPass,
                         role: "ENSEIGNANT"
                     }
                 });
-            }
-            // vérifier enseignant
-            let enseignantExist = await prisma.enseignantEtablissement.findUnique({
-                where :{
-                    enseignant_id_etablissement_id: {
-                        enseignant_id: matricule,
-                        etablissement_id: 1
-                    }
-                }
-            });
-
-            if (!enseignantExist) {
                 const enseignantCree = await prisma.enseignant.create({
                     data: {
                         matricule: matricule,
@@ -69,14 +52,33 @@ const createEnseignantController = async (req, res) => {
                         userId: user.id
                     }
                 });
-                await prisma.enseignantEtablissement.create({
-                    data:{
+                await prisma.enseignantEtablissement.create(({
+                    data : {
                         enseignant_id:enseignantCree.matricule,
                         etablissement_id:idEtablissement
                     }
-                })
-                await sendEmail(enseignantCree.nom, enseignantCree.email, enseignantCree.matricule, enseignantCree.matricule)
+                }))
             }
+            const compte = await prisma.compteInstitutionnel.findFirst({
+                where : {
+                    userId:enseignant.userId,
+                    etalissementid:idEtablissement
+                }
+            })
+
+            if(compte){
+                return res.status(409).json({message:'Cet enseignant possede deja un compte dans cet etablissement'})
+            }
+
+            // creation du compte 
+            await prisma.compteInstitutionnel.create({
+                data : {
+                    login:login,
+                    mot_passe:hashPass,
+                    userId:enseignant.userId,
+                    etalissementid:idEtablissement
+                }
+            })
         }
 
         return res.status(201).json({
@@ -94,7 +96,7 @@ const createEnseignantController = async (req, res) => {
 };
 
 const enseignantEtablissement = async (req, res)=>{
-    if(req.user.user.role !="ADMIN"){
+    if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
     }
     const admin_id = req.user.profil.id
@@ -158,7 +160,7 @@ const getEnseignantByMatriculeController = async (req, res) => {
 };
 
 const classeEnseignerParEnsignant = async(req,res)=>{
-    if(req.user.user.role !="ENSEIGNANT"){
+    if(req.user.user.user.role !="ENSEIGNANT"){
         return res.status(403).json({message:"vous êtes pas un proffesseur"})
     }
     const matricule = req.user.profil.matricule
@@ -188,7 +190,7 @@ const classeEnseignerParEnsignant = async(req,res)=>{
 }
 const enseignantStatController = async (req,res)=>{
     try{
-        if(req.user.user.role !=="ENSEIGNANT"){
+        if(req.user.user.user.role !=="ENSEIGNANT"){
             return res.status(403).json({message:"vous êtes pas un proffesseur"})
         }
         const matricule = req.user.profil.matricule
@@ -228,7 +230,7 @@ const enseignantStatController = async (req,res)=>{
 }
 
 const nombreElevesClasse = async (req, res)=>{
-        if(req.user.user.role !=="ENSEIGNANT"){
+        if(req.user.user.user.role !=="ENSEIGNANT"){
             return res.status(403).json({message:"vous êtes pas un proffesseur"})
         }
         const matricule = req.user.profil.matricule
