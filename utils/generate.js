@@ -323,10 +323,10 @@ const generate = async (matricule) => {
             enseignants.map(async (ens) => {
                 const pathName = await prisma.signature.findUnique({
                     where : {
-                        user_id:ens.enseignant.userId
+                        compteInstitutionnelId:ens.compteInstitutionnelId
                     }
                 })
-                return pathName.url
+                return pathName?.url ??  ""
             })
         )
         const decision = moyenneGenerale >= 10 ? "Admis" : "Double"
@@ -418,6 +418,7 @@ const generate = async (matricule) => {
         })
         return relativePath
     } catch (err) {
+        console.log(err)
         if (page) {
             try { await page.close() } catch (e) { console.error("Erreur fermeture page :", e) }
         }
@@ -457,7 +458,7 @@ const generateClasseBulletins = async (id_classe) => {
     return results
 }
 
-const generateFicheNote = async(notes, matiere, etablissement, trimestre, classe, infosProf, profUserId) => {
+const generateFicheNote = async(notes, matiere, etablissement, trimestre, classe, infosProf, profcompteId) => {
     const tempDir = path.join(os.tmpdir(), 'puppeteer-session-' + Date.now())
     fs.mkdirSync(tempDir, { recursive: true })
     // const formattedNotes = notes.map(eleve => {
@@ -476,10 +477,9 @@ const generateFicheNote = async(notes, matiere, etablissement, trimestre, classe
         //         .createSignedUrl(pathName, 3600);
         const signature = await prisma.signature.findUnique({
             where: {
-                user_id:profUserId
+                compteInstitutionnelId:profcompteId
             }
         })
-        console.log(profUserId)
         const baseUrl = process.env.BASE_URL
         const fichier = path.join(__dirname, '../view/listeNote.ejs')
         const html = await ejs.renderFile(fichier, {
@@ -489,7 +489,7 @@ const generateFicheNote = async(notes, matiere, etablissement, trimestre, classe
             trimestre,
             classe,
             infosProf,
-            imageUrl:signature.url,
+            imageUrl:signature?.url ?? "",
             baseurl:baseUrl
         })
         

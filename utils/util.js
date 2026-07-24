@@ -143,11 +143,7 @@ const getNoteFunction = async (id, id_trimestre=null) => {
                                     matiere: {
                                         select: {
                                             nom: true,
-                                            affectation:{
-                                                select:{
-                                                    coefficient:true
-                                                }
-                                            }
+                                            affectations:true
                                         }
                                     }
                                 }
@@ -170,7 +166,7 @@ const getNoteFunction = async (id, id_trimestre=null) => {
             }
             inscription.notes.forEach(note => {
                 const nomMatiere = note.matiere.nom
-                const coefMatiere = note.matiere.affectation[0]?.coefficient
+                const coefMatiere = note.matiere.affectations[0]?.coefficient
                 if (!matieres[nomMatiere]) {
                     matieres[nomMatiere] = {
                         matiere: nomMatiere,
@@ -209,11 +205,7 @@ const getNoteFunction = async (id, id_trimestre=null) => {
                                     matiere: {
                                         select: {
                                             nom: true,
-                                            affectation:{
-                                                select:{
-                                                    coefficient:true
-                                                }
-                                            }
+                                            affectations:true
                                         }
                                     }
                                 }
@@ -236,7 +228,7 @@ const getNoteFunction = async (id, id_trimestre=null) => {
             }
             inscription.notes.forEach(note => {
                 const nomMatiere = note.matiere.nom
-                const coefMatiere = note.matiere.affectation[0]?.coefficient
+                const coefMatiere = note.matiere.affectations[0]?.coefficient
                 if (!matieres[nomMatiere]) {
                     matieres[nomMatiere] = {
                         matiere: nomMatiere,
@@ -293,11 +285,7 @@ const getNotesClasseByMatiere = async (
                     include: {
                         matiere: {
                             include: {
-                                affectation: {
-                                    select: {
-                                        coefficient: true
-                                    }
-                                }
+                                affectations:true
                             }
                         }
                     }
@@ -307,14 +295,13 @@ const getNotesClasseByMatiere = async (
 
         return inscriptions.map(inscription => {
             const premiereNote = inscription.notes[0];
-
             return {
                 matricule: inscription.eleve.matricule,
                 nom: inscription.eleve.nom,
                 prenom: inscription.eleve.prenom,
                 matiere: premiereNote?.matiere?.nom || null,
                 coefficient_matiere:
-                    premiereNote?.matiere?.affectation?.[0]?.coefficient || null,
+                    premiereNote?.matiere?.affectations?.[0]?.coefficient || null,
                 notes: inscription.notes.map(note => ({
                     valeur: note.valeur,
                     coefficient: note.coefficient
@@ -477,18 +464,22 @@ const getBulletinInformation = async (matricule)=>{
         })
         const enseignants = await prisma.affectation.findMany({
             where:{
-                id_classe:eleve.classe.id
+                classeId:eleve.classe.id
             },
             include:{
-                enseignant:{
-                    select:{
-                        nom:true,
-                        prenom:true,
-                        userId:true
+                compteInstitutionnel:{
+                    select: {
+                        id:true,
+                        user : {
+                            select : {
+                                enseignant : true
+                            }
+                        }
                     }
                 }
             }
         })
+        console.log('enseignants:',enseignants)
         // enseignants.map(ens=>{ens.enseignant.})
         const matieres = await calculerMoyenne(matricule)
         const matiereAvecProf = await Promise.all(
@@ -505,16 +496,25 @@ const getBulletinInformation = async (matricule)=>{
                 }
                 const enseignant = await prisma.affectation.findFirst({
                     where:{
-                        id_classe:eleve.classe.id,
-                        id_matiere:matiereId.id
+                        classeId:eleve.classe.id,
+                        matiereId:matiereId.id
                     },
                     include:{
-                        enseignant: true
+                        compteInstitutionnel:{
+                            select: {
+                                id:true,
+                                user : {
+                                    select : {
+                                        enseignant : true
+                                    }
+                                }
+                            }
+                        }
                     }
                 })
                 return {
                     ...m,
-                    professeur: enseignant ? `${enseignant.enseignant.nom} ${enseignant.enseignant.prenom}` : "Non attribué"
+                    professeur: enseignant ? `${enseignant.compteInstitutionnel?.user.enseignant.nom} ${enseignant.compteInstitutionnel?.user.enseignant.prenom}` : "Non attribué"
                 }
             })
         )
@@ -524,10 +524,12 @@ const getBulletinInformation = async (matricule)=>{
 
         const signature = await prisma.signature.findFirst({
             where:{
-                user:{
-                    admin :{
-                        etablissement : {
-                            id:etablissement.id
+                compteInstitutionnel:{
+                    user:{
+                        admin :{
+                            etablissement : {
+                                id:etablissement.id
+                            }
                         }
                     }
                 }

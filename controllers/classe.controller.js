@@ -122,13 +122,33 @@ const listeClasseByEtabblissement = async (req, res)=>{
 }
 
 const getClasseMatiere = async (req, res)=>{
+    if(req.user.user.user.role !="ADMIN"){
+        return res.status(403).json({message:"vous êtes pas un administrateur"})
+    }
+    const admin_id = req.user.profil.id
+        if(!admin_id){
+        return res.status(400).json({message:'fournissez les donnés'})
+    }
     const classe_id = req.params.id
     if(!classe_id){
         return res.status(400).json({message:'aucune classe selectionne'})
     }
     try {
+        const etablissement = await prisma.etablissement.findUnique({
+            where : {
+                admin_id:admin_id
+            }
+        })
         const matieres = await prisma.affectation.findMany({
-            where : {id_classe: Number(classe_id)},
+            where : {
+                classeId: Number(classe_id),
+                classe: {
+                    idEtablissement:etablissement.id
+                },
+                anneeAcademique:{
+                    actif:true
+                }
+            },
             include : {
                 matiere:true
             }
@@ -193,7 +213,7 @@ const moyenneMatiereClasseController = async(req, res)=>{
     try {
         const matieresAffecterAvecNotes = await prisma.affectation.findMany({
             where : {
-                id_classe: Number(id)
+                classeId: Number(id)
             },
             include : {
                 matiere : {

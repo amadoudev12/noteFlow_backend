@@ -3,7 +3,7 @@ const { ajouterAffectation, affectationEtablissement } = require('../controllers
 const verifyToken = require('../middleware/verifyToken')
 const route = express.Router()
 
-route.post('/create', ajouterAffectation)
+route.post('/create', verifyToken, ajouterAffectation)
 route.get('/',verifyToken, affectationEtablissement)
 
 module.exports = route

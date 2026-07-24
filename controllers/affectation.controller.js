@@ -1,142 +1,336 @@
-const {prisma} = require('../lib/prisma')
+const { prisma } = require("../lib/prisma");
+
+
+// Ajouter une affectation
 const ajouterAffectation = async (req, res) => {
-    try {
-        const { id_classe, id_matiere, id_prof, coefficient } = req.body;
-        // Vérifier si existe déjà
-        const exist = await prisma.affectation.findUnique({
-            where: {
-                id_classe_id_matiere: {
-                id_classe: Number(id_classe),
-                id_matiere: Number(id_matiere)
-                }
-            }
-        })
-        if (exist) {
+  // 1. Vérification du rôle avec chaînage optionnel (?.)
+  if (req.user?.user?.user?.role !== "ADMIN") {
+    return res.status(403).json({
+      message: "Vous n'êtes pas administrateur",
+    });
+  }
+
+  const idEtablissement = req.user?.profil?.etablissement?.id;
+
+  try {
+    console.log(req.body)
+    const {
+        id_classe,
+        id_matiere,
+        id_prof,
+        coefficient,
+    } = req.body;
+
+    // recuperer le profeeseusseur 
+    const enseignant = await prisma.enseignant.findUnique({
+    where: {
+        matricule: id_prof,
+    },
+    });
+    const compte = await prisma.compteInstitutionnel.findFirst({
+        where : {
+            userId:enseignant.userId,
+            etablissementId:idEtablissement
+        }
+    })
+    if (!compte) {
+      return res.status(404).json({
+        message: "Cet enseignant n'appartient pas à cet établissement",
+      });
+    }
+    // 2. Récupération de l'année académique active
+    const annee = await prisma.anneeAcademique.findFirst({
+      where: { actif: true },
+    });
+
+    if (!annee) {
         return res.status(400).json({
-            message: "Cette matière est déjà affectée à cette classe"
+            message: "Aucune année active",
         });
-        }
-        const affectation = await prisma.affectation.create({
-            data: {
-                id_classe:Number(id_classe),
-                id_matiere:Number(id_matiere),
-                id_prof:id_prof,
-                coefficient:Number(coefficient)
-            }
-        });
-        res.status(201).json(affectation);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
     }
-}
 
-
-const modifierAffectation = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { id_prof, coefficient } = req.body;
-
-        const affectation = await prisma.affectation.update({
-        where: { id: parseInt(id) },
-        data: {
-            id_prof,
-            coefficient
-        }
-        });
-        res.json(affectation);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-}
-
-const supprimerAffectation = async (req, res) => {
-    try {
-        const { id } = req.params;
-        await prisma.affectation.delete({
-        where: { id: parseInt(id) }
-        });
-        res.json({ message: "Affectation supprimée avec succès" });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-}
-
-const getAffectationsByClasse = async (req, res) => {
-    try {
-        const { id_classe } = req.params;
-        const affectations = await prisma.affectation.findMany({
+    // 3. Vérification de la classe
+    const classe = await prisma.classe.findFirst({
         where: {
-            id_classe: parseInt(id_classe)
+            id: Number(id_classe),
+            idEtablissement: idEtablissement,
         },
-        include: {
-            matiere: {
-            select: {
-                id: true,
-                nom: true
-            }
-            },
-            enseignant: {
-            select: {
-                matricule: true,
-                nom: true,
-                prenom: true
-            }
-            }
-        }
-        });
-        res.json(affectations);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+    });
+    console.log(classe)
+    if (!classe) {
+      return res.status(404).json({
+        message: "Classe inexistante dans cet établissement",
+      });
     }
-}
 
-const affectationEtablissement = async(req, res)=>{
-    if(req.user.user.user.role !="ADMIN"){
-        return res.status(403).json({message:"vous êtes pas un administrateur"})
+    // 4. Vérification de la matière
+    const matiere = await prisma.matiere.findFirst({
+      where: {
+        id: Number(id_matiere),
+        etablissement_id: idEtablissement,
+      },
+    });
+
+    if (!matiere) {
+      return res.status(404).json({
+        message: "Cette matière n'appartient pas à cet établissement",
+      });
     }
-    const admin_id = req.user.profil.id
-    if(!admin_id){
-        return res.status(400).json({message:'fournissez les donnés'})
+
+
+    // 6. Vérification des doublons
+    const existe = await prisma.affectation.findUnique({
+      where: {
+        classeId_matiereId_compteInstitutionnelId_anneeAcademiqueId: {
+          classeId: Number(id_classe),
+          matiereId: Number(id_matiere),
+          compteInstitutionnelId: Number(compte.id),
+          anneeAcademiqueId: annee.id,
+        },
+      },
+    });
+
+    if (existe) {
+      return res.status(400).json({
+        message: "Cette affectation existe déjà",
+      });
     }
-    const idEtablissement = req.user.profil.etablissement.id
-    try {
-        const affectations = await prisma.affectation.findMany({
-            where :{
-                classe : {
-                    idEtablissement:idEtablissement
-                }
-            },
-            include :{
-                enseignant : {
-                    select:{
-                        matricule:true,
-                        nom:true,
-                        prenom:true
+
+    // 7. Création de l'affectation
+    const affectation = await prisma.affectation.create({
+      data: {
+        classeId: Number(id_classe),
+        matiereId: Number(id_matiere),
+        compteInstitutionnelId: Number(compte.id),
+        anneeAcademiqueId: annee.id,
+        coefficient: Number(coefficient),
+      },
+      include: {
+        classe: true,
+        matiere: true,
+        compteInstitutionnel: {
+            include:{
+                user:{
+                    include:{
+                        enseignant:true
                     }
-                },
+                }
+            }
+        },
+      },
+    });
+
+    return res.status(201).json(affectation);
+
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({
+      message: "Erreur serveur lors de l'ajout de l'affectation",
+    });
+  }
+};
+
+// Modifier une affectation
+
+const modifierAffectation = async(req,res)=>{
+
+    try{
+
+        const {id}=req.params;
+
+        const {
+            enseignantEtablissementId,
+            coefficient
+        }=req.body;
+
+
+        const affectation =
+        await prisma.affectation.update({
+
+            where:{
+                id:Number(id)
+            },
+
+            data:{
+                enseignantEtablissementId:Number(
+                    enseignantEtablissementId
+                ),
+                coefficient:Number(coefficient)
+            },
+
+            include:{
+                classe:true,
+                matiere:true,
+                enseignantEtablissement:{
+                    include:{
+                        enseignant:true
+                    }
+                }
+            }
+
+        });
+
+
+        res.json(affectation);
+
+
+    }catch(error){
+
+        res.status(500).json({
+            message:error.message
+        });
+
+    }
+
+};
+
+
+
+
+
+// Supprimer une affectation
+
+const supprimerAffectation = async(req,res)=>{
+    try{
+        const {id}=req.params;
+        await prisma.affectation.delete({
+            where:{
+                id:Number(id)
+            }
+        });
+        res.json({
+            message:"Affectation supprimée"
+        });
+    }catch(error){
+        res.status(500).json({
+            message:error.message
+        });
+    }
+};
+
+// Récupérer les affectations d'une classe
+const getAffectationsByClasse = async(req,res)=>{
+    try{
+        const {id_classe}=req.params;
+        const affectations =
+        await prisma.affectation.findMany({
+            where:{
+                classeId:Number(id_classe)
+            },
+            include:{
                 matiere:{
-                    select :{
+                    select:{
+                        id:true,
                         nom:true
                     }
+                },
+                enseignantEtablissement:{
+                    include:{
+                        enseignant:{
+                            select:{
+                                matricule:true,
+                                nom:true,
+                                prenom:true
+                            }
+                        }
+                    }
                 }
             }
-        })
+        });
+        res.json(affectations);
+    }catch(error){
+        res.status(500).json({
+            message:error.message
+        });
 
-        if(!affectations){
-            return res.status(404).json({message:'aucune affection trouve'})
-        }
-
-        return res.status(200).json({affectations})
-    }catch(err){
-        console.log(err)
-        res.status(500).json({ message: err.message });
     }
-}
 
-module.exports = {
+};
+
+// Toutes les affectations d'un établissement
+const affectationEtablissement = async(req,res)=>{
+    if(req.user.user.user.role !== "ADMIN"){
+        return res.status(403).json({
+            message:"Accès refusé"
+        });
+    }
+    const idEtablissement =
+        req.user.profil.etablissement.id;
+    try{
+        const affectations =
+        await prisma.affectation.findMany({
+            where:{
+                classe : {
+                    idEtablissement:idEtablissement
+                },
+                anneeAcademique:{
+                    actif:true
+                }
+            },
+            include:{
+                classe:true,
+                matiere:true,
+                compteInstitutionnel : {
+                    include:{
+                        user:{
+                            include:{
+                                enseignant:true
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        console.log(affectations)
+        return res.json({
+            affectations
+        });
+    }catch(error){
+        console.log(error);
+        res.status(500).json({
+            message:error.message
+        });
+    }
+};
+
+// Récupérer les classes d'un enseignant
+
+const getClassesEnseignant = async(req,res)=>{
+    const compteId = req.user.user.id;
+    try{
+        const affectations =
+        await prisma.affectation.findMany({
+            where:{
+                compteInstitutionnelId:compteId,
+                anneeAcademique:{
+                    actif:true
+                }
+            },
+            select:{
+                classe:true,
+                matiere:true
+            }
+        });
+        if(affectations.length===0){
+            return res.status(404).json({
+                message:"Aucune classe affectée"
+            });
+        }
+        res.json(affectations);
+    }catch(error){
+        res.status(500).json({
+            message:error.message
+        });
+    }
+
+};
+
+
+module.exports={
     ajouterAffectation,
     modifierAffectation,
     supprimerAffectation,
     getAffectationsByClasse,
-    affectationEtablissement
+    affectationEtablissement,
+    getClassesEnseignant
 }

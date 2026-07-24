@@ -32,35 +32,33 @@ enum Justifie {
   non
 }
 model User {
-  id         Int     @id @default(autoincrement())
+  id Int @id @default(autoincrement())
   role Role
-  eleve       Eleve?
-  enseignant  Enseignant?
+  eleve Eleve?
+  enseignant Enseignant?
   admin Administrateur?
-  compteInstitutionnel compteInstitutionnel[]
+  comptesInstitutionnels CompteInstitutionnel[]
 }
-model compteInstitutionnel {
-  id          Int @id @default(autoincrement())
-  login      String  @unique
-  mot_passe  String
-  
+model CompteInstitutionnel {
+  id Int @id @default(autoincrement())
+  login String @unique
+  mot_passe String
   firstLogin Boolean @default(true)
   signatureComplete Boolean @default(false)
-  userId  Int
-  etalissementid  Int
-  user User @relation(fields: [userId], references: [id])
-  etablissement Etablissement @relation(fields: [etalissementid], references: [id])
-
-  signature Signature[]
+  userId Int
+  etablissementId Int
+  user User @relation(fields:[userId],references:[id])
+  etablissement Etablissement @relation(fields:[etablissementId],references:[id])
+  signatures Signature[]
+  affectations Affectation[]
 }
 model Signature {
-  id        Int      @id @default(autoincrement())
-  url       String
-  comteInstitutionnelId Int
-  createAt  DateTime @default(now())
-  updateAt  DateTime @updatedAt
-
-  compteInstitutionnel compteInstitutionnel @relation(fields: [comteInstitutionnelId], references: [id])
+  id Int @id @default(autoincrement())
+  url String
+  compteInstitutionnelId Int  @unique
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  compteInstitutionnel CompteInstitutionnel @relation(fields:[compteInstitutionnelId],references:[id])
 }
 
 model Eleve {
@@ -92,7 +90,6 @@ model Enseignant {
   email         String
   userId      Int      @unique
   user        User     @relation(fields: [userId], references: [id])
-  affectation Affectation[]
   etablissements EnseignantEtablissement[]
 }
 model CertificatFrequentation {
@@ -125,10 +122,10 @@ model Administrateur {
 model Classe {
   id           Int       @id @default(autoincrement())
   libelle      String
-  idEtablissement Int ?
+  idEtablissement Int 
   etablissement    Etablissement? @relation(fields: [idEtablissement], references: [id])
   inscriptions Inscription[] // IMPORTANT
-  affectation Affectation[]
+  affectations Affectation[]
 }
 
 model Matiere {
@@ -137,7 +134,7 @@ model Matiere {
   etablissement_id  Int    
   etablissement     Etablissement @relation(fields: [etablissement_id], references: [id])
   notes             Note[]
-  affectation       Affectation[]
+  affectations       Affectation[]
   @@unique([nom, etablissement_id]) //clé unique par établissement
 }
 
@@ -171,17 +168,21 @@ model Note {
 }
 
 model Affectation {
-  id           Int @id @default(autoincrement())
-  id_classe    Int
-  id_matiere   Int
-  id_prof      String
-  coefficient  Int
-
-  classe     Classe     @relation(fields: [id_classe], references: [id])
-  matiere    Matiere    @relation(fields: [id_matiere], references: [id])
-  enseignant Enseignant @relation(fields: [id_prof], references: [matricule])
-
-  @@unique([id_classe, id_matiere])
+  id Int @id @default(autoincrement())
+  classeId Int
+  matiereId Int
+  compteInstitutionnelId Int
+  anneeAcademiqueId Int
+  coefficient Int
+  classe Classe @relation(fields:[classeId],references:[id])
+  matiere Matiere @relation(fields:[matiereId],references:[id])
+  compteInstitutionnel CompteInstitutionnel @relation(fields:[compteInstitutionnelId],references:[id])
+  anneeAcademique AnneeAcademique @relation(fields:[anneeAcademiqueId],references:[id])
+  @@index([classeId])
+  @@index([matiereId])
+  @@index([compteInstitutionnelId])
+  @@index([anneeAcademiqueId])
+  @@unique([classeId,matiereId,compteInstitutionnelId,anneeAcademiqueId])
 }
 
 
@@ -216,7 +217,7 @@ model Etablissement {
   Matieres Matiere[]
   bulletin Bulletin[]
   inscription Inscription[]
-  compteInstitutionnel compteInstitutionnel[]
+  compteInstitutionnel  CompteInstitutionnel[]
 }
 
 model Bulletin {
@@ -248,6 +249,7 @@ model AnneeAcademique {
   resultats     Bulletin[]
   certificatFrequentation CertificatFrequentation[]
   compteurCertificat CompteurCertificat?
+  affectation Affectation[]
 }
 
 model CompteurCertificat {
@@ -281,9 +283,7 @@ model EnseignantEtablissement {
   id               Int @id @default(autoincrement())
   enseignant_id    String
   etablissement_id Int
-
-  enseignant    Enseignant @relation(fields: [enseignant_id], references: [matricule])
+  enseignant Enseignant @relation(fields: [enseignant_id], references: [matricule])
   etablissement Etablissement @relation(fields: [etablissement_id], references: [id])
-
   @@unique([enseignant_id, etablissement_id])
 }

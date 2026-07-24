@@ -4,6 +4,7 @@ const { meilleureByClasse, moyenneElevesEtablissement, moyenneEtablissement, Nom
 // const level_hash = process.env.level_hash
 const jwt = require('jsonwebtoken');
 const { array } = require("../middleware/uploadsFichier");
+const { connected } = require("node:process");
 
 const register = async (req, res) => {
   // ── Reconstruction depuis FormData ─────────────────────────
@@ -71,7 +72,15 @@ const register = async (req, res) => {
             .trim()
             .toLowerCase()
             .normalize("NFD")
-        const login = `${nom}@${etablissement.code.trim().toLowerCase()}.edu`
+            .replace(/\s+/g, "")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]/g, "")
+        const code = etablissement.code
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, "")
+            .replace(/[^a-z0-9]/g, "")
+        const login = `${nom}@${code}.edu`
         const hashPass = await bcrypt.hash(admin.mot_passe, 10)
 
         const user = await tx.user.create({
@@ -105,14 +114,26 @@ const register = async (req, res) => {
             data : {
                 login:login,
                 mot_passe:hashPass,
-                userId:user.id,
-                etalissementid:etab.id
+                user:{
+                    connect:{
+                        id:user.id
+                    }
+                },
+                etablissement:{
+                    connect:{
+                        id:etab.id
+                    }
+                }
             }
         })
         const signature = await tx.signature.create({
             data : {
                 url:fileSignature,
-                comteInstitutionnelId:compteI.id
+                compteInstitutionnel:{
+                    connect:{
+                        id:compteI.id
+                    }
+                }
             }
         })
         return { user, administrateur, etab };

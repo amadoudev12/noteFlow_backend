@@ -186,12 +186,19 @@ const getAllNotesByClasseByMatier = async (req, res) => {
             }),
             prisma.affectation.findFirst({
                 where: {
-                    id_classe: id_classe,
-                    id_matiere: Number(id_matiere)
+                    classeId: id_classe,
+                    matiereId: Number(id_matiere)
                 },
-                include: {
-                    enseignant: {
-                        select: { nom: true, prenom: true, userId: true }
+                select : {
+                    compteInstitutionnel : {
+                        select:{
+                            id:true,
+                            user:{
+                                select : {
+                                    enseignant:true
+                                }
+                            }
+                        }
                     }
                 }
             })
@@ -214,8 +221,8 @@ const getAllNotesByClasseByMatier = async (req, res) => {
             trimestre.id_trimestre
         )
 
-        const infosProf = `${professeur.enseignant.nom} ${professeur.enseignant.prenom}`
-        const profUserId = professeur.enseignant.userId
+        const infosProf = `${professeur.compteInstitutionnel?.user.enseignant.nom} ${professeur.compteInstitutionnel?.user.enseignant.prenom}`
+        const profcompteId = professeur.compteInstitutionnel?.id
 
         const listeFile = await generateFicheNote(
             notes,
@@ -224,7 +231,7 @@ const getAllNotesByClasseByMatier = async (req, res) => {
             trimestre.libelle,
             classe.libelle,
             infosProf,
-            profUserId
+            profcompteId
         )
 
         return res.download(listeFile, "liste-notes")

@@ -7,16 +7,16 @@ CREATE TABLE `User` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `compteInstitutionnel` (
+CREATE TABLE `CompteInstitutionnel` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `login` VARCHAR(191) NOT NULL,
     `mot_passe` VARCHAR(191) NOT NULL,
     `firstLogin` BOOLEAN NOT NULL DEFAULT true,
     `signatureComplete` BOOLEAN NOT NULL DEFAULT false,
     `userId` INTEGER NOT NULL,
-    `etalissementid` INTEGER NOT NULL,
+    `etablissementId` INTEGER NOT NULL,
 
-    UNIQUE INDEX `compteInstitutionnel_login_key`(`login`),
+    UNIQUE INDEX `CompteInstitutionnel_login_key`(`login`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -24,7 +24,7 @@ CREATE TABLE `compteInstitutionnel` (
 CREATE TABLE `Signature` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `url` VARCHAR(191) NOT NULL,
-    `comteInstitutionnelId` INTEGER NOT NULL,
+    `compteInstitutionnelId` INTEGER NOT NULL,
     `createAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updateAt` DATETIME(3) NOT NULL,
 
@@ -96,7 +96,7 @@ CREATE TABLE `Administrateur` (
 CREATE TABLE `Classe` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `libelle` VARCHAR(191) NOT NULL,
-    `idEtablissement` INTEGER NULL,
+    `idEtablissement` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -142,12 +142,17 @@ CREATE TABLE `Note` (
 -- CreateTable
 CREATE TABLE `Affectation` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `id_classe` INTEGER NOT NULL,
-    `id_matiere` INTEGER NOT NULL,
-    `id_prof` VARCHAR(191) NOT NULL,
+    `classeId` INTEGER NOT NULL,
+    `matiereId` INTEGER NOT NULL,
+    `compteInstitutionnelId` INTEGER NOT NULL,
+    `anneeAcademiqueId` INTEGER NOT NULL,
     `coefficient` INTEGER NOT NULL,
 
-    UNIQUE INDEX `Affectation_id_classe_id_matiere_key`(`id_classe`, `id_matiere`),
+    INDEX `Affectation_classeId_idx`(`classeId`),
+    INDEX `Affectation_matiereId_idx`(`matiereId`),
+    INDEX `Affectation_compteInstitutionnelId_idx`(`compteInstitutionnelId`),
+    INDEX `Affectation_anneeAcademiqueId_idx`(`anneeAcademiqueId`),
+    UNIQUE INDEX `Affectation_classeId_matiereId_compteInstitutionnelId_anneeA_key`(`classeId`, `matiereId`, `compteInstitutionnelId`, `anneeAcademiqueId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -245,13 +250,13 @@ CREATE TABLE `EnseignantEtablissement` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `compteInstitutionnel` ADD CONSTRAINT `compteInstitutionnel_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `CompteInstitutionnel` ADD CONSTRAINT `CompteInstitutionnel_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `compteInstitutionnel` ADD CONSTRAINT `compteInstitutionnel_etalissementid_fkey` FOREIGN KEY (`etalissementid`) REFERENCES `Etablissement`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `CompteInstitutionnel` ADD CONSTRAINT `CompteInstitutionnel_etablissementId_fkey` FOREIGN KEY (`etablissementId`) REFERENCES `Etablissement`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Signature` ADD CONSTRAINT `Signature_comteInstitutionnelId_fkey` FOREIGN KEY (`comteInstitutionnelId`) REFERENCES `compteInstitutionnel`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Signature` ADD CONSTRAINT `Signature_compteInstitutionnelId_fkey` FOREIGN KEY (`compteInstitutionnelId`) REFERENCES `CompteInstitutionnel`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Eleve` ADD CONSTRAINT `Eleve_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -269,7 +274,7 @@ ALTER TABLE `CertificatFrequentation` ADD CONSTRAINT `CertificatFrequentation_an
 ALTER TABLE `Administrateur` ADD CONSTRAINT `Administrateur_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Classe` ADD CONSTRAINT `Classe_idEtablissement_fkey` FOREIGN KEY (`idEtablissement`) REFERENCES `Etablissement`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Classe` ADD CONSTRAINT `Classe_idEtablissement_fkey` FOREIGN KEY (`idEtablissement`) REFERENCES `Etablissement`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Matiere` ADD CONSTRAINT `Matiere_etablissement_id_fkey` FOREIGN KEY (`etablissement_id`) REFERENCES `Etablissement`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -284,13 +289,16 @@ ALTER TABLE `Note` ADD CONSTRAINT `Note_id_matiere_fkey` FOREIGN KEY (`id_matier
 ALTER TABLE `Note` ADD CONSTRAINT `Note_id_trimestre_fkey` FOREIGN KEY (`id_trimestre`) REFERENCES `Trimestre`(`id_trimestre`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Affectation` ADD CONSTRAINT `Affectation_id_classe_fkey` FOREIGN KEY (`id_classe`) REFERENCES `Classe`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Affectation` ADD CONSTRAINT `Affectation_classeId_fkey` FOREIGN KEY (`classeId`) REFERENCES `Classe`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Affectation` ADD CONSTRAINT `Affectation_id_matiere_fkey` FOREIGN KEY (`id_matiere`) REFERENCES `Matiere`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Affectation` ADD CONSTRAINT `Affectation_matiereId_fkey` FOREIGN KEY (`matiereId`) REFERENCES `Matiere`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Affectation` ADD CONSTRAINT `Affectation_id_prof_fkey` FOREIGN KEY (`id_prof`) REFERENCES `Enseignant`(`matricule`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Affectation` ADD CONSTRAINT `Affectation_compteInstitutionnelId_fkey` FOREIGN KEY (`compteInstitutionnelId`) REFERENCES `CompteInstitutionnel`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Affectation` ADD CONSTRAINT `Affectation_anneeAcademiqueId_fkey` FOREIGN KEY (`anneeAcademiqueId`) REFERENCES `AnneeAcademique`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Absence` ADD CONSTRAINT `Absence_matricule_eleve_fkey` FOREIGN KEY (`matricule_eleve`) REFERENCES `Eleve`(`matricule`) ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -27,7 +27,21 @@ const createEleveController = async (req, res) => {
         const sheet = wb.Sheets[sheetName]
         const eleves = xlsx.utils.sheet_to_json(sheet)
         for (let row of eleves) {
-            const login = `${row.prenom.toLowerCase().trim()}@${etablissement.nom.toLowerCase().trim()}.edu`
+            const prenomSanitized = row.prenom
+                .toLowerCase()
+                .trim()
+                .normalize("NFD")
+                .replace(/\s+/g, "")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9]/g, "")
+            const etabSanitized = etablissement.nom
+                .toLowerCase()
+                .trim()
+                .normalize("NFD")
+                .replace(/\s+/g, "")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9]/g, "")
+            const login = `${prenomSanitized}@${etabSanitized}.edu`
             const hashPass = await bcrypt.hash(login, 10);
             let eleve = await prisma.eleve.findUnique({
                 where : {
@@ -71,8 +85,16 @@ const createEleveController = async (req, res) => {
                     data : {
                         login:login,
                         mot_passe:hashPass,
-                        etalissementid:etablissement.id,
-                        userId:user.id
+                        user:{
+                            connect:{
+                                id:user.id
+                            }
+                        },
+                        etablissement:{
+                            connect:{
+                                id:etablissement.id
+                            }
+                        }
                     }
                 })
             }
@@ -276,10 +298,12 @@ const createCertificat = async (req, res)=>{
         })
         const signature = await prisma.signature.findFirst({
             where:{
-                user:{
-                    admin :{
-                        etablissement : {
-                            id:inscription.classe.etablissement.id
+                compteInstitutionnel:{
+                    user:{
+                        admin :{
+                            etablissement : {
+                                id:inscription.classe.etablissement.id
+                            }
                         }
                     }
                 }
