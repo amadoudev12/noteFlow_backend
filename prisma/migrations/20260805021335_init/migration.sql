@@ -28,6 +28,7 @@ CREATE TABLE `Signature` (
     `createAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updateAt` DATETIME(3) NOT NULL,
 
+    UNIQUE INDEX `Signature_compteInstitutionnelId_key`(`compteInstitutionnelId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -159,12 +160,24 @@ CREATE TABLE `Affectation` (
 -- CreateTable
 CREATE TABLE `Absence` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `nombre_heure` INTEGER NOT NULL,
-    `matricule_eleve` VARCHAR(191) NOT NULL,
+    `eleveId` VARCHAR(191) NOT NULL,
+    `affectationId` INTEGER NOT NULL,
+    `anneeAcademiqueId` INTEGER NOT NULL,
     `trimestreId` INTEGER NOT NULL,
+    `date` DATETIME(3) NOT NULL,
+    `statut` ENUM('ABSENT', 'RETARD') NOT NULL DEFAULT 'ABSENT',
+    `justifie` ENUM('oui', 'non') NOT NULL DEFAULT 'non',
+    `motif` VARCHAR(191) NULL,
+    `commentaire` VARCHAR(191) NULL,
+    `createdBy` INTEGER NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
 
-    UNIQUE INDEX `Absence_matricule_eleve_trimestreId_key`(`matricule_eleve`, `trimestreId`),
+    INDEX `Absence_eleveId_idx`(`eleveId`),
+    INDEX `Absence_affectationId_idx`(`affectationId`),
+    INDEX `Absence_anneeAcademiqueId_idx`(`anneeAcademiqueId`),
+    INDEX `Absence_trimestreId_idx`(`trimestreId`),
+    UNIQUE INDEX `Absence_eleveId_affectationId_date_key`(`eleveId`, `affectationId`, `date`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -301,10 +314,19 @@ ALTER TABLE `Affectation` ADD CONSTRAINT `Affectation_compteInstitutionnelId_fke
 ALTER TABLE `Affectation` ADD CONSTRAINT `Affectation_anneeAcademiqueId_fkey` FOREIGN KEY (`anneeAcademiqueId`) REFERENCES `AnneeAcademique`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Absence` ADD CONSTRAINT `Absence_matricule_eleve_fkey` FOREIGN KEY (`matricule_eleve`) REFERENCES `Eleve`(`matricule`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Absence` ADD CONSTRAINT `Absence_eleveId_fkey` FOREIGN KEY (`eleveId`) REFERENCES `Eleve`(`matricule`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Absence` ADD CONSTRAINT `Absence_affectationId_fkey` FOREIGN KEY (`affectationId`) REFERENCES `Affectation`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Absence` ADD CONSTRAINT `Absence_anneeAcademiqueId_fkey` FOREIGN KEY (`anneeAcademiqueId`) REFERENCES `AnneeAcademique`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Absence` ADD CONSTRAINT `Absence_trimestreId_fkey` FOREIGN KEY (`trimestreId`) REFERENCES `Trimestre`(`id_trimestre`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Absence` ADD CONSTRAINT `Absence_createdBy_fkey` FOREIGN KEY (`createdBy`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Etablissement` ADD CONSTRAINT `Etablissement_admin_id_fkey` FOREIGN KEY (`admin_id`) REFERENCES `Administrateur`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

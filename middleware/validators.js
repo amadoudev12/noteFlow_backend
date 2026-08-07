@@ -29,10 +29,6 @@ const loginValidation = [
 
 // Validations pour modification utilisateur
 const modificationUserValidation = [
-    body('login')
-        .trim()
-        .notEmpty().withMessage('Login requis')
-        .isLength({ min: 3 }).withMessage('Login min 3 caractères'),
     body('password')
         .notEmpty().withMessage('Mot de passe requis')
         .isLength({ min: 8 }).withMessage('Mot de passe min 8 caractères'),

@@ -94,7 +94,7 @@ const createEnseignantController = async (req, res) => {
             }
 
             // creation du compte 
-            await prisma.compteInstitutionnel.create({
+            const compteI = await prisma.compteInstitutionnel.create({
                 data : {
                     login:login,
                     mot_passe:hashPass,
@@ -110,6 +110,7 @@ const createEnseignantController = async (req, res) => {
                         }
                 }
             })
+            await sendEmail(enseignant.nom, enseignant.email, compteI.login, compteI.login)
         }
 
         return res.status(201).json({
@@ -258,6 +259,7 @@ const classeEnseignerParEnsignant = async (req, res) => {
 
     // 3. Formatage du résultat
     const resultat = affectations.map((a) => ({
+      id:a.id,
       classe: a.classe,
       matiere: {
         id: a.matiere.id,

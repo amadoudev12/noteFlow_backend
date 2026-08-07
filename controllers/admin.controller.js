@@ -7,178 +7,182 @@ const { array } = require("../middleware/uploadsFichier");
 const { connected } = require("node:process");
 
 const register = async (req, res) => {
-  // ── Reconstruction depuis FormData ─────────────────────────
-  const admin = {
-    prenom:    req.body.prenom,
-    nom:       req.body.nom,
-    email:     req.body.email,
-    mot_passe: req.body.mot_passe,
-  };
 
-  const etablissement = {
-    nom:       req.body.etab_nom,
-    directeur: req.body.etab_directeur,
-    adresse:   req.body.etab_adresse,
-    phone:     req.body.etab_phone  || null,
-    email:     req.body.etab_email  || null,
-    code:      req.body.etab_code,
-    statut:    req.body.etab_statut,
-  };
-
-  const signaturePath = req.file ? req.file.filename : null;
-
-  // ── 1. Validation ──────────────────────────────────────────
-  const missingAdmin = ['prenom', 'nom', 'email', 'mot_passe'].filter(
-    (k) => !admin[k]?.trim()
-  );
-  const missingEtab = ['nom', 'directeur', 'adresse', 'code', 'statut'].filter(
-    (k) => !etablissement[k]?.trim()
-  );
-
-  if (missingAdmin.length || missingEtab.length) {
-    return res.status(400).json({
-      message: 'Champs obligatoires manquants.',
-      details: { admin: missingAdmin, etablissement: missingEtab },
-    });
-  }
-
-  if (!signaturePath) {
-    return res.status(400).json({ message: 'La signature est obligatoire.' });
-  }
-
- 
-
-  // ── 4. Transaction Prisma 
-  try {
-     // ── 2. Email unique
-    const emailExiste = await prisma.etablissement.findUnique({
-        where: { email: admin.email },
-    });
-    if (emailExiste) {
-        return res.status(409).json({ message: 'Un compte avec cet email existe déjà.' });
+    if(!req.user.role == "SUPERADMIN" ){
+        return res.status(403).json({message:"Vous êtes pas autorisés a effectuee cette action"})
     }
+    // ── Reconstruction depuis FormData ─────────────────────────
+    const admin = {
+        prenom:    req.body.prenom,
+        nom:       req.body.nom,
+        email:     req.body.email,
+        mot_passe: req.body.mot_passe,
+    };
 
-    // ── 3. Code établissement unique 
-    const codeExiste = await prisma.etablissement.findFirst({
-        where: { code: etablissement.code },
-    });
-    if (codeExiste) {
-        return res.status(409).json({ message: 'Ce code établissement est déjà utilisé.' });
-    }
-    const motPasseHash = await bcrypt.hash(admin.mot_passe, 10);
-    const fileSignature = `/uploads/signatures/${signaturePath}`
-    const result = await prisma.$transaction(async (tx) => {
-        const nom = etablissement.nom
-            .trim()
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/\s+/g, "")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/[^a-z0-9]/g, "")
-        const code = etablissement.code
-            .trim()
-            .toLowerCase()
-            .replace(/\s+/g, "")
-            .replace(/[^a-z0-9]/g, "")
-        const login = `${nom}@${code}.edu`
-        const hashPass = await bcrypt.hash(admin.mot_passe, 10)
+    const etablissement = {
+        nom:       req.body.etab_nom,
+        directeur: req.body.etab_directeur,
+        adresse:   req.body.etab_adresse,
+        phone:     req.body.etab_phone  || null,
+        email:     req.body.etab_email  || null,
+        code:      req.body.etab_code,
+        statut:    req.body.etab_statut,
+    };
 
-        const user = await tx.user.create({
-            data: {
-                role: 'ADMIN',
-            },
-        });
-        console.log("user:",user)
-        const administrateur = await tx.administrateur.create({
-            data: {
-            nom:       admin.nom,
-            prenom:    admin.prenom,
-            email:     admin.email,  
-            userId:    user.id,
-            },
-        });
-        console.log("administrateur:",administrateur)
-        const etab = await tx.etablissement.create({
-            data: {
-            nom:       etablissement.nom,
-            directeur: etablissement.directeur,
-            adresse:   etablissement.adresse,
-            phone:     etablissement.phone ?? null,
-            email:     etablissement.email ?? null,
-            code:      etablissement.code,
-            statut:    etablissement.statut,
-            admin_id:  administrateur.id
-            },
-        });
-        const compteI = await tx.compteInstitutionnel.create({
-            data : {
-                login:login,
-                mot_passe:hashPass,
-                user:{
-                    connect:{
-                        id:user.id
-                    }
-                },
-                etablissement:{
-                    connect:{
-                        id:etab.id
-                    }
-                }
-            }
-        })
-        const signature = await tx.signature.create({
-            data : {
-                url:fileSignature,
-                compteInstitutionnel:{
-                    connect:{
-                        id:compteI.id
-                    }
-                }
-            }
-        })
-        return { user, administrateur, etab };
-    });
+    const signaturePath = req.file ? req.file.filename : null;
 
-    // ── 5. JWT ─────────────────────────────────────────────
-    const token = jwt.sign(
-      {
-        user: {
-          id:              result.user.id,
-          role:            result.user.role,
-          email:           admin.email,
-          adminId:         result.administrateur.id,
-          etablissementId: result.etab.id,
-        },
-      },
-      process.env.SECRET_KEY,
-      { expiresIn: '7d' }
+    // ── 1. Validation ──────────────────────────────────────────
+    const missingAdmin = ['prenom', 'nom', 'email', 'mot_passe'].filter(
+        (k) => !admin[k]?.trim()
+    );
+    const missingEtab = ['nom', 'directeur', 'adresse', 'code', 'statut'].filter(
+        (k) => !etablissement[k]?.trim()
     );
 
-    // ── 6. Réponse ─────────────────────────────────────────
-    return res.status(201).json({
-      message: 'Compte créé avec succès.',
-      token,
-      data: {
-        administrateur: {
-          id:        result.administrateur.id,
-          nom:       result.administrateur.nom,
-          prenom:    result.administrateur.prenom,
-          email:     result.administrateur.email,
-          signature: signaturePath,
+    if (missingAdmin.length || missingEtab.length) {
+        return res.status(400).json({
+        message: 'Champs obligatoires manquants.',
+        details: { admin: missingAdmin, etablissement: missingEtab },
+        });
+    }
+
+    if (!signaturePath) {
+        return res.status(400).json({ message: 'La signature est obligatoire.' });
+    }
+
+    
+
+    // ── 4. Transaction Prisma 
+    try {
+        // ── 2. Email unique
+        const emailExiste = await prisma.etablissement.findUnique({
+            where: { email: admin.email },
+        });
+        if (emailExiste) {
+            return res.status(409).json({ message: 'Un compte avec cet email existe déjà.' });
+        }
+
+        // ── 3. Code établissement unique 
+        const codeExiste = await prisma.etablissement.findFirst({
+            where: { code: etablissement.code },
+        });
+        if (codeExiste) {
+            return res.status(409).json({ message: 'Ce code établissement est déjà utilisé.' });
+        }
+        const motPasseHash = await bcrypt.hash(admin.mot_passe, 10);
+        const fileSignature = `/uploads/signatures/${signaturePath}`
+        const result = await prisma.$transaction(async (tx) => {
+            const nom = etablissement.nom
+                .trim()
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/\s+/g, "")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9]/g, "")
+            const code = etablissement.code
+                .trim()
+                .toLowerCase()
+                .replace(/\s+/g, "")
+                .replace(/[^a-z0-9]/g, "")
+            const login = `${nom}@${code}.edu`
+            const hashPass = await bcrypt.hash(admin.mot_passe, 10)
+
+            const user = await tx.user.create({
+                data: {
+                    role: 'ADMIN',
+                },
+            });
+            console.log("user:",user)
+            const administrateur = await tx.administrateur.create({
+                data: {
+                nom:       admin.nom,
+                prenom:    admin.prenom,
+                email:     admin.email,  
+                userId:    user.id,
+                },
+            });
+            console.log("administrateur:",administrateur)
+            const etab = await tx.etablissement.create({
+                data: {
+                nom:       etablissement.nom,
+                directeur: etablissement.directeur,
+                adresse:   etablissement.adresse,
+                phone:     etablissement.phone ?? null,
+                email:     etablissement.email ?? null,
+                code:      etablissement.code,
+                statut:    etablissement.statut,
+                admin_id:  administrateur.id
+                },
+            });
+            const compteI = await tx.compteInstitutionnel.create({
+                data : {
+                    login:login,
+                    mot_passe:hashPass,
+                    user:{
+                        connect:{
+                            id:user.id
+                        }
+                    },
+                    etablissement:{
+                        connect:{
+                            id:etab.id
+                        }
+                    }
+                }
+            })
+            const signature = await tx.signature.create({
+                data : {
+                    url:fileSignature,
+                    compteInstitutionnel:{
+                        connect:{
+                            id:compteI.id
+                        }
+                    }
+                }
+            })
+            return { user, administrateur, etab };
+        });
+
+        // ── 5. JWT ─────────────────────────────────────────────
+        const token = jwt.sign(
+        {
+            user: {
+            id:              result.user.id,
+            role:            result.user.role,
+            email:           admin.email,
+            adminId:         result.administrateur.id,
+            etablissementId: result.etab.id,
+            },
         },
-        etablissement: {
-          id:        result.etab.id,
-          nom:       result.etab.nom,
-          code:      result.etab.code,
-          statut:    result.etab.statut,
-          directeur: result.etab.directeur,
+        process.env.SECRET_KEY,
+        { expiresIn: '7d' }
+        );
+
+        // ── 6. Réponse ─────────────────────────────────────────
+        return res.status(201).json({
+        message: 'Compte créé avec succès.',
+        token,
+        data: {
+            administrateur: {
+            id:        result.administrateur.id,
+            nom:       result.administrateur.nom,
+            prenom:    result.administrateur.prenom,
+            email:     result.administrateur.email,
+            signature: signaturePath,
+            },
+            etablissement: {
+            id:        result.etab.id,
+            nom:       result.etab.nom,
+            code:      result.etab.code,
+            statut:    result.etab.statut,
+            directeur: result.etab.directeur,
+            },
         },
-      },
-    });
-  } catch (err) {
-    console.error('[register] erreur transaction :', err);
-    return res.status(500).json({ message: 'Erreur serveur. Veuillez réessayer.' });
-  }
+        });
+    } catch (err) {
+        console.error('[register] erreur transaction :', err);
+        return res.status(500).json({ message: 'Erreur serveur. Veuillez réessayer.' });
+    }
 };
 
 

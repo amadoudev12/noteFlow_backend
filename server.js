@@ -63,7 +63,7 @@ app.use('/admin', require('./routes/admin.route'))
 app.use('/bulletin', require('./routes/bulletin.route'))
 app.use('/affectation', require("./routes/affectation.route"))
 app.use('/matieres', require('./routes/matieres.route'))
-
+app.use('/absences',require('./routes/absence.routes'))
 // Middleware d'erreur - doit être en dernier
 app.use(errorHandler)
 

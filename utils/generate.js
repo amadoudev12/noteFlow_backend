@@ -318,6 +318,39 @@ const generate = async (matricule) => {
         const trimestre = await prisma.trimestre.findFirst({
             where : { actif: true }
         })
+        const absences = await prisma.absence.findMany({
+            where:{
+                eleveId: matricule,
+                trimestreId: trimestre.id_trimestre,
+                anneeAcademiqueId: anneeAcademique.id
+            }
+        });
+
+
+        const bilanAbsence = {
+
+            total: absences.length,
+
+            absents: absences.filter(
+                a=>a.statut==="ABSENT"
+            ).length,
+
+
+            retards: absences.filter(
+                a=>a.statut==="RETARD"
+            ).length,
+
+
+            justifiees: absences.filter(
+                a=>a.justification === true
+            ).length,
+
+
+            nonJustifiees: absences.filter(
+                a=>a.justification === false
+            ).length
+
+        };
         const { eleveInfo, matiere, moyenneGenerale, rang, enseignants, etablissement, rangMatiere, signature } = await getBulletinInformation(matricule)
         const enseignantWithSignatures = await Promise.all(
             enseignants.map(async (ens) => {
@@ -346,7 +379,8 @@ const generate = async (matricule) => {
             distinction,
             rangMatiere,
             baseurl:baseUrl,
-            signatureDirecteur:signature
+            signatureDirecteur:signature,
+            bilanAbsence
         })
         const browser = await getBrowserFromPool()
         page = await browser.newPage()
@@ -475,11 +509,12 @@ const generateFicheNote = async(notes, matiere, etablissement, trimestre, classe
         //         .storage
         //         .from('signatures')
         //         .createSignedUrl(pathName, 3600);
-        const signature = await prisma.signature.findUnique({
+        const signature = await prisma.signature.findFirst({
             where: {
                 compteInstitutionnelId:profcompteId
             }
         })
+        console.log(profcompteId)
         const baseUrl = process.env.BASE_URL
         const fichier = path.join(__dirname, '../view/listeNote.ejs')
         const html = await ejs.renderFile(fichier, {

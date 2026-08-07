@@ -173,6 +173,20 @@
     .col-small {
       width: 115px;
     }
+    .absence-t {
+      width:100%;
+      border-collapse: collapse;
+      font-size:7.8pt;
+    }
+
+    .absence-t td {
+      padding:2px;
+    }
+
+    .absence-t .val {
+      text-align:right;
+      font-weight:bold;
+    }
   </style>
 </head>
 <body>
@@ -402,14 +416,53 @@
       </table>
       <% } %>
     </div>
+    <!-- Colonne 3 : Bilan des absences -->
 
+    <div class="bas-col">
+
+    <div class="col-title" style="text-align:center;">
+    BILAN DES ABSENCES
+    </div>
+      <table class="absence-t">
+      <tr>
+      <td>Total absences</td>
+      <td class="val">
+      <%= bilanAbsence.total %>
+      </td>
+      </tr>
+      <tr>
+      <td>Absences</td>
+      <td class="val">
+      <%= bilanAbsence.absents %>
+      </td>
+      </tr>
+      <tr>
+      <td>Retards</td>
+      <td class="val">
+      <%= bilanAbsence.retards %>
+      </td>
+      </tr>
+      <tr>
+      <td>Justifiées</td>
+      <td class="val">
+      <%= bilanAbsence.justifiees %>
+      </td>
+      </tr>
+      <tr>
+      <td>Non justifiées</td>
+      <td class="val">
+      <%= bilanAbsence.nonJustifiees %>
+      </td>
+      </tr>
+      </table>
+    </div>
     <!-- Colonne 3 : Signature chef établissement -->
     <div class="bas-col">
       <div style="font-weight:bold; text-align:center; font-size:8pt; text-decoration:underline; margin-bottom:4px;">
         Nom / Signature et Cachet du Chef d'Etablissement
       </div>
       <div style="min-height:40px;display: flex; align-items: center; justify-content: center;">
-        <img  src="<%= baseurl + signatureDirecteur %>" width="100">
+        <img  src="<%= baseurl + signatureDirecteur %>" width="150">
       </div>
       <div style="font-size:7.8pt; text-align:center;">
         <%= etablissement.directeur %>

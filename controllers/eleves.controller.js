@@ -81,7 +81,7 @@ const createEleveController = async (req, res) => {
                         id_etablissement:idEtablissement
                     }
                 })
-                await prisma.compteInstitutionnel.create({
+                const compte = await prisma.compteInstitutionnel.create({
                     data : {
                         login:login,
                         mot_passe:hashPass,
@@ -97,6 +97,7 @@ const createEleveController = async (req, res) => {
                         }
                     }
                 })
+                await sendEmail(eleve.nom, eleve.email, compte.login, compte.login)
             }
         }
         return res.status(201).json({

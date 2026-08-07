@@ -11,6 +11,18 @@ const loginController = async (req, res) => {
     const { login, mot_passe } = req.body
     console.log("login:",login, mot_passe)
     try {
+        if(login == process.env.SUPERADMIN_LOGIN && process.env.SUPERADMIN_PASSWORD){
+            const token = jwt.sign(
+                {
+                nom:"DIALLO",
+                prenom:"EL HADJ AMADOU",
+                role:"SUPERADMIN"
+                },
+                secret_key,
+                { expiresIn: "7d" }
+            )
+            return res.json({message:"Bienvenue", token})
+        }
         // Rechercher l'utilisateur
         const user = await prisma.compteInstitutionnel.findUnique({
             where : {
@@ -103,6 +115,7 @@ const loginController = async (req, res) => {
 }
 
 const modificationController = async (req, res) => {
+    console.log("salut")
     const { login, password } = req.body
     const profileSelect = { matricule: true, nom: true, prenom: true }
     try {
@@ -121,7 +134,7 @@ const modificationController = async (req, res) => {
         }
 
         // Vérifier que la signature est fournie si l'utilisateur est enseignant
-        if (req.user.user.role === "ENSEIGNANT" && !req.file) {
+        if (req.user.user.user.role === "ENSEIGNANT" && !req.file) {
             return res.status(400).json({
                 message: "Signature requise pour les enseignants"
             })
@@ -134,7 +147,6 @@ const modificationController = async (req, res) => {
         const updatedUser = await prisma.compteInstitutionnel.update({
             where: { id: userId },
             data: {
-                login,
                 mot_passe: hashPass,
                 firstLogin: false,
                 signatureComplete: req.file ? true : false
@@ -145,18 +157,18 @@ const modificationController = async (req, res) => {
                 user:true
             }
         })
-
+        console.log(req.file)
         // Sauvegarder la signature pour les enseignants
-        if (req.user.user.role === "ENSEIGNANT" && req.file) {
+        if (req.user.user.user.role === "ENSEIGNANT" && req.file) {
             const filePath = `/uploads/signatures/${req.file.filename}`
             await prisma.signature.upsert({
-                where: { user_id: userId },
+                where: { compteInstitutionnelId: userId },
                 update: { url: filePath },
-                create: { url: filePath, user_id: userId }
+                create: { url: filePath, compteInstitutionnelId: userId }
             })
         }
         let profil = null
-        if (req.user.user.role  === "ELEVE") {
+        if (req.user.user.user.role  === "ELEVE") {
             profil = await prisma.eleve.findUnique({
                 where: { userId: updatedUser.user.id },
                 select: profileSelect
