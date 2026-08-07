@@ -4,7 +4,7 @@ const verifyToken = require('../middleware/verifyToken')
 const uploadSignature = require('../middleware/UploadSignature')
 const route = express.Router()
 
-route.post('/register',uploadSignature.single("signature"), register)
+route.post('/register', uploadSignature.none(), register)
 
 route.get('/stat',verifyToken, StatEtablissement)
 

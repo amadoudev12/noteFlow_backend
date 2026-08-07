@@ -5,12 +5,15 @@ const { meilleureByClasse, moyenneElevesEtablissement, moyenneEtablissement, Nom
 const jwt = require('jsonwebtoken');
 const { array } = require("../middleware/uploadsFichier");
 const { connected } = require("node:process");
+const sendEmail = require("../services/sendEmail");
 
 const register = async (req, res) => {
+    const isSuperAdmin = req.user?.role === "SUPERADMIN" || req.user?.user?.role === "SUPERADMIN" || req.user?.user?.user?.role === "SUPERADMIN";
 
-    if(!req.user.role == "SUPERADMIN" ){
-        return res.status(403).json({message:"Vous êtes pas autorisés a effectuee cette action"})
+    if (req.user && !isSuperAdmin) {
+        return res.status(403).json({ message: "Vous n'êtes pas autorisé à effectuer cette action" });
     }
+
     // ── Reconstruction depuis FormData ─────────────────────────
     const admin = {
         prenom:    req.body.prenom,
@@ -31,8 +34,10 @@ const register = async (req, res) => {
 
     const signaturePath = req.file ? req.file.filename : null;
 
+    const passwordValue = (admin.mot_passe || '').trim() || `${(admin.email || '').split('@')[0] || 'admin'}@2026`;
+
     // ── 1. Validation ──────────────────────────────────────────
-    const missingAdmin = ['prenom', 'nom', 'email', 'mot_passe'].filter(
+    const missingAdmin = ['prenom', 'nom', 'email'].filter(
         (k) => !admin[k]?.trim()
     );
     const missingEtab = ['nom', 'directeur', 'adresse', 'code', 'statut'].filter(
@@ -46,9 +51,9 @@ const register = async (req, res) => {
         });
     }
 
-    if (!signaturePath) {
-        return res.status(400).json({ message: 'La signature est obligatoire.' });
-    }
+    // if (!signaturePath) {
+    //     return res.status(400).json({ message: 'La signature est obligatoire.' });
+    // }
 
     
 
@@ -69,7 +74,6 @@ const register = async (req, res) => {
         if (codeExiste) {
             return res.status(409).json({ message: 'Ce code établissement est déjà utilisé.' });
         }
-        const motPasseHash = await bcrypt.hash(admin.mot_passe, 10);
         const fileSignature = `/uploads/signatures/${signaturePath}`
         const result = await prisma.$transaction(async (tx) => {
             const nom = etablissement.nom
@@ -85,7 +89,7 @@ const register = async (req, res) => {
                 .replace(/\s+/g, "")
                 .replace(/[^a-z0-9]/g, "")
             const login = `${nom}@${code}.edu`
-            const hashPass = await bcrypt.hash(admin.mot_passe, 10)
+            const hashPass = await bcrypt.hash(passwordValue, 10)
 
             const user = await tx.user.create({
                 data: {
@@ -95,10 +99,10 @@ const register = async (req, res) => {
             console.log("user:",user)
             const administrateur = await tx.administrateur.create({
                 data: {
-                nom:       admin.nom,
-                prenom:    admin.prenom,
-                email:     admin.email,  
-                userId:    user.id,
+                    nom:       admin.nom,
+                    prenom:    admin.prenom,
+                    email:     admin.email,  
+                    userId:    user.id,
                 },
             });
             console.log("administrateur:",administrateur)
@@ -130,17 +134,17 @@ const register = async (req, res) => {
                     }
                 }
             })
-            const signature = await tx.signature.create({
-                data : {
-                    url:fileSignature,
-                    compteInstitutionnel:{
-                        connect:{
-                            id:compteI.id
-                        }
-                    }
-                }
-            })
-            return { user, administrateur, etab };
+            // const signature = await tx.signature.create({
+            //     data : {
+            //         url:fileSignature,
+            //         compteInstitutionnel:{
+            //             connect:{
+            //                 id:compteI.id
+            //             }
+            //         }
+            //     }
+            // })
+            return { user, administrateur, etab, compteI };
         });
 
         // ── 5. JWT ─────────────────────────────────────────────
@@ -157,7 +161,7 @@ const register = async (req, res) => {
         process.env.SECRET_KEY,
         { expiresIn: '7d' }
         );
-
+        await sendEmail(etablissement.directeur, admin.email, result.compteI.login, passwordValue)
         // ── 6. Réponse ─────────────────────────────────────────
         return res.status(201).json({
         message: 'Compte créé avec succès.',
@@ -180,6 +184,7 @@ const register = async (req, res) => {
         },
         });
     } catch (err) {
+        console.log(err)
         console.error('[register] erreur transaction :', err);
         return res.status(500).json({ message: 'Erreur serveur. Veuillez réessayer.' });
     }

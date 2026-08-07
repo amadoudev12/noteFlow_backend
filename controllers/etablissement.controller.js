@@ -7,10 +7,16 @@ const postEtablissement = async (req, res) => {
         return res.status(400).json({message:'fournissez les donnés'})
     }
     try {
-        const {nom, adresse, phone, email, code, statut, directeur, admin_id} = body
-        const existEtablissement = await prisma.etablissement.findUnique({
+        const { nom, adresse, phone, email, code, statut, directeur, admin_id, adminId } = body
+        const parsedAdminId = Number(admin_id ?? adminId)
+
+        if (!nom?.trim() || !adresse?.trim() || !code?.trim() || !statut?.trim() || !directeur?.trim() || Number.isNaN(parsedAdminId)) {
+            return res.status(400).json({ message: 'Champs obligatoires manquants ou administrateur invalide' })
+        }
+
+        const existEtablissement = await prisma.etablissement.findFirst({
             where : {
-                admin_id:admin_id
+                admin_id: parsedAdminId
             }
         })
         if(existEtablissement){
@@ -19,33 +25,34 @@ const postEtablissement = async (req, res) => {
                     id:existEtablissement.id
                 },
                 data : {
-                    nom:nom,
-                    adresse:adresse,
-                    phone:phone,
-                    email:email,
-                    code:code,
-                    statut:statut,
-                    directeur:directeur,
-                    admin_id:Number(admin_id)
+                    nom:nom.trim(),
+                    adresse:adresse.trim(),
+                    phone: phone || null,
+                    email: email || null,
+                    code:code.trim(),
+                    statut:statut.trim(),
+                    directeur:directeur.trim(),
+                    admin_id: parsedAdminId
                 }
             })
             return res.status(201).json({message:"etablissement modifié"})
         }
         await prisma.etablissement.create({
             data : {
-                nom:nom,
-                adresse:adresse,
-                phone:phone,
-                email:email,
-                code:code,
-                statut:statut,
-                directeur:directeur,
-                admin_id:Number(admin_id)
+                nom:nom.trim(),
+                adresse:adresse.trim(),
+                phone: phone || null,
+                email: email || null,
+                code:code.trim(),
+                statut:statut.trim(),
+                directeur:directeur.trim(),
+                admin_id: parsedAdminId
             }
         })
         return res.status(201).json({message:"etablissement crée"})
     }catch(err){
-        return res.status(500).json("erreur lors de l'enregistrement")
+        console.error('Erreur création établissement :', err)
+        return res.status(500).json({ message: 'erreur lors de l\'enregistrement', error: err.message })
     }
 }
 

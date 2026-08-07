@@ -16,7 +16,7 @@ const loginController = async (req, res) => {
                 {
                 nom:"DIALLO",
                 prenom:"EL HADJ AMADOU",
-                role:"SUPERADMIN"
+                role:"SUPER_ADMIN"
                 },
                 secret_key,
                 { expiresIn: "7d" }

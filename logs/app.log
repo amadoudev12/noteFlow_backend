@@ -13217,3 +13217,329 @@
 {"timestamp":"2026-08-07T01:01:26.064Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
 {"timestamp":"2026-08-07T01:02:40.617Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
 {"timestamp":"2026-08-07T01:02:45.919Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:11:25.791Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:13:10.996Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:13:25.678Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:14:39.049Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:15:14.152Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:26:12.296Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:26:25.209Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:26:43.418Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:26:58.473Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:09.690Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:16.360Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:18.857Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:26.282Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:29.756Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:32.194Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:33.987Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:36.323Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:37.879Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:45.013Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:47.237Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:51.866Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:27:53.324Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:28:00.790Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:29:43.869Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:29:43.900Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:32:00.761Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:32:00.766Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:32:08.758Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:32:08.762Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:33:13.756Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:33:18.529Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:33:23.427Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:37:03.169Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:37:03.192Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:37:03.239Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:37:03.255Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:37:47.838Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:37:47.847Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:38:08.309Z","level":"INFO","message":"[GET] /super-admin/directeurs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:38:08.321Z","level":"INFO","message":"[GET] /super-admin/directeurs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:38:48.734Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:38:48.741Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:38:58.269Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:38:58.276Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:39:00.044Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:39:00.054Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:39:22.302Z","level":"INFO","message":"[GET] /super-admin/logs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:39:22.311Z","level":"INFO","message":"[GET] /super-admin/logs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:39:25.956Z","level":"INFO","message":"[GET] /super-admin/parametres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:39:25.960Z","level":"INFO","message":"[GET] /super-admin/parametres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:40:12.315Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:40:12.324Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:40:17.510Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:40:19.982Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:40:19.987Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:40:19.996Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:41:47.153Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:41:47.160Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:41:47.170Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:41:47.179Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:42:00.195Z","level":"INFO","message":"[GET] /super-admin/logs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:42:00.201Z","level":"INFO","message":"[GET] /super-admin/logs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:42:02.725Z","level":"INFO","message":"[GET] /super-admin/directeurs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:42:02.735Z","level":"INFO","message":"[GET] /super-admin/directeurs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:46:59.229Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:47:03.189Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:47:18.844Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:47:35.844Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:48:09.489Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:48:13.906Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:48:18.180Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:48:24.253Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:51:07.784Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T03:56:50.902Z","level":"INFO","message":"[GET] /super-admin/directeurs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:56:50.938Z","level":"INFO","message":"[GET] /super-admin/directeurs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:56:54.283Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:56:54.753Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:56:54.779Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:56:54.796Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:56:59.859Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:56:59.875Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:00.890Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:00.910Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:05.613Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:05.620Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:08.008Z","level":"INFO","message":"[GET] /super-admin/directeurs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:08.020Z","level":"INFO","message":"[GET] /super-admin/directeurs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:10.661Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:10.666Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:18.712Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:18.751Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:24.407Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:24.417Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:32.096Z","level":"INFO","message":"[GET] /super-admin/logs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:32.101Z","level":"INFO","message":"[GET] /super-admin/logs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:34.625Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:34.631Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:36.110Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:37.553Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:38.074Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:38.082Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:38.099Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:57:38.113Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:58:43.631Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:58:43.638Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:58:43.658Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:58:43.666Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:58:47.578Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T03:58:47.586Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:01:21.587Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:01:24.834Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:08:45.768Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:11:38.830Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:11:39.064Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:11:49.845Z","level":"INFO","message":"[GET] /super-admin/directeurs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:11:49.863Z","level":"INFO","message":"[GET] /super-admin/directeurs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:11:51.997Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:11:52.008Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:12:55.137Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:12:55.179Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:12:55.224Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:12:55.253Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:13:10.170Z","level":"INFO","message":"[GET] /super-admin/logs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:13:10.176Z","level":"INFO","message":"[GET] /super-admin/logs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:13:12.089Z","level":"INFO","message":"[GET] /super-admin/parametres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:13:12.100Z","level":"INFO","message":"[GET] /super-admin/parametres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:13:44.799Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:13:44.814Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:13:44.882Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:13:44.923Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:13:47.469Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:13:51.946Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:15:30.217Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:15:30.378Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:15:30.417Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:15:30.461Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:15:32.973Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:15:32.990Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:18:02.265Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:18:02.276Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:18:25.217Z","level":"INFO","message":"[POST] /super-admin/annees/create","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:18:25.292Z","level":"INFO","message":"[SUPER_ADMIN] Création année académique","data":{"description":"Année 2026-2027 créée","user":"DIALLO"}}
+{"timestamp":"2026-08-07T04:18:25.303Z","level":"INFO","message":"[GET] /super-admin/annees","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:18:30.225Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:18:30.235Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:18:53.967Z","level":"INFO","message":"[POST] /super-admin/trimestres/create","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:18:53.993Z","level":"INFO","message":"[SUPER_ADMIN] Création trimestre","data":{"description":"Trimestre Trimestre 1 créé","user":"DIALLO"}}
+{"timestamp":"2026-08-07T04:18:54.003Z","level":"INFO","message":"[GET] /super-admin/trimestres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:19:05.199Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:19:05.218Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:19:15.169Z","level":"INFO","message":"[GET] /super-admin/logs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:19:15.181Z","level":"INFO","message":"[GET] /super-admin/logs","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:19:20.591Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:19:20.597Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:19:20.624Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:19:20.652Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:22:52.216Z","level":"INFO","message":"[GET] /super-admin/parametres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:22:52.223Z","level":"INFO","message":"[GET] /super-admin/parametres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:03.441Z","level":"INFO","message":"[PUT] /super-admin/parametres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:04.834Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:23:05.018Z","level":"INFO","message":"[PUT] /super-admin/parametres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:06.510Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:23:06.709Z","level":"INFO","message":"[PUT] /super-admin/parametres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:06.726Z","level":"INFO","message":"[PUT] /super-admin/parametres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:08.288Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:23:34.850Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:34.927Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:35.022Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:35.054Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:36.488Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:36.505Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:37.568Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:37.576Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:37.601Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:37.638Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:41.104Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:41.119Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:43.432Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:43.437Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:43.455Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:23:43.474Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:47.471Z","level":"INFO","message":"[POST] /user/login","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:47.753Z","level":"INFO","message":"Connexion réussie: lyceeclasssique@cla5255.edu","data":{}}
+{"timestamp":"2026-08-07T04:24:49.484Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.492Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.512Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.591Z","level":"INFO","message":"[GET] /admin/stat","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.617Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.627Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.633Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.642Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.655Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.705Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.760Z","level":"INFO","message":"[GET] /etablissements/moyenne-generale-evolution","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.767Z","level":"INFO","message":"[GET] /etablissements/moyenne-classes","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.772Z","level":"INFO","message":"[GET] /etablissements/moyenne-matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.784Z","level":"INFO","message":"[GET] /note/repartition-note","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.790Z","level":"INFO","message":"[GET] /admin/nombreElevesFort","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:24:49.797Z","level":"INFO","message":"[GET] /admin/nombreElevesFaible","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:25:57.129Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:25:57.140Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:25:58.808Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:25:58.817Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:00.629Z","level":"INFO","message":"[GET] /etablissements/1","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:05.635Z","level":"INFO","message":"[GET] /admin/cinq-meilleurByclasse","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:05.656Z","level":"INFO","message":"[GET] /admin/cinq-meilleurByclasse","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:07.095Z","level":"INFO","message":"[GET] /admin/mauvais-eleves-classe","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:07.114Z","level":"INFO","message":"[GET] /admin/mauvais-eleves-classe","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:08.668Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:08.683Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:10.156Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:13.126Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:13.134Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:14.895Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:26:14.904Z","level":"INFO","message":"[GET] /matieres","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:27:06.694Z","level":"INFO","message":"[POST] /matieres/add","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:27:08.974Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:27:16.429Z","level":"INFO","message":"[POST] /classe/create","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:27:18.609Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:27:18.623Z","level":"INFO","message":"[GET] /classe/etablissement/classe/","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:30:20.704Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:04.493Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:07.240Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:09.000Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:11.298Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:12.407Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:20.878Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:22.499Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:26.412Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:30.924Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:32.181Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:34.470Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:46.099Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:53.811Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:57.771Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:31:59.621Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:32:01.608Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:32:20.577Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:32:23.355Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:32:41.127Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:32:46.409Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:33:09.557Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:33:14.255Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:33:19.175Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:34:08.777Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:34:31.180Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:34:54.872Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:36:05.768Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:36:05.824Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:39:55.910Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:45:31.139Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:45:31.275Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:45:31.314Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:45:31.366Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:45:31.477Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:46:18.805Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:46:27.043Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:46:28.676Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:46:28.705Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:47:15.147Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:47:15.226Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:47:15.256Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:47:15.293Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:47:15.317Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:48:54.648Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:49:15.439Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:49:15.486Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:49:18.402Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:49:18.419Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:49:49.402Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:49:49.690Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:49:49.718Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:49:49.741Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:49:49.764Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:53:21.445Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:53:34.692Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:53:36.610Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:53:38.831Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:53:38.870Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:53:38.933Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:53:38.965Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:53:39.568Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:53:39.582Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:54:13.231Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:54:13.447Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:54:13.462Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:54:13.481Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:54:13.500Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T04:58:25.107Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T04:58:27.424Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T05:00:04.065Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:00:04.137Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:00:04.177Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:00:04.207Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:00:05.755Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:00:05.770Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:00:45.742Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:00:45.957Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:00:45.988Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:00:46.010Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:00:46.036Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:02:37.251Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T05:05:04.990Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T05:05:20.174Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:05:20.254Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:05:20.301Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:05:20.334Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:05:22.895Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:05:22.911Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:05:51.796Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:05:52.757Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:05:52.780Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:05:52.808Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:05:52.834Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:06:42.733Z","level":"INFO","message":"Serveur démarré sur le port 5000","data":{}}
+{"timestamp":"2026-08-07T05:06:54.677Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:06:54.742Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:07:46.971Z","level":"INFO","message":"[POST] /admin/register","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:07:51.253Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:07:51.282Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:07:51.363Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:07:51.414Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:07:55.812Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:07:55.822Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:07:55.853Z","level":"INFO","message":"[GET] /super-admin/statistiques","data":{"ip":"::1"}}
+{"timestamp":"2026-08-07T05:07:55.891Z","level":"INFO","message":"[GET] /super-admin/etablissements","data":{"ip":"::1"}}

@@ -64,6 +64,13 @@ app.use('/bulletin', require('./routes/bulletin.route'))
 app.use('/affectation', require("./routes/affectation.route"))
 app.use('/matieres', require('./routes/matieres.route'))
 app.use('/absences',require('./routes/absence.routes'))
+app.use('/super-admin/etablissements', require('./routes/superAdmin/etablissement.routes'))
+app.use('/super-admin/directeurs', require('./routes/superAdmin/directeur.routes'))
+app.use('/super-admin/annees', require('./routes/superAdmin/anneeAcademique.routes'))
+app.use('/super-admin/trimestres', require('./routes/superAdmin/trimestre.routes'))
+app.use('/super-admin/statistiques', require('./routes/superAdmin/statistique.routes'))
+app.use('/super-admin/logs', require('./routes/superAdmin/log.routes'))
+app.use('/super-admin/parametres', require('./routes/superAdmin/parametre.routes'))
 // Middleware d'erreur - doit être en dernier
 app.use(errorHandler)
 

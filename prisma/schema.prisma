@@ -11,6 +11,13 @@ enum Role {
   ELEVE
 }
 
+enum TypeEtablissement {
+  PUBLIC
+  PRIVE
+  PROFESSIONNEL
+  UNIVERSITE
+}
+
 enum SEXE {
   M
   F
@@ -242,6 +249,9 @@ model Etablissement {
   code    String
   statut  String
   directeur String
+  typeEtablissement TypeEtablissement @default(PUBLIC)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   admin_id Int @unique
   classe Classe[] 
   Administrateur  Administrateur @relation(fields: [admin_id], references: [id])
