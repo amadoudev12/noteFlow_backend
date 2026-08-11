@@ -2,12 +2,15 @@ const { prisma } = require("../lib/prisma")
 const logger = require("../lib/logger")
 const { generateFicheNote } = require("../utils/generate")
 const { getNotesClasseByMatiere } = require("../utils/util")
+const { getSchoolContext, getActiveSchoolYear, getActiveTerm } = require('../utils/schoolContext')
 
 
 const postNote = async (req, res) => {
     const { config, notes } = req.body
 
     try {
+        const context = await getSchoolContext(req)
+        if (context.user.role !== 'ENSEIGNANT') return res.status(403).json({ message: 'Accès réservé aux enseignants' })
         if (!config || !notes || !Array.isArray(notes)) {
             return res.status(400).json({
                 message: 'Configuration et notes requises'
@@ -15,20 +18,20 @@ const postNote = async (req, res) => {
         }
 
         // Récupérer les données nécessaires
-        const trimestre = await prisma.trimestre.findFirst({ where: { actif: true } })
+        const annee = await getActiveSchoolYear(context.etablissementId)
+        const trimestre = annee && await getActiveTerm(context.etablissementId, annee.id)
         if (!trimestre) {
             return res.status(400).json({ message: 'Aucun trimestre actif' })
         }
 
         const matiere = await prisma.matiere.findFirst({
-            where: { nom: config.matiere },
+            where: { nom: config.matiere, etablissement_id: context.etablissementId },
             select: { id: true }
         })
         if (!matiere) {
             return res.status(404).json({ message: 'Matière non trouvée' })
         }
 
-        const annee = await prisma.anneeAcademique.findFirst({ where: { actif: true } })
         if (!annee) {
             return res.status(400).json({ message: 'Aucune année académique active' })
         }
@@ -60,6 +63,8 @@ const postNote = async (req, res) => {
                 if (!inscription) {
                     throw new Error(`Inscription non trouvée pour ${note.matricule}`)
                 }
+                const affectation = await tx.affectation.findFirst({ where: { classeId: inscription.id_classe, matiereId: matiere.id, compteInstitutionnelId: context.id, anneeAcademiqueId: annee.id } })
+                if (!affectation) throw new Error('Vous n’êtes pas affecté à cette classe et cette matière')
 
                 notesToCreate.push({
                     id_trimestre: trimestre.id_trimestre,

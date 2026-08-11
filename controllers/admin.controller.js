@@ -34,7 +34,7 @@ const register = async (req, res) => {
 
     const signaturePath = req.file ? req.file.filename : null;
 
-    const passwordValue = (admin.mot_passe || '').trim() || `${(admin.email || '').split('@')[0] || 'admin'}@2026`;
+    const passwordValue =  admin.email
 
     // ── 1. Validation ──────────────────────────────────────────
     const missingAdmin = ['prenom', 'nom', 'email'].filter(
@@ -161,7 +161,7 @@ const register = async (req, res) => {
         process.env.SECRET_KEY,
         { expiresIn: '7d' }
         );
-        await sendEmail(etablissement.directeur, admin.email, result.compteI.login, passwordValue)
+        await sendEmail(etablissement.directeur, admin.email, result.compteI.login, passwordValue, "ADMIN")
         // ── 6. Réponse ─────────────────────────────────────────
         return res.status(201).json({
         message: 'Compte créé avec succès.',

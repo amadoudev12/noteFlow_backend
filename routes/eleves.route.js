@@ -9,7 +9,7 @@ route.get('/rang',VerifyToken,EleveRang)
 route.get('/certificat',VerifyToken,createCertificat)
 route.post('/import', VerifyToken, upload.single('file'), createEleveController)
 route.post('/bulletin',getBulletin)
-route.post('/absence',absenceController)
+route.post('/absence',VerifyToken,absenceController)
 route.get('/note-matiere/:id',moyennesController)
 route.get('/:id',getEleveController)
 

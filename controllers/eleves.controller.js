@@ -6,6 +6,7 @@ const xlsx = require('xlsx')
 const supabase = require('../lib/supabaseClient')
 const sendEmail = require('../services/sendEmail')
 const generateCertificat = require('../utils/generateCertificat')
+const { createAbsence } = require('./absence.controller')
 
 const createEleveController = async (req, res) => {
     const {classe} = req.body;
@@ -97,7 +98,7 @@ const createEleveController = async (req, res) => {
                         }
                     }
                 })
-                await sendEmail(eleve.nom, eleve.email, compte.login, compte.login)
+                await sendEmail(eleve.nom, eleve.email, compte.login, compte.login, "ELEVE")
             }
         }
         return res.status(201).json({
@@ -244,7 +245,7 @@ const getBulletin = async (req, res) => {
         res.status(500).json({ message: "Erreur récupération bulletin" })
     }
 }
-const absenceController = async (req, res) => {
+const absenceControllerLegacy = async (req, res) => {
     const body = req.body
     const {config, absences}  = body
     if(!body){
@@ -270,6 +271,25 @@ const absenceController = async (req, res) => {
         console.log(err)
         return res.status(500).json({message:'erreur au niveau de la bd'})
     }
+}
+
+const absenceController = async (req, res) => {
+    const { config = {}, absences } = req.body || {}
+    if (!Array.isArray(absences)) {
+        return res.status(400).json({ message: 'Fournissez les absences' })
+    }
+
+    req.body = {
+        affectationId: config.affectationId,
+        date: config.date,
+        eleves: absences.map((absence) => ({
+            matricule: absence.matricule,
+            statut: absence.statut || 'ABSENT',
+            nombreHeures: absence.nombreHeures ?? absence.nombre,
+            justifie: (absence.justifie ?? absence.justifiee ?? 'non').toLowerCase(),
+        })),
+    }
+    return createAbsence(req, res)
 }
 
 const createCertificat = async (req, res)=>{

@@ -5,10 +5,10 @@ const { createNoteValidation, getNotesValidation } = require('../middleware/vali
 
 const route = express.Router()
 
-route.post('/create-note', createNoteValidation, postNote)
-route.post('/liste-note', getNotesValidation, getAllNotesByClasseByMatier)
+route.post('/create-note', verifyToken, createNoteValidation, postNote)
+route.post('/liste-note', verifyToken, getNotesValidation, getAllNotesByClasseByMatier)
 route.get('/repartition-note', verifyToken, noteRepartition)
-route.post('/eleves/notes', getNotesValidation, getAllNotesByMatiere)
-route.get('/getNote/:id', getNotesByElveId)
+route.post('/eleves/notes', verifyToken, getNotesValidation, getAllNotesByMatiere)
+route.get('/getNote/:id', verifyToken, getNotesByElveId)
 
 module.exports = route

@@ -1,4 +1,4 @@
-const { createAbsence, getAbsencesByClasse, getMesAbsences } = require('../controllers/absence.controller');
+const { createAbsence, getAbsencesByClasse, getMesAbsences, getBilanAbsence } = require('../controllers/absence.controller');
 const verifyToken = require('../middleware/verifyToken')
 const route=require("express").Router();
 
@@ -12,6 +12,12 @@ route.get(
     '/classe/:classeId',
     verifyToken,
     getAbsencesByClasse
+)
+
+route.get(
+    '/eleve/:matricule/bilan',
+    verifyToken,
+    getBilanAbsence
 )
 
 route.get(

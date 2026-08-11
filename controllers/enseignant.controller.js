@@ -110,7 +110,7 @@ const createEnseignantController = async (req, res) => {
                         }
                 }
             })
-            await sendEmail(enseignant.nom, enseignant.email, compteI.login, compteI.login)
+            await sendEmail(enseignant.nom, enseignant.email, compteI.login, compteI.login, "ENSEIGNANT")
         }
 
         return res.status(201).json({

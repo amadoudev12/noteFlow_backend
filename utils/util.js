@@ -546,7 +546,7 @@ const getBulletinInformation = async (matricule)=>{
                 etablissement,
                 enseignants,
                 rangMatiere: [],
-                signature:signature.url
+                // signature:signature.url
             }
         }
         return{

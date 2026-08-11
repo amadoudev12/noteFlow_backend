@@ -1,4 +1,5 @@
 const { prisma } = require("../lib/prisma");
+const { getSchoolContext, getActiveSchoolYear } = require('../utils/schoolContext');
 
 
 // Ajouter une affectation
@@ -10,10 +11,10 @@ const ajouterAffectation = async (req, res) => {
     });
   }
 
-  const idEtablissement = req.user?.profil?.etablissement?.id;
+  let idEtablissement;
 
   try {
-    console.log(req.body)
+    idEtablissement = (await getSchoolContext(req)).etablissementId;
     const {
         id_classe,
         id_matiere,
@@ -39,9 +40,7 @@ const ajouterAffectation = async (req, res) => {
       });
     }
     // 2. Récupération de l'année académique active
-    const annee = await prisma.anneeAcademique.findFirst({
-      where: { actif: true },
-    });
+    const annee = await getActiveSchoolYear(idEtablissement);
 
     if (!annee) {
         return res.status(400).json({
@@ -254,18 +253,15 @@ const affectationEtablissement = async(req,res)=>{
             message:"Accès refusé"
         });
     }
-    const idEtablissement =
-        req.user.profil.etablissement.id;
     try{
+        const idEtablissement = (await getSchoolContext(req)).etablissementId;
         const affectations =
         await prisma.affectation.findMany({
             where:{
                 classe : {
                     idEtablissement:idEtablissement
                 },
-                anneeAcademique:{
-                    actif:true
-                }
+                anneeAcademique:{ actif:true, etablissementId:idEtablissement }
             },
             include:{
                 classe:true,
@@ -296,15 +292,14 @@ const affectationEtablissement = async(req,res)=>{
 // Récupérer les classes d'un enseignant
 
 const getClassesEnseignant = async(req,res)=>{
-    const compteId = req.user.user.id;
     try{
+        const context = await getSchoolContext(req);
+        const compteId = context.id;
         const affectations =
         await prisma.affectation.findMany({
             where:{
                 compteInstitutionnelId:compteId,
-                anneeAcademique:{
-                    actif:true
-                }
+                anneeAcademique:{ actif:true, etablissementId:context.etablissementId }
             },
             select:{
                 classe:true,

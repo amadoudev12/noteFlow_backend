@@ -118,6 +118,7 @@ const modificationController = async (req, res) => {
     console.log("salut")
     const { login, password } = req.body
     const profileSelect = { matricule: true, nom: true, prenom: true }
+    const profileSelectAdmin = { id: true, nom: true, prenom: true }
     try {
         // console.log(req.user)
         if (!req.user) {
@@ -125,64 +126,68 @@ const modificationController = async (req, res) => {
                 message: "Authentification requise"
             })
         }
-
+        
         const userId = req.user.user.id
         if (!userId) {
             return res.status(403).json({
                 message: "Utilisateur invalide"
             })
         }
-
+        const role = req.user.user.user.role
         // Vérifier que la signature est fournie si l'utilisateur est enseignant
-        if (req.user.user.user.role === "ENSEIGNANT" && !req.file) {
+        if (["ENSEIGNANT", "ADMIN"].includes(role) && !req.file) {
             return res.status(400).json({
-                message: "Signature requise pour les enseignants"
+                message: "Signature requise pour les administrateurs et les enseignants"
             })
         }
 
-        // Hasher le mot de passe
+        // Hash the password before the atomic account-completion transaction.
         const hashPass = await bcrypt.hash(password, level_hash)
 
         // Mettre à jour l'utilisateur dans une transaction
-        const updatedUser = await prisma.compteInstitutionnel.update({
-            where: { id: userId },
-            data: {
-                mot_passe: hashPass,
-                firstLogin: false,
-                signatureComplete: req.file ? true : false
-            },
-            select: {
-                id: true,
-                login: true,
-                user:true
+        const signatureRequise = ["ENSEIGNANT", "ADMIN"].includes(role)
+        const updatedUser = await prisma.$transaction(async (tx) => {
+            if (signatureRequise) {
+                const filePath = `/uploads/signatures/${req.file.filename}`
+                await tx.signature.upsert({
+                    where: { compteInstitutionnelId: userId },
+                    update: { url: filePath },
+                    create: { url: filePath, compteInstitutionnelId: userId }
+                })
             }
-        })
-        console.log(req.file)
-        // Sauvegarder la signature pour les enseignants
-        if (req.user.user.user.role === "ENSEIGNANT" && req.file) {
-            const filePath = `/uploads/signatures/${req.file.filename}`
-            await prisma.signature.upsert({
-                where: { compteInstitutionnelId: userId },
-                update: { url: filePath },
-                create: { url: filePath, compteInstitutionnelId: userId }
+            return tx.compteInstitutionnel.update({
+                where: { id: userId },
+                data: { mot_passe: hashPass, firstLogin: false, signatureComplete: signatureRequise },
+                select: { id: true, login: true, firstLogin: true, signatureComplete: true, user: true }
             })
-        }
+        })
+        
         let profil = null
         if (req.user.user.user.role  === "ELEVE") {
             profil = await prisma.eleve.findUnique({
                 where: { userId: updatedUser.user.id },
                 select: profileSelect
             })
-        } else{
+        } else if (role === "ENSEIGNANT"){
             profil = await prisma.enseignant.findUnique({
                 where: { userId: updatedUser.user.id },
                 select: profileSelect
             })
-        } 
+        } else if (role === "ADMIN"){
+            profil = await prisma.administrateur.findUnique({
+                where: { userId: updatedUser.user.id },
+                select: {
+                    ...profileSelectAdmin,
+                    etablissement: {
+                        select: { id: true, nom: true }
+                    }
+                }
+            })
+        }
         // Créer le nouveau token
         const token = jwt.sign(
             {
-                updatedUser, profil
+                user: updatedUser, profil
             },
             secret_key,
             { expiresIn: "7d" }
@@ -191,7 +196,11 @@ const modificationController = async (req, res) => {
         logger.info(`Première connexion complétée: ${login}`)
         return res.status(200).json({
             message: "Première connexion effectuée avec succès",
-            token
+            token,
+            configurationComplete: updatedUser.firstLogin === false && (!signatureRequise || updatedUser.signatureComplete === true),
+            firstLogin: updatedUser.firstLogin,
+            signatureComplete: updatedUser.signatureComplete,
+            role
         })
 
     } catch (err) {

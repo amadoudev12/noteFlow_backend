@@ -1,4 +1,5 @@
 const {prisma} = require("../lib/prisma");
+const { getSchoolContext, getActiveSchoolYear, getActiveTerm } = require('../utils/schoolContext');
 
 exports.createAbsence = async (req, res) => {
   try {
@@ -9,7 +10,19 @@ exports.createAbsence = async (req, res) => {
     }
 
     const { affectationId, date, eleves } = req.body;
-    const userId = req.user.user.id;
+    const context = await getSchoolContext(req);
+    const userId = context.userId;
+
+    const affectationIdNormalise = Number(affectationId);
+    const dateAbsence = new Date(date);
+
+    if (!Number.isInteger(affectationIdNormalise) || affectationIdNormalise <= 0) {
+      return res.status(400).json({ message: "Affectation invalide" });
+    }
+
+    if (Number.isNaN(dateAbsence.getTime())) {
+      return res.status(400).json({ message: "Date d'absence invalide" });
+    }
 
     if (!Array.isArray(eleves) || eleves.length === 0) {
       return res.status(400).json({
@@ -18,8 +31,16 @@ exports.createAbsence = async (req, res) => {
     }
 
     const STATUTS_VALIDES = ["ABSENT", "RETARD"];
-    const statutInvalide = eleves.find(
-      (e) => !STATUTS_VALIDES.includes(e.statut)
+    const JUSTIFICATIONS_VALIDES = ["oui", "non"];
+    const elevesNormalises = eleves.map((eleve) => ({
+      ...eleve,
+      // La durée appartient obligatoirement à l'élève concerné : il n'existe
+      // volontairement aucun repli vers une durée envoyée pour tout l'appel.
+      nombreHeures: eleve.nombreHeures,
+      justifie: eleve.justifie ?? "non",
+    }));
+    const statutInvalide = elevesNormalises.find(
+      (e) => !e.matricule || !STATUTS_VALIDES.includes(e.statut)
     );
     if (statutInvalide) {
       return res.status(400).json({
@@ -27,13 +48,34 @@ exports.createAbsence = async (req, res) => {
       });
     }
 
+    const justificationInvalide = elevesNormalises.find(
+      (eleve) => !JUSTIFICATIONS_VALIDES.includes(eleve.justifie)
+    );
+    if (justificationInvalide) {
+      return res.status(400).json({ message: "Statut de justification invalide" });
+    }
+
+    const heuresInvalides = elevesNormalises.find((eleve) => {
+      const heures = Number(eleve.nombreHeures);
+      return !Number.isInteger(heures) || heures <= 0;
+    });
+    if (heuresInvalides) {
+      return res.status(400).json({
+        message: "Le nombre d'heures doit être un entier strictement positif",
+      });
+    }
+
+    const matricules = elevesNormalises.map((e) => e.matricule);
+    if (new Set(matricules).size !== matricules.length) {
+      return res.status(400).json({ message: "Un élève ne peut être saisi qu'une fois" });
+    }
+
     // Vérifier que l'utilisateur possède cette affectation
     const affectation = await prisma.affectation.findFirst({
       where: {
-        id: affectationId,
-        compteInstitutionnel: {
-          id: userId,
-        },
+        id: affectationIdNormalise,
+        compteInstitutionnelId: context.id,
+        classe: { idEtablissement: context.etablissementId },
       },
     });
 
@@ -44,9 +86,7 @@ exports.createAbsence = async (req, res) => {
     }
 
     // Récupérer l'année active
-    const annee = await prisma.anneeAcademique.findFirst({
-      where: { actif: true },
-    });
+    const annee = await getActiveSchoolYear(context.etablissementId);
 
     if (!annee) {
       return res.status(400).json({
@@ -55,9 +95,7 @@ exports.createAbsence = async (req, res) => {
     }
 
     // Récupérer le trimestre actif
-    const trimestre = await prisma.trimestre.findFirst({
-      where: { actif: true },
-    });
+    const trimestre = await getActiveTerm(context.etablissementId, annee.id);
 
     if (!trimestre) {
       return res.status(400).json({
@@ -65,14 +103,13 @@ exports.createAbsence = async (req, res) => {
       });
     }
 
-    const matricules = eleves.map((e) => e.matricule);
-
     // Vérifier que les élèves appartiennent bien à la classe
     const inscriptions = await prisma.inscription.findMany({
       where: {
         id_classe: affectation.classeId,
         matricule_eleve: { in: matricules },
         id_annee_academique: annee.id,
+        id_etablissement: context.etablissementId,
       },
     });
 
@@ -84,15 +121,17 @@ exports.createAbsence = async (req, res) => {
 
     // Création via une transaction
     const absences = await prisma.$transaction(
-      eleves.map(({ matricule, statut }) =>
+      elevesNormalises.map(({ matricule, statut, nombreHeures, justifie }) =>
         prisma.absence.create({
           data: {
             eleveId: matricule,
-            affectationId,
+            affectationId: affectationIdNormalise,
             anneeAcademiqueId: annee.id,
             trimestreId: trimestre.id_trimestre,
-            date: new Date(date),
+            date: dateAbsence,
+            nombreHeures: Number(nombreHeures),
             statut,
+            justifie,
             createdBy: userId,
           },
         })
@@ -210,22 +249,29 @@ exports.getAbsencesByEleve = async (req, res) => {
 exports.getBilanAbsence = async (req, res) => {
   try {
     const { matricule } = req.params;
+    const { trimestreId, anneeAcademiqueId } = req.query;
 
     const absences = await prisma.absence.findMany({
       where: {
         eleveId: matricule,
+        ...(trimestreId && { trimestreId: Number(trimestreId) }),
+        ...(anneeAcademiqueId && { anneeAcademiqueId: Number(anneeAcademiqueId) }),
       },
     });
 
-    const total = absences.length;
-    const justifiees = absences.filter((a) => a.justifie === "oui").length;
+    const totalHeures = absences.reduce((total, absence) => total + (absence.nombreHeures ?? 1), 0);
+    const heuresJustifiees = absences
+      .filter((absence) => absence.justifie === "oui")
+      .reduce((total, absence) => total + (absence.nombreHeures ?? 1), 0);
     const retards = absences.filter((a) => a.statut === "RETARD").length;
+    const absencesCount = absences.filter((a) => a.statut === "ABSENT").length;
 
     return res.json({
-      totalAbsences: total,
-      absencesJustifiees: justifiees,
-      absencesNonJustifiees: total - justifiees,
+      totalAbsences: absencesCount,
       retards,
+      totalHeures,
+      heuresJustifiees,
+      heuresNonJustifiees: totalHeures - heuresJustifiees,
     });
   } catch (error) {
     console.error(error);

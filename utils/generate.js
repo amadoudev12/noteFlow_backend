@@ -327,29 +327,19 @@ const generate = async (matricule) => {
         });
 
 
+        const totalHeures = absences.reduce(
+            (total, absence) => total + (absence.nombreHeures ?? 1),
+            0
+        )
+        const heuresJustifiees = absences
+            .filter((absence) => absence.justifie === "oui")
+            .reduce((total, absence) => total + (absence.nombreHeures ?? 1), 0)
         const bilanAbsence = {
-
-            total: absences.length,
-
-            absents: absences.filter(
-                a=>a.statut==="ABSENT"
-            ).length,
-
-
-            retards: absences.filter(
-                a=>a.statut==="RETARD"
-            ).length,
-
-
-            justifiees: absences.filter(
-                a=>a.justification === true
-            ).length,
-
-
-            nonJustifiees: absences.filter(
-                a=>a.justification === false
-            ).length
-
+            absents: absences.filter((absence) => absence.statut === "ABSENT").length,
+            retards: absences.filter((absence) => absence.statut === "RETARD").length,
+            totalHeures,
+            heuresJustifiees,
+            heuresNonJustifiees: totalHeures - heuresJustifiees,
         };
         const { eleveInfo, matiere, moyenneGenerale, rang, enseignants, etablissement, rangMatiere, signature } = await getBulletinInformation(matricule)
         const enseignantWithSignatures = await Promise.all(

@@ -425,12 +425,6 @@
     </div>
       <table class="absence-t">
       <tr>
-      <td>Total absences</td>
-      <td class="val">
-      <%= bilanAbsence.total %>
-      </td>
-      </tr>
-      <tr>
       <td>Absences</td>
       <td class="val">
       <%= bilanAbsence.absents %>
@@ -443,15 +437,21 @@
       </td>
       </tr>
       <tr>
-      <td>Justifiées</td>
+      <td>Total des heures</td>
       <td class="val">
-      <%= bilanAbsence.justifiees %>
+      <%= bilanAbsence.totalHeures %> h
       </td>
       </tr>
       <tr>
-      <td>Non justifiées</td>
+      <td>Heures justifiées</td>
       <td class="val">
-      <%= bilanAbsence.nonJustifiees %>
+      <%= bilanAbsence.heuresJustifiees %> h
+      </td>
+      </tr>
+      <tr>
+      <td>Heures non justifiées</td>
+      <td class="val">
+      <%= bilanAbsence.heuresNonJustifiees %> h
       </td>
       </tr>
       </table>
@@ -473,22 +473,7 @@
       <div style="font-size:8pt; display: flex; align-items: center; justify-content: center; ">
         Fait à <%= etablissement.adresse.split(',')[0] %>, le <%= dateDay %>
       </div>
-  <!-- DÉCISION DU CONSEIL -->
-  <!-- <div class="decision-bloc">
-    <div class="dec-left">
-      <div class="dec-title">Décision du conseil de classe</div>
-      <div class="dec-val"><%= decision %></div>
-    </div>
-    <div class="dec-right">
-      <div class="sig-title">Nom / Signature du Professeur principal</div>
-      <div style="min-height:40px;display: flex; align-items: center; justify-content: center;">
-        <img  src="<%= baseurl + signatureDirecteur %>" width="100">
-      </div>
-      <div style="font-size:8pt; display: flex; align-items: center; justify-content: center; ">
-        Fait à <%= etablissement.adresse.split(',')[0] %>, le <%= dateDay %>
-      </div>
-    </div>
-  </div> -->
+  
 
   <!-- PIED DE PAGE -->
   <div class="footer">
