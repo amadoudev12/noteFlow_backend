@@ -89,7 +89,7 @@ model Eleve {
   userId      Int      @unique
   user        User     @relation(fields: [userId], references: [id])
 
-  inscriptions Inscription[]   // ajout
+  inscriptions Inscription[]   
   historique  Bulletin[]
   absences Absence[]
   certificatFrequentation CertificatFrequentation[]
@@ -136,7 +136,7 @@ model Classe {
   libelle      String
   idEtablissement Int 
   etablissement    Etablissement? @relation(fields: [idEtablissement], references: [id])
-  inscriptions Inscription[] // IMPORTANT
+  inscriptions Inscription[]
   affectations Affectation[]
 }
 
@@ -147,7 +147,7 @@ model Matiere {
   etablissement     Etablissement @relation(fields: [etablissement_id], references: [id])
   notes             Note[]
   affectations       Affectation[]
-  @@unique([nom, etablissement_id]) //clé unique par établissement
+  @@unique([nom, etablissement_id])
 }
 
 model Trimestre {
@@ -170,7 +170,7 @@ model Trimestre {
 model Note {
   id               Int      @id @default(autoincrement())
   valeur           Float
-  typeEvaluation   String   // Interro, Devoir, Examen
+  typeEvaluation   String   
   coefficient      Int      @default(1)
   id_inscription   Int
   id_matiere       Int
@@ -206,42 +206,22 @@ model Affectation {
 
 model Absence {
   id                  Int      @id @default(autoincrement())
-
-  // Élève concerné
   eleveId             String
   eleve               Eleve    @relation(fields: [eleveId], references: [matricule], onDelete: Cascade)
-
-  // Matière / classe concernée
   affectationId       Int
   affectation         Affectation @relation(fields: [affectationId], references: [id], onDelete: Cascade)
-
-  // Année académique
   anneeAcademiqueId   Int
   anneeAcademique     AnneeAcademique @relation(fields: [anneeAcademiqueId], references: [id])
-
-  // Trimestre
   trimestreId         Int
   trimestre            Trimestre @relation(fields: [trimestreId], references: [id_trimestre])
-
-  // Date de l'absence
   date                DateTime
-
-  // Nombre d'heures concernées
   nombreHeures        Int      @default(1)
-
-  // Statut
   statut              StatutAbsence @default(ABSENT)
-
-  // Justification
   justifie            Justifie @default(non)
-
   motif               String?
   commentaire         String?
-
-  // Enseignant ayant enregistré l'absence
   createdBy            Int
   enseignant           User @relation("AbsenceEnregistree", fields: [createdBy], references: [id])
-
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
 
@@ -287,7 +267,7 @@ model Bulletin {
   decision         String
   rang             Int
   mention          String?
-  fichier_url      String?   //AJOUT IMPORTANT
+  fichier_url      String?   
   eleve       Eleve @relation(fields: [eleveId], references: [matricule])
   trimestre   Trimestre @relation(fields: [idtrimestre], references: [id_trimestre])
   annee       AnneeAcademique @relation(fields: [id_annee], references: [id])
@@ -297,7 +277,7 @@ model Bulletin {
 
 model AnneeAcademique {
   id            Int      @id @default(autoincrement())
-  libelle       String   // ex: 2025-2026
+  libelle       String 
   date_debut    DateTime
   date_fin      DateTime
   actif         Boolean  @default(false)
