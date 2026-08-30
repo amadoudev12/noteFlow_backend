@@ -372,6 +372,82 @@ const createCertificat = async (req, res)=>{
     }
 }
 
+
+const periodeActive = async (req, res) => {
+  try {
+    const matricule = req.params.id;
+
+    if (!matricule) {
+      return res.status(400).json({
+        message: "Matricule de l'élève requis"
+      });
+    }
+
+    // 1. Vérifier que l'élève existe
+    const eleve = await prisma.eleve.findUnique({
+      where: {
+        matricule
+      },
+      include: {
+        inscriptions: {
+          include: {
+            annee: true,
+            etablissement: true
+          }
+        }
+      }
+    });
+
+    if (!eleve) {
+      return res.status(404).json({
+        message: "Élève non trouvé"
+      });
+    }
+
+    // 2. Trouver l'inscription correspondant à l'année active
+    //    de l'établissement de l'élève
+    const inscription = eleve.inscriptions.find(
+      (inscription) => inscription.annee.actif === true
+    );
+
+    if (!inscription) {
+      return res.status(404).json({
+        message: "Aucune inscription pour l'année académique active"
+      });
+    }
+
+    // 3. Récupérer l'année académique active
+    const annee = inscription.annee;
+
+    // 4. Récupérer le trimestre actif de cette année
+    const trimestre = await prisma.trimestre.findFirst({
+      where: {
+        anneeAcademiqueId: annee.id,
+        actif: true
+      },
+      orderBy: {
+        ordre: "asc"
+      }
+    });
+
+    if (!trimestre) {
+      return res.status(404).json({
+        message: "Aucun trimestre actif trouvé pour l'année académique active"
+      });
+    }
+    console.log(annee)
+    // 5. Retourner l'année et le trimestre
+    return res.status(200).json({
+      anneeAcademique: annee,
+      trimestreActive: trimestre
+    });
+
+  } catch (e) {
+    fail(res, e);
+  }
+}
+
+
 module.exports = {
     getAllElevesController,
     createEleveController,
@@ -381,5 +457,11 @@ module.exports = {
     EleveRang,
     getBulletin,
     absenceController,
-    createCertificat
+    createCertificat,
+    periodeActive
 }
+
+
+
+
+

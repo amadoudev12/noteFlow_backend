@@ -1,20 +1,229 @@
 const { prisma } = require('../lib/prisma');
 const { getSchoolContext, getActiveSchoolYear } = require('../utils/schoolContext');
-const isAdmin = req => req.user?.user?.user?.role === 'ADMIN';
-const fail = (res, error) => res.status(error.status || (error.code === 'P2002' ? 409 : 500)).json({ message: error.message || 'Erreur serveur' });
 
-async function ownedYear(ctx, id) { return prisma.anneeAcademique.findFirst({ where: { id: Number(id), etablissementId: ctx.etablissementId } }); }
-function dates(body) { return { start: new Date(body.debut ?? body.date_debut), end: new Date(body.fin ?? body.date_fin) }; }
-async function validateTerm(tx, annee, start, end, ordre, excludeId) {
-  if (Number.isNaN(+start) || Number.isNaN(+end) || start >= end) throw Object.assign(new Error('La période du trimestre est invalide'), { status: 400 });
-  if (start < annee.date_debut || end > annee.date_fin) throw Object.assign(new Error('Le trimestre doit être inclus dans son année académique'), { status: 400 });
-  const overlap = await tx.trimestre.findFirst({ where: { anneeAcademiqueId: annee.id, ...(excludeId && { id_trimestre: { not: excludeId } }), date_debut: { lte: end }, date_fin: { gte: start } } });
-  if (overlap) throw Object.assign(new Error(`Chevauchement avec ${overlap.libelle}`), { status: 409 });
-  if (!Number.isInteger(Number(ordre)) || Number(ordre) <= 0) throw Object.assign(new Error('Ordre de trimestre invalide'), { status: 400 });
+const isAdmin = (req) => req.user?.user?.user?.role === 'ADMIN';
+
+const fail = (res, error) =>
+  res
+    .status(error.status || (error.code === 'P2002' ? 409 : 500))
+    .json({ message: error.message || 'Erreur serveur' });
+
+async function ownedYear(ctx, id) {
+  return prisma.anneeAcademique.findFirst({
+    where: { id: Number(id), etablissementId: ctx.etablissementId },
+  });
 }
-exports.getTrimestres = async (req, res) => { try { const ctx = await getSchoolContext(req); const anneeId = req.query.anneeAcademiqueId; const where = { anneeAcademique: { etablissementId: ctx.etablissementId }, ...(anneeId && { anneeAcademiqueId: Number(anneeId) }) }; res.json(await prisma.trimestre.findMany({ where, include: { anneeAcademique: { select: { id: true, libelle: true } } }, orderBy: { ordre: 'asc' } })); } catch (e) { fail(res, e); } };
-exports.postTrimestreController = async (req, res) => { try { if (!isAdmin(req)) return res.status(403).json({ message: 'Accès réservé à l’administrateur' }); const ctx = await getSchoolContext(req); const annee = await ownedYear(ctx, req.body.anneeAcademiqueId); if (!annee) return res.status(404).json({ message: 'Année académique introuvable' }); const { start, end } = dates(req.body); const ordre = Number(req.body.ordre); await validateTerm(prisma, annee, start, end, ordre); const trimestre = await prisma.trimestre.create({ data: { libelle: (req.body.nom ?? req.body.libelle).trim(), date_debut: start, date_fin: end, ordre, actif: false, anneeAcademiqueId: annee.id } }); res.status(201).json(trimestre); } catch (e) { fail(res, e); } };
-exports.updateTrimestre = async (req, res) => { try { if (!isAdmin(req)) return res.status(403).json({ message: 'Accès réservé à l’administrateur' }); const ctx = await getSchoolContext(req); const id = Number(req.params.id); const current = await prisma.trimestre.findFirst({ where: { id_trimestre: id, anneeAcademique: { etablissementId: ctx.etablissementId } }, include: { anneeAcademique: true } }); if (!current) return res.status(404).json({ message: 'Trimestre introuvable' }); const { start, end } = dates({ debut: req.body.debut ?? current.date_debut, fin: req.body.fin ?? current.date_fin }); const ordre = Number(req.body.ordre ?? current.ordre); await validateTerm(prisma, current.anneeAcademique, start, end, ordre, id); res.json(await prisma.trimestre.update({ where: { id_trimestre: id }, data: { libelle: req.body.nom?.trim() ?? req.body.libelle?.trim() ?? current.libelle, date_debut: start, date_fin: end, ordre } })); } catch (e) { fail(res, e); } };
-exports.deleteTrimestre = async (req, res) => { try { if (!isAdmin(req)) return res.status(403).json({ message: 'Accès réservé à l’administrateur' }); const ctx = await getSchoolContext(req); const result = await prisma.trimestre.deleteMany({ where: { id_trimestre: Number(req.params.id), anneeAcademique: { etablissementId: ctx.etablissementId } } }); if (!result.count) return res.status(404).json({ message: 'Trimestre introuvable' }); res.json({ message: 'Trimestre supprimé avec succès' }); } catch (e) { fail(res, e); } };
-exports.actifTrimestreController = async (req, res) => { try { if (!isAdmin(req)) return res.status(403).json({ message: 'Accès réservé à l’administrateur' }); const ctx = await getSchoolContext(req); const term = await prisma.trimestre.findFirst({ where: { id_trimestre: Number(req.params.id), anneeAcademique: { etablissementId: ctx.etablissementId } } }); if (!term) return res.status(404).json({ message: 'Trimestre introuvable' }); const trimestre = await prisma.$transaction(async tx => { await tx.trimestre.updateMany({ where: { anneeAcademiqueId: term.anneeAcademiqueId }, data: { actif: false } }); return tx.trimestre.update({ where: { id_trimestre: term.id_trimestre }, data: { actif: true } }); }); res.json({ message: 'Trimestre activé avec succès', trimestre }); } catch (e) { fail(res, e); } };
-exports.getTrimestreActive = async (req, res) => { try { const ctx = await getSchoolContext(req); const annee = req.query.anneeAcademiqueId ? await ownedYear(ctx, req.query.anneeAcademiqueId) : await getActiveSchoolYear(ctx.etablissementId); if (!annee) return res.json({ trimestreActive: null }); const trimestre = await prisma.trimestre.findFirst({ where: { anneeAcademiqueId: annee.id, actif: true }, orderBy: { ordre: 'asc' } }); res.json({ trimestreActive: trimestre, anneeAcademique: annee }); } catch (e) { fail(res, e); } };
+
+function dates(body) {
+  return {
+    start: new Date(body.debut ?? body.date_debut),
+    end: new Date(body.fin ?? body.date_fin),
+  };
+}
+
+async function validateTerm(tx, annee, start, end, ordre, excludeId) {
+  if (Number.isNaN(+start) || Number.isNaN(+end) || start >= end) {
+    throw Object.assign(new Error('La période du trimestre est invalide'), { status: 400 });
+  }
+
+  if (start < annee.date_debut || end > annee.date_fin) {
+    throw Object.assign(
+      new Error('Le trimestre doit être inclus dans son année académique'),
+      { status: 400 }
+    );
+  }
+
+  const overlap = await tx.trimestre.findFirst({
+    where: {
+      anneeAcademiqueId: annee.id,
+      ...(excludeId && { id_trimestre: { not: excludeId } }),
+      date_debut: { lte: end },
+      date_fin: { gte: start },
+    },
+  });
+  if (overlap) {
+    throw Object.assign(new Error(`Chevauchement avec ${overlap.libelle}`), { status: 409 });
+  }
+
+  if (!Number.isInteger(Number(ordre)) || Number(ordre) <= 0) {
+    throw Object.assign(new Error('Ordre de trimestre invalide'), { status: 400 });
+  }
+}
+
+exports.getTrimestres = async (req, res) => {
+  try {
+    const ctx = await getSchoolContext(req);
+    const anneeId = req.query.anneeAcademiqueId;
+
+    const where = {
+      anneeAcademique: { etablissementId: ctx.etablissementId },
+      ...(anneeId && { anneeAcademiqueId: Number(anneeId) }),
+    };
+
+    const trimestres = await prisma.trimestre.findMany({
+      where,
+      include: { anneeAcademique: { select: { id: true, libelle: true } } },
+      orderBy: { ordre: 'asc' },
+    });
+
+    res.json(trimestres);
+  } catch (e) {
+    fail(res, e);
+  }
+};
+
+exports.postTrimestreController = async (req, res) => {
+  try {
+    console.log(req.body);
+    if (!isAdmin(req)) {
+      return res.status(403).json({ message: 'Accès réservé à l’administrateur' });
+    }
+
+    const ctx = await getSchoolContext(req);
+    const annee = await ownedYear(ctx, req.body.anneeAcademiqueId);
+    if (!annee) {
+      return res.status(404).json({ message: 'Année académique introuvable' });
+    }
+
+    const { start, end } = dates(req.body);
+    const ordre = Number(req.body.ordre);
+    await validateTerm(prisma, annee, start, end, ordre);
+
+    const trimestre = await prisma.trimestre.create({
+      data: {
+        libelle: (req.body.nom ?? req.body.libelle).trim(),
+        date_debut: start,
+        date_fin: end,
+        ordre,
+        actif: false,
+        anneeAcademiqueId: annee.id,
+      },
+    });
+
+    res.status(201).json(trimestre);
+  } catch (e) {
+    console.error(e);
+    fail(res, e);
+  }
+};
+
+exports.updateTrimestre = async (req, res) => {
+  try {
+    if (!isAdmin(req)) {
+      return res.status(403).json({ message: 'Accès réservé à l’administrateur' });
+    }
+
+    const ctx = await getSchoolContext(req);
+    const id = Number(req.params.id);
+
+    const current = await prisma.trimestre.findFirst({
+      where: { id_trimestre: id, anneeAcademique: { etablissementId: ctx.etablissementId } },
+      include: { anneeAcademique: true },
+    });
+    if (!current) {
+      return res.status(404).json({ message: 'Trimestre introuvable' });
+    }
+
+    const { start, end } = dates({
+      debut: req.body.debut ?? current.date_debut,
+      fin: req.body.fin ?? current.date_fin,
+    });
+    const ordre = Number(req.body.ordre ?? current.ordre);
+    await validateTerm(prisma, current.anneeAcademique, start, end, ordre, id);
+
+    const trimestre = await prisma.trimestre.update({
+      where: { id_trimestre: id },
+      data: {
+        libelle: req.body.nom?.trim() ?? req.body.libelle?.trim() ?? current.libelle,
+        date_debut: start,
+        date_fin: end,
+        ordre,
+      },
+    });
+
+    res.json(trimestre);
+  } catch (e) {
+    fail(res, e);
+  }
+};
+
+exports.deleteTrimestre = async (req, res) => {
+  try {
+    if (!isAdmin(req)) {
+      return res.status(403).json({ message: 'Accès réservé à l’administrateur' });
+    }
+
+    const ctx = await getSchoolContext(req);
+    const result = await prisma.trimestre.deleteMany({
+      where: {
+        id_trimestre: Number(req.params.id),
+        anneeAcademique: { etablissementId: ctx.etablissementId },
+      },
+    });
+
+    if (!result.count) {
+      return res.status(404).json({ message: 'Trimestre introuvable' });
+    }
+
+    res.json({ message: 'Trimestre supprimé avec succès' });
+  } catch (e) {
+    fail(res, e);
+  }
+};
+
+exports.actifTrimestreController = async (req, res) => {
+  try {
+    if (!isAdmin(req)) {
+      return res.status(403).json({ message: 'Accès réservé à l’administrateur' });
+    }
+
+    const ctx = await getSchoolContext(req);
+    const term = await prisma.trimestre.findFirst({
+      where: {
+        id_trimestre: Number(req.params.id),
+        anneeAcademique: { etablissementId: ctx.etablissementId },
+      },
+    });
+    if (!term) {
+      return res.status(404).json({ message: 'Trimestre introuvable' });
+    }
+
+    const trimestre = await prisma.$transaction(async (tx) => {
+      await tx.trimestre.updateMany({
+        where: { anneeAcademiqueId: term.anneeAcademiqueId },
+        data: { actif: false },
+      });
+      return tx.trimestre.update({
+        where: { id_trimestre: term.id_trimestre },
+        data: { actif: true },
+      });
+    });
+
+    res.json({ message: 'Trimestre activé avec succès', trimestre });
+  } catch (e) {
+    fail(res, e);
+  }
+};
+
+exports.getTrimestreActive = async (req, res) => {
+  try {
+    const ctx = await getSchoolContext(req);
+    const annee = req.query.anneeAcademiqueId
+      ? await ownedYear(ctx, req.query.anneeAcademiqueId)
+      : await getActiveSchoolYear(ctx.etablissementId);
+
+    if (!annee) {
+      return res.json({ trimestreActive: null });
+    }
+
+    const trimestre = await prisma.trimestre.findFirst({
+      where: { anneeAcademiqueId: annee.id, actif: true },
+      orderBy: { ordre: 'asc' },
+    });
+
+    res.json({ trimestreActive: trimestre, anneeAcademique: annee });
+  } catch (e) {
+    fail(res, e);
+  }
+};
+

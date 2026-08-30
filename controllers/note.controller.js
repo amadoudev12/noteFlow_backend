@@ -99,43 +99,86 @@ const postNote = async (req, res) => {
 }
 
 const getNotesByElveId = async (req, res) => {
-    const matricule = req.params.id
+    const matricule = req.params.id;
 
     try {
         if (!matricule) {
-            return res.status(400).json({ message: 'Matricule requis' })
+            return res.status(400).json({
+                message: "Matricule requis"
+            });
         }
 
-        const annee = await prisma.anneeAcademique.findFirst({ where: { actif: true } })
-        if (!annee) {
-            return res.status(400).json({ message: 'Aucune année académique active' })
-        }
-
-        const inscription = await prisma.inscription.findUnique({
+        // Récupérer l'élève et son inscription pour son établissement
+        const eleve = await prisma.eleve.findUnique({
             where: {
-                matricule_eleve_id_annee_academique: {
-                    matricule_eleve: matricule,
-                    id_annee_academique: annee.id
+                matricule
+            },
+            include: {
+                inscriptions: {
+                    include: {
+                        annee: true
+                    },
+                    orderBy: {
+                        id_annee_academique: "desc"
+                    }
                 }
             }
-        })
+        });
 
-        if (!inscription) {
-            return res.status(404).json({ message: 'Élève non trouvé' })
+        if (!eleve) {
+            return res.status(404).json({
+                message: "Élève non trouvé"
+            });
         }
 
+        // Trouver l'inscription correspondant à l'année active
+        const inscription = eleve.inscriptions.find(
+            (inscription) => inscription.annee.actif === true
+        );
+
+        if (!inscription) {
+            return res.status(404).json({
+                message: "Aucune inscription pour l'année académique active"
+            });
+        }
+
+        // Récupérer le trimestre actif de cette année
+        const trimestre = await prisma.trimestre.findFirst({
+            where: {
+                anneeAcademiqueId: inscription.id_annee_academique,
+                actif: true
+            }
+        });
+
+        if (!trimestre) {
+            return res.status(404).json({
+                message: "Aucun trimestre actif"
+            });
+        }
+
+        // Récupérer uniquement les notes de l'inscription
+        // et du trimestre actif
         const notes = await prisma.note.findMany({
-            where: { id_inscription: inscription.id },
+            where: {
+                id_inscription: inscription.id,
+                id_trimestre: trimestre.id_trimestre
+            },
             select: {
                 typeEvaluation: true,
                 coefficient: true,
                 valeur: true,
-                matiere: { select: { nom: true } }
+                matiere: {
+                    select: {
+                        nom: true
+                    }
+                }
             }
-        })
+        });
 
         if (notes.length === 0) {
-            return res.status(404).json({ message: "Aucune note enregistrée" })
+            return res.status(404).json({
+                message: "Aucune note enregistrée"
+            });
         }
 
         const noteFinal = notes.map((note) => ({
@@ -143,18 +186,24 @@ const getNotesByElveId = async (req, res) => {
             coefficient: note.coefficient,
             valeur: note.valeur,
             matiere: note.matiere.nom
-        }))
+        }));
 
         return res.status(200).json({
             message: "Notes récupérées",
             notes: noteFinal
-        })
-    } catch (err) {
-        logger.error('Erreur lors de la récupération des notes', { error: err.message })
-        return res.status(500).json({ message: "Erreur serveur" })
-    }
-}
+        });
 
+    } catch (err) {
+        logger.error(
+            "Erreur lors de la récupération des notes",
+            { error: err.message }
+        );
+
+        return res.status(500).json({
+            message: "Erreur serveur"
+        });
+    }
+};
 // Récupérer les notes d'une classe pour créer la fiche de note
 const getAllNotesByClasseByMatier = async (req, res) => {
     const { id_classe, id_matiere } = req.body

@@ -1,5 +1,5 @@
 const express = require('express')
-const { getAllElevesController, createEleveController, getEleveController, moyennesController, EleveRang, absenceController, getBulletin, createCertificat} = require('../controllers/eleves.controller')
+const { getAllElevesController, createEleveController, getEleveController, moyennesController, EleveRang, absenceController, getBulletin, createCertificat, periodeActive} = require('../controllers/eleves.controller')
 const VerifyToken = require('../middleware/verifyToken')
 const upload  = require('../middleware/uploadsFichier')
 const route = express.Router()
@@ -12,5 +12,6 @@ route.post('/bulletin',getBulletin)
 route.post('/absence',VerifyToken,absenceController)
 route.get('/note-matiere/:id',moyennesController)
 route.get('/:id',getEleveController)
+route.get('/periode-active/:id', VerifyToken, periodeActive)
 
 module.exports = route

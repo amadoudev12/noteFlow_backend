@@ -10,5 +10,4 @@ route.post('/liste-note', verifyToken, getNotesValidation, getAllNotesByClasseBy
 route.get('/repartition-note', verifyToken, noteRepartition)
 route.post('/eleves/notes', verifyToken, getNotesValidation, getAllNotesByMatiere)
 route.get('/getNote/:id', verifyToken, getNotesByElveId)
-
 module.exports = route
