@@ -50,6 +50,11 @@ app.use((req, res, next) => {
 
 // Initialisation automatique du trimestre
 activerTrimestreAutomatique()
+// ... puis on la relance périodiquement : sans ça, un trimestre dont la date
+// de début arrive pendant que le serveur tourne ne serait activé qu'au
+// prochain redémarrage.
+const TRIMESTRE_CHECK_INTERVAL_MS = 60 * 1000 // toutes les secondes
+setInterval(activerTrimestreAutomatique, TRIMESTRE_CHECK_INTERVAL_MS)
 
 // Routes
 app.use('/eleves', require('./routes/eleves.route'))

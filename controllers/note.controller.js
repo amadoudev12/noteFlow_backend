@@ -215,21 +215,12 @@ const getAllNotesByClasseByMatier = async (req, res) => {
             })
         }
 
-        const annee = await prisma.anneeAcademique.findFirst({ where: { actif: true } })
-        if (!annee) {
-            return res.status(400).json({ message: 'Aucune année académique active' })
-        }
-
-        const trimestre = await prisma.trimestre.findFirst({ where: { actif: true } })
-        if (!trimestre) {
-            return res.status(400).json({ message: 'Aucun trimestre actif' })
-        }
-
         // Récupérer les données de manière optimisée
         const [classe, matiere, professeur] = await Promise.all([
             prisma.classe.findUnique({
-                where: { id: id_classe },
+                where: { id: Number(id_classe) },
                 select: {
+                    idEtablissement: true,
                     libelle: true,
                     etablissement: { select: { nom: true } }
                 }
@@ -240,7 +231,7 @@ const getAllNotesByClasseByMatier = async (req, res) => {
             }),
             prisma.affectation.findFirst({
                 where: {
-                    classeId: id_classe,
+                    classeId: Number(id_classe),
                     matiereId: Number(id_matiere)
                 },
                 select : {
@@ -267,6 +258,15 @@ const getAllNotesByClasseByMatier = async (req, res) => {
         }
         if (!professeur) {
             return res.status(404).json({ message: 'Affectation professeur non trouvée' })
+        }
+
+        const annee = await getActiveSchoolYear(classe.idEtablissement)
+        if (!annee) {
+            return res.status(400).json({ message: 'Aucune année académique active' })
+        }
+        const trimestre = await getActiveTerm(classe.idEtablissement, annee.id)
+        if (!trimestre) {
+            return res.status(400).json({ message: 'Aucun trimestre actif' })
         }
 
         const notes = await getNotesClasseByMatiere(
@@ -304,9 +304,16 @@ const getAllNotesByMatiere = async (req, res) => {
             })
         }
 
-        const trimestre = await prisma.trimestre.findFirst({
-            where: { actif: true }
+        const classe = await prisma.classe.findUnique({
+            where: { id: Number(id_classe) },
+            select: { idEtablissement: true }
         })
+        if (!classe) {
+            return res.status(404).json({ message: 'Classe non trouvée' })
+        }
+
+        const annee = await getActiveSchoolYear(classe.idEtablissement)
+        const trimestre = annee && await getActiveTerm(classe.idEtablissement, annee.id)
 
         if (!trimestre) {
             return res.status(400).json({ message: 'Aucun trimestre actif' })
@@ -348,11 +355,6 @@ const noteRepartition = async (req, res) => {
             return res.status(400).json({ message: 'Administrateur invalide' })
         }
 
-        const annee = await prisma.anneeAcademique.findFirst({ where: { actif: true } })
-        if (!annee) {
-            return res.status(400).json({ message: 'Aucune année académique active' })
-        }
-
         const etablissement = await prisma.etablissement.findUnique({
             where: { admin_id: admin_id }
         })
@@ -360,7 +362,12 @@ const noteRepartition = async (req, res) => {
             return res.status(404).json({ message: 'Établissement non trouvé' })
         }
 
-        const trimestre = await prisma.trimestre.findFirst({ where: { actif: true } })
+        const annee = await getActiveSchoolYear(etablissement.id)
+        if (!annee) {
+            return res.status(400).json({ message: 'Aucune année académique active' })
+        }
+
+        const trimestre = await getActiveTerm(etablissement.id, annee.id)
         if (!trimestre) {
             return res.status(400).json({ message: 'Aucun trimestre actif' })
         }

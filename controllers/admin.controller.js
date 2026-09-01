@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const { array } = require("../middleware/uploadsFichier");
 const { connected } = require("node:process");
 const sendEmail = require("../services/sendEmail");
+const { getActiveSchoolYear } = require("../utils/schoolContext");
 
 const register = async (req, res) => {
     const isSuperAdmin = req.user?.role === "SUPERADMIN" || req.user?.user?.role === "SUPERADMIN" || req.user?.user?.user?.role === "SUPERADMIN";
@@ -207,7 +208,7 @@ const StatEtablissement = async (req, res) => {
         if(!etablissement){
             return res.status(200).json({message:"aucun etablissement trouvés"})
         }
-        const annee = await prisma.anneeAcademique.findFirst({where:{actif:true}})
+        const annee = await getActiveSchoolYear(etablissement.id)
         if (!annee) {
             return res.status(404).json({ message: "Aucune année académique active" });
         }

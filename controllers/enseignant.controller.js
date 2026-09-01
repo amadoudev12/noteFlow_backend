@@ -2,6 +2,7 @@ const {prisma} = require('../lib/prisma')
 const xlsx = require('xlsx')
 const bcrypt = require('bcrypt');
 const sendEmail = require('../services/sendEmail');
+const { getActiveSchoolYear } = require('../utils/schoolContext');
 const createEnseignantController = async (req, res) => {
     if(req.user.user.user.role !="ADMIN"){
         return res.status(403).json({message:"vous êtes pas un administrateur"})
@@ -16,44 +17,52 @@ const createEnseignantController = async (req, res) => {
     }
     const idEtablissement = req.user.profil.etablissement.id
     try {
-        const annee = await prisma.anneeAcademique.findFirst({
-            where: { actif: true }
-        });
+        const annee = await getActiveSchoolYear(idEtablissement);
         const filename = req.file.filename;
         const wb = xlsx.readFile(`./uploads/imports/${filename}`);
         const sheetName = wb.SheetNames[0];
         const sheet = wb.Sheets[sheetName];
         const enseignants = xlsx.utils.sheet_to_json(sheet);
+        const ignores = [];
         for (let enseignant of enseignants) {
+          try {
             const etablissement = await prisma.etablissement.findUnique({where:{id:idEtablissement}})
             const prenomSanitized = enseignant.prenom
                 .toLowerCase()
                 .trim()
                 .normalize("NFD")
                 .replace(/\s+/g, "")
-                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[̀-ͯ]/g, "")
                 .replace(/[^a-z0-9]/g, "")
             const etabSanitized = etablissement.nom
                 .toLowerCase()
                 .trim()
                 .normalize("NFD")
                 .replace(/\s+/g, "")
-                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[̀-ͯ]/g, "")
                 .replace(/[^a-z0-9]/g, "")
-            const login = `${prenomSanitized}@${etabSanitized}.edu`
-            const hashPass = await bcrypt.hash(login, 10)
             //sécuriser matricule
             const matricule = enseignant.matricule?.toString().trim();
+            const matriculeSanitized = (matricule || "")
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/\s+/g, "")
+                .replace(/[̀-ͯ]/g, "")
+                .replace(/[^a-z0-9]/g, "")
+            // le matricule est intégré au login pour garantir son unicité
+            // (deux enseignants peuvent partager le même prénom)
+            const login = `${prenomSanitized}.${matriculeSanitized}@${etabSanitized}.edu`
+            const hashPass = await bcrypt.hash(login, 10)
             // if (!matricule) continue;
-            // vérifier enseignant   
+            // vérifier enseignant
             let enseignantExist = await prisma.enseignant.findUnique(({
                 where : {
                     matricule:matricule
                 }
             }))
-            
+
             let userId;
-            let user 
+            let user
             if (!enseignantExist) {
                 user = await prisma.user.create({
                     data: {
@@ -63,7 +72,7 @@ const createEnseignantController = async (req, res) => {
                 const enseignantCree = await prisma.enseignant.create({
                     data: {
                         matricule: matricule,
-                        nom: enseignant.nom,  
+                        nom: enseignant.nom,
                         prenom: enseignant.prenom,
                         email:enseignant.email,
                         userId: user.id
@@ -90,17 +99,18 @@ const createEnseignantController = async (req, res) => {
             })
 
             if(compte){
-                return res.status(409).json({message:'Cet enseignant possede deja un compte dans cet etablissement'})
+                ignores.push({ matricule, raison: 'Cet enseignant possède déjà un compte dans cet établissement' });
+                continue;
             }
 
-            // creation du compte 
+            // creation du compte
             const compteI = await prisma.compteInstitutionnel.create({
                 data : {
                     login:login,
                     mot_passe:hashPass,
                       user:{
                         connect:{
-                                id:user.id
+                                id:userId
                             }
                         },
                         etablissement:{
@@ -111,12 +121,19 @@ const createEnseignantController = async (req, res) => {
                 }
             })
             await sendEmail(enseignant.nom, enseignant.email, compteI.login, compteI.login, "ENSEIGNANT")
+          } catch (rowErr) {
+            if (rowErr.code === 'P2002') {
+                ignores.push({ matricule: enseignant.matricule, raison: `Doublon détecté (${rowErr.meta?.target || 'contrainte unique'})` });
+                continue;
+            }
+            throw rowErr;
+          }
         }
 
         return res.status(201).json({
-            message: "Les enseignants ont été enregistrés avec succès"
+            message: "Les enseignants ont été enregistrés avec succès",
+            ignores
         });
-
 
     } catch (err) {
         console.log(err);
@@ -342,10 +359,15 @@ const nombreElevesClasse = async (req, res) => {
   try {
     const compteId = req.user.user.id;
 
-    // 2. Récupération de l'année académique active
-    const annee = await prisma.anneeAcademique.findFirst({
-      where: { actif: true },
+    // 2. Récupération de l'année académique active de l'établissement du compte connecté
+    const compte = await prisma.compteInstitutionnel.findUnique({
+      where: { id: compteId },
+      select: { etablissementId: true },
     });
+    if (!compte) {
+      return res.status(401).json({ message: "Compte institutionnel introuvable" });
+    }
+    const annee = await getActiveSchoolYear(compte.etablissementId);
 
     if (!annee) {
       return res.status(404).json({

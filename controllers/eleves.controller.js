@@ -7,6 +7,7 @@ const supabase = require('../lib/supabaseClient')
 const sendEmail = require('../services/sendEmail')
 const generateCertificat = require('../utils/generateCertificat')
 const { createAbsence } = require('./absence.controller')
+const { getActiveSchoolYear, getActiveTerm, getActiveInscriptionForEleve } = require('../utils/schoolContext')
 
 const createEleveController = async (req, res) => {
     const {classe} = req.body;
@@ -21,7 +22,10 @@ const createEleveController = async (req, res) => {
     const idEtablissement = req.user.profil.etablissement.id
     try {
         const etablissement = await prisma.etablissement.findUnique({where:{id:idEtablissement}})
-        const annee = await prisma.anneeAcademique.findFirst({where:{actif:true}})
+        const annee = await getActiveSchoolYear(idEtablissement)
+        if (!annee) {
+            return res.status(400).json({ message: 'Aucune année académique active pour cet établissement' })
+        }
         const filename = req.file.filename
         const wb = xlsx.readFile(`./uploads/imports/${filename}`)
         const sheetName = wb.SheetNames[0]
@@ -144,27 +148,13 @@ const getEleveController = async (req,res)=>{
         return res.status(400).json({message:'veuillez renseigner le matricule'})
     }
     try {
-        const annee = await prisma.anneeAcademique.findFirst({where:{actif:true}})
-        const eleve = await prisma.inscription.findUnique({
-            where :{
-                matricule_eleve_id_annee_academique :{
-                    matricule_eleve:matricule,
-                    id_annee_academique:annee.id
-                },
-            },
-            include :{
-                eleve:true,
-                classe:{
-                    select:{
-                        libelle:true
-                    }
-                }
-            }
+        const inscription = await getActiveInscriptionForEleve(matricule, {
+            classe: { select: { libelle: true } }
         })
-        if(!eleve){
+        if(!inscription){
             return res.status(404).json({message:"l'eleve n'existe pas !!"})
         }
-        return res.status(201).json({eleveInformation:eleve})
+        return res.status(201).json({eleveInformation:inscription})
     }catch(err){
         console.log(err)
         return res.status(500).json({message:"erreur",err})
@@ -189,19 +179,11 @@ const EleveRang = async (req,res)=>{
     const matricule = req.user.profil.matricule
     // const idClasse = req.user.profil.idClasse
     try{
-        const annee = await prisma.anneeAcademique.findFirst({where:{actif:true}})
-        const idClasse = await prisma.inscription.findUnique({
-            where :{
-                matricule_eleve_id_annee_academique:{
-                    matricule_eleve:matricule,
-                    id_annee_academique:annee.id
-                },
-            },
-            select:{
-                id_classe:true
-            }
-        })
-        const rang = await getRang(matricule, idClasse.id_classe)
+        const inscription = await getActiveInscriptionForEleve(matricule)
+        if(!inscription){
+            return res.status(404).json({message:"Aucune inscription pour l'année académique active"})
+        }
+        const rang = await getRang(matricule, inscription.id_classe)
         //console.log(rang)
         return res.status(200).json({rang})
     }catch(err){
@@ -215,12 +197,15 @@ const EleveRang = async (req,res)=>{
 const getBulletin = async (req, res) => {
     try {
         const { matricule, classe} = req.body
-        const annee = await prisma.anneeAcademique.findFirst({
-            where:{actif:true},
-        })
-        const trimestre = await prisma.trimestre.findFirst({
-            where : {actif:true},
-        })
+        const inscription = await getActiveInscriptionForEleve(matricule)
+        if (!inscription) {
+            return res.status(404).json({ message: "Aucune inscription pour l'année académique active" })
+        }
+        const annee = inscription.annee
+        const trimestre = await getActiveTerm(inscription.id_etablissement, annee.id)
+        if (!trimestre) {
+            return res.status(400).json({ message: 'Aucun trimestre actif' })
+        }
         // const filePath = `${annee.libelle}/${trimestre.libelle}/${classe}/${matricule}.pdf`
         // console.log(filePath)
         // const { data, error } = await supabase.storage
@@ -295,28 +280,13 @@ const absenceController = async (req, res) => {
 const createCertificat = async (req, res)=>{
     const matricule = req.user.profil.matricule
     try{
-        const annee = await prisma.anneeAcademique.findFirst({
-            where:{
-                actif:true
-            }
+        const inscription = await getActiveInscriptionForEleve(matricule, {
+            classe: { select: { libelle: true, etablissement: true } }
         })
-        const inscription = await prisma.inscription.findUnique({
-            where : {
-                matricule_eleve_id_annee_academique : {
-                    matricule_eleve:matricule,
-                    id_annee_academique:annee.id
-                }
-            },
-            include:{
-                eleve:true,
-                classe:{
-                    select:{
-                        libelle:true,
-                        etablissement:true
-                    }
-                }
-            }
-        })
+        if(!inscription){
+            return res.status(404).json({message:"cet eleve n'est pas inscrit"})
+        }
+        const annee = inscription.annee
         const signature = await prisma.signature.findFirst({
             where:{
                 compteInstitutionnel:{
@@ -330,9 +300,6 @@ const createCertificat = async (req, res)=>{
                 }
             }
         })
-        if(!inscription){
-            return res.status(404).json({message:"cet eleve n'est pas inscrit"})
-        }
         let compteur = await prisma.compteurCertificat.findUnique({
             where:{
                 annee_academique_id:annee.id

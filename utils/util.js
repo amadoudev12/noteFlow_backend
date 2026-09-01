@@ -1,4 +1,5 @@
 const {prisma} = require('../lib/prisma')
+const { getActiveSchoolYear, getActiveTerm, getActiveInscriptionForEleve } = require('./schoolContext')
 const getMention = (moyenne) => {
     if (moyenne < 10) return "Insuffisant"
     if (moyenne < 12) return "Passable"
@@ -12,9 +13,14 @@ const getMention = (moyenne) => {
 
 const listeElevesRequest = async (idClasse) => {
     try {
-        const annee = await prisma.anneeAcademique.findFirst({
-            where: { actif: true }
+        const classe = await prisma.classe.findUnique({
+            where: { id: Number(idClasse) },
+            select: { idEtablissement: true }
         });
+        if (!classe) {
+            throw new Error("Classe introuvable");
+        }
+        const annee = await getActiveSchoolYear(classe.idEtablissement);
         if (!annee) {
             throw new Error("Aucune année académique active");
         }
@@ -90,7 +96,13 @@ const listeElevesRequest = async (idClasse) => {
 
 //     return parseFloat((total / totalCoef).toFixed(2));
 // };
-const moyenne = (tab) => {
+// `round: false` retourne la moyenne brute, sans arrondi — utile pour la
+// moyenne par matière, qui sert ensuite de base à d'autres calculs
+// (moyenne générale, moyenne × coefficient dans le bulletin) : arrondir à
+// cette étape ferait remonter une petite erreur dans tous les calculs
+// suivants. L'arrondi à 2 décimales reste la valeur par défaut, et n'est
+// appliqué qu'à l'affichage final (moyenne générale, vues EJS, etc.).
+const moyenne = (tab, { round = true } = {}) => {
     if (!tab || tab.length === 0) return 0;
     let total = 0;
     let totalCoef = 0;
@@ -102,7 +114,8 @@ const moyenne = (tab) => {
         totalCoef += t.coefficient;
     });
 
-    return parseFloat((total / totalCoef).toFixed(2));
+    const resultat = total / totalCoef;
+    return round ? parseFloat(resultat.toFixed(2)) : resultat;
 }
 
 const moyenneE = (tab)=>{
@@ -123,125 +136,61 @@ const getNoteFunction = async (id, id_trimestre=null) => {
     }
     try {
         let matieres = {}
-        if(id_trimestre){
-            const annee = await prisma.anneeAcademique.findFirst({where:{actif:true}})
-            const eleve = await prisma.eleve.findUnique({
-                where: { matricule: id },
-                include: {
-                    inscriptions: {
-                        where: {
-                            id_annee_academique: annee.id
-                        },
-                        include: {
-                            notes: {
-                                where: {
-                                    id_trimestre: id_trimestre
-                                },
-                                select: {
-                                    valeur: true,
-                                    coefficient: true,
-                                    matiere: {
-                                        select: {
-                                            nom: true,
-                                            affectations:true
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            })
-            // élève introuvable
-            if (!eleve) {
-                throw new Error("élève introuvable")
-            }
-            if (!eleve.inscriptions.length) {
-                return []
-            }
-            const inscription = eleve.inscriptions[0]
-            // aucune note
-            if (!eleve.inscriptions.length || !eleve.inscriptions[0].notes.length) {
-                return []
-            }
-            inscription.notes.forEach(note => {
-                const nomMatiere = note.matiere.nom
-                const coefMatiere = note.matiere.affectations[0]?.coefficient
-                if (!matieres[nomMatiere]) {
-                    matieres[nomMatiere] = {
-                        matiere: nomMatiere,
-                        coefficient_matiere: coefMatiere,
-                        notes: [],
-                    }
-                }
-                matieres[nomMatiere].notes.push({
-                    valeur: note.valeur,
-                    coefficient: note.coefficient
-                })
-            })
-        }else {
-            const trimestre = await prisma.trimestre.findFirst({
-                where: { actif: true }
-            })
-            if(!trimestre) {
-                return []
-            }
-            const annee = await prisma.anneeAcademique.findFirst({where:{actif:true}})
-            const eleve = await prisma.eleve.findUnique({
-                where: { matricule: id },
-                include: {
-                    inscriptions: {
-                        where: {
-                            id_annee_academique: annee.id
-                        },
-                        include: {
-                            notes: {
-                                where: {
-                                    id_trimestre: trimestre.id_trimestre
-                                },
-                                select: {
-                                    valeur: true,
-                                    coefficient: true,
-                                    matiere: {
-                                        select: {
-                                            nom: true,
-                                            affectations:true
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            })
-            // élève introuvable
-            if (!eleve) {
-                throw new Error("élève introuvable")
-            }
-            if (!eleve.inscriptions.length) {
-                return []
-            }
-            const inscription = eleve.inscriptions[0]
-            // aucune note
-            if (!eleve.inscriptions.length || !eleve.inscriptions[0].notes.length) {
-                return []
-            }
-            inscription.notes.forEach(note => {
-                const nomMatiere = note.matiere.nom
-                const coefMatiere = note.matiere.affectations[0]?.coefficient
-                if (!matieres[nomMatiere]) {
-                    matieres[nomMatiere] = {
-                        matiere: nomMatiere,
-                        coefficient_matiere: coefMatiere,
-                        notes: [],
-                    }
-                }
-                matieres[nomMatiere].notes.push({
-                    valeur: note.valeur,
-                    coefficient: note.coefficient
-                })
-            })
+        // L'inscription active de l'élève détermine à elle seule la bonne
+        // année académique (et donc le bon établissement) : chaque inscription
+        // porte sa propre année, pas besoin de la deviner à l'avance.
+        const eleveExists = await prisma.eleve.findUnique({ where: { matricule: id }, select: { matricule: true } })
+        if (!eleveExists) {
+            throw new Error("élève introuvable")
         }
+        const inscription = await getActiveInscriptionForEleve(id)
+        if (!inscription) {
+            return []
+        }
+
+        let idTrimestre = id_trimestre
+        if (!idTrimestre) {
+            const trimestre = await getActiveTerm(inscription.id_etablissement, inscription.id_annee_academique)
+            if (!trimestre) {
+                return []
+            }
+            idTrimestre = trimestre.id_trimestre
+        }
+
+        const notes = await prisma.note.findMany({
+            where: {
+                id_inscription: inscription.id,
+                id_trimestre: idTrimestre
+            },
+            select: {
+                valeur: true,
+                coefficient: true,
+                matiere: {
+                    select: {
+                        nom: true,
+                        affectations: true
+                    }
+                }
+            }
+        })
+        if (!notes.length) {
+            return []
+        }
+        notes.forEach(note => {
+            const nomMatiere = note.matiere.nom
+            const coefMatiere = note.matiere.affectations[0]?.coefficient
+            if (!matieres[nomMatiere]) {
+                matieres[nomMatiere] = {
+                    matiere: nomMatiere,
+                    coefficient_matiere: coefMatiere,
+                    notes: [],
+                }
+            }
+            matieres[nomMatiere].notes.push({
+                valeur: note.valeur,
+                coefficient: note.coefficient
+            })
+        })
         return Object.values(matieres)
     } catch (err) {
         console.log('erreur au niveau du utils:', err)
@@ -256,9 +205,15 @@ const getNotesClasseByMatiere = async (
     id_trimestre
 ) => {
     try {
-        const annee = await prisma.anneeAcademique.findFirst({
-            where: { actif: true }
+        const classe = await prisma.classe.findUnique({
+            where: { id: Number(idClasse) },
+            select: { idEtablissement: true }
         });
+        if (!classe) {
+            throw new Error("Classe introuvable");
+        }
+
+        const annee = await getActiveSchoolYear(classe.idEtablissement);
 
         if (!annee) {
             throw new Error("Aucune année académique active trouvée");
@@ -318,12 +273,17 @@ const getNotesClasseByMatiere = async (
 const calculerMoyenne = async (id, id_trimestre=null) => {
     // console.log('id trimestre fonction calculer moyenne', id_trimestre)
     const matieres = await getNoteFunction(id,id_trimestre)
-    return matieres.map(m => ({
-        matiere: m.matiere,
-        coefficient: m.coefficient_matiere,
-        moyenne: Number(moyenne(m.notes, id)),
-        appreciation: getMention(moyenne(m.notes,id))
-    }))
+    return matieres.map(m => {
+        // Moyenne par matière non arrondie : le double appel ci-dessous
+        // recalcule la même valeur pour rester cohérent avec l'appréciation.
+        const moyenneMatiere = moyenne(m.notes, { round: false })
+        return {
+            matiere: m.matiere,
+            coefficient: m.coefficient_matiere,
+            moyenne: moyenneMatiere,
+            appreciation: getMention(moyenneMatiere)
+        }
+    })
 }
 
 // calcule du rang 
@@ -406,11 +366,70 @@ const getRangParMatiere = async (matricule, idClasse) => {
     }
 }
 
-// moyenne de la classe 
+// Calcule en une seule fois les moyennes de tous les élèves d'une classe.
+// getRang/getRangParMatiere refont ce calcul indépendamment pour chaque
+// élève (utile appelées isolément) ; quand on génère les bulletins de toute
+// une classe, ça revient à recalculer N fois la même chose (O(N²) requêtes).
+// getClassMoyennes + buildClassRanking permettent de ne le faire qu'une fois.
+const getClassMoyennes = async (idClasse, id_trimestre = null) => {
+    const listeEleves = await listeElevesRequest(idClasse)
+    return Promise.all(
+        listeEleves.map(async (eleve) => {
+            const matieres = await calculerMoyenne(eleve.matricule, id_trimestre)
+            return {
+                matricule: eleve.matricule,
+                nom: eleve.nom,
+                prenom: eleve.prenom,
+                matieres,
+                moyenneGenerale: matieres.length ? Number(moyenne(matieres)) : 0
+            }
+        })
+    )
+}
+
+// À partir des moyennes déjà calculées par getClassMoyennes, construit le
+// rang global et le rang par matière de chaque élève — sans requête
+// supplémentaire. Retourne { [matricule]: { rang, rangMatiere } }.
+const buildClassRanking = (classMoyennes) => {
+    const parMatricule = {}
+    classMoyennes.forEach(e => { parMatricule[e.matricule] = { rang: null, rangMatiere: [] } })
+
+    const classementGlobal = [...classMoyennes].sort((a, b) => b.moyenneGenerale - a.moyenneGenerale)
+    classementGlobal.forEach((e, i) => { parMatricule[e.matricule].rang = i + 1 })
+
+    const matieresVues = new Set()
+    classMoyennes.forEach(e => e.matieres.forEach(m => matieresVues.add(m.matiere)))
+
+    matieresVues.forEach(nomMatiere => {
+        const classement = classMoyennes
+            .map(e => ({
+                matricule: e.matricule,
+                moyenne: e.matieres.find(m => m.matiere === nomMatiere)?.moyenne ?? 0
+            }))
+            .sort((a, b) => b.moyenne - a.moyenne)
+        classement.forEach((c, i) => {
+            parMatricule[c.matricule].rangMatiere.push({ matiere: nomMatiere, rang: i + 1 })
+        })
+    })
+
+    return parMatricule
+}
+
+// moyenne de la classe
 const moyClasse = async (id, id_trimestre=null) => {
     try {
         // console.log('id trimestre fonction moyClaas', id_trimestre)
-        const annee = await prisma.anneeAcademique.findFirst({where:{actif:true}})
+        const classe = await prisma.classe.findUnique({
+            where: { id: Number(id) },
+            select: { idEtablissement: true }
+        })
+        if (!classe) {
+            throw new Error("Classe introuvable")
+        }
+        const annee = await getActiveSchoolYear(classe.idEtablissement)
+        if (!annee) {
+            throw new Error("Aucune année académique active")
+        }
         const eleves = await prisma.inscription.findMany({
             where :{
                 classe:{
@@ -436,26 +455,25 @@ const moyClasse = async (id, id_trimestre=null) => {
     }
 }
 
-// information du bulletin 
-const getBulletinInformation = async (matricule)=>{
+// information du bulletin
+// `precalcule` (optionnel) : { matieres, moyenneGenerale, rang, rangMatiere }
+// déjà calculés pour toute la classe par getClassMoyennes/buildClassRanking
+// (voir generateClasseBulletins) — évite de refaire ces calculs pour chaque
+// élève quand on génère les bulletins d'une classe entière.
+const getBulletinInformation = async (matricule, precalcule = null)=>{
     try{
-        const annee = await prisma.anneeAcademique.findFirst({where:{actif:true}})
-        const eleve = await prisma.inscription.findFirst({
-            where :{
-                matricule_eleve:matricule,
-                id_annee_academique:annee.id
-            },
-            include :{
-                eleve:true,
-                classe:{
-                    select :{
-                        id:true,
-                        libelle:true,
-                        idEtablissement:true
-                    }
+        const eleve = await getActiveInscriptionForEleve(matricule, {
+            classe: {
+                select: {
+                    id: true,
+                    libelle: true,
+                    idEtablissement: true
                 }
             }
         })
+        if (!eleve) {
+            throw new Error("Aucune inscription pour l'année académique active")
+        }
         const idEtablissement = eleve.classe?.idEtablissement
         const etablissement = await prisma.etablissement.findUnique({
             where : {
@@ -481,7 +499,7 @@ const getBulletinInformation = async (matricule)=>{
         })
         console.log('enseignants:',enseignants)
         // enseignants.map(ens=>{ens.enseignant.})
-        const matieres = await calculerMoyenne(matricule)
+        const matieres = precalcule?.matieres ?? await calculerMoyenne(matricule)
         const matiereAvecProf = await Promise.all(
                 matieres.map(async (m) => {
                 const matiereId = await prisma.matiere.findUnique({
@@ -518,9 +536,9 @@ const getBulletinInformation = async (matricule)=>{
                 }
             })
         )
-        const moyenneGenerale = moyenne(matieres)
-        const rang = await getRang(matricule, eleve.classe.id)
-        const rangMatiere = await getRangParMatiere(matricule, eleve.classe.id)
+        const moyenneGenerale = precalcule?.moyenneGenerale ?? moyenne(matieres)
+        const rang = precalcule ? precalcule.rang : await getRang(matricule, eleve.classe.id)
+        const rangMatiere = precalcule ? precalcule.rangMatiere : await getRangParMatiere(matricule, eleve.classe.id)
 
         const signature = await prisma.signature.findFirst({
             where:{
@@ -571,11 +589,12 @@ const moyenneElevesEtablissement = async (admin_id, type) => {
             where: { admin_id: admin_id }
         })
 
-        const annee = await prisma.anneeAcademique.findFirst({
-            where: { actif: true }
-        })
-
         if (!etablissement) {
+            return []
+        }
+
+        const annee = await getActiveSchoolYear(etablissement.id)
+        if (!annee) {
             return []
         }
 
@@ -633,11 +652,12 @@ const NombreEleveFaiblesClasse = async (admin_id)=>{
             where: { admin_id: admin_id }
         })
 
-        const annee = await prisma.anneeAcademique.findFirst({
-            where: { actif: true }
-        })
-
         if (!etablissement) {
+            return []
+        }
+
+        const annee = await getActiveSchoolYear(etablissement.id)
+        if (!annee) {
             return []
         }
 
@@ -701,11 +721,12 @@ const NombreEleveFortsClasse = async (admin_id)=>{
             where: { admin_id: admin_id }
         })
 
-        const annee = await prisma.anneeAcademique.findFirst({
-            where: { actif: true }
-        })
-
         if (!etablissement) {
+            return []
+        }
+
+        const annee = await getActiveSchoolYear(etablissement.id)
+        if (!annee) {
             return []
         }
 
@@ -767,14 +788,17 @@ const moyenneEtablissement = async(admin_id)=>{
         const etablissement = await prisma.etablissement.findUnique({
             where : {admin_id :admin_id}
         })
-        const trimestre = await prisma.trimestre.findFirst({where:{actif:true}})
         if(!etablissement){
             return null
         }
+        const annee = await getActiveSchoolYear(etablissement.id)
+        if(!annee){
+            return 0
+        }
+        const trimestre = await getActiveTerm(etablissement.id, annee.id)
         if(!trimestre){
             return 0
         }
-        const annee = await prisma.anneeAcademique.findFirst({where:{actif:true}})
         const eleves = await prisma.inscription.findMany({
             where :{
                 id_annee_academique:annee.id,
@@ -816,24 +840,19 @@ const moyenneEtablissement = async(admin_id)=>{
 
 const meilleureByClasse = async (idClasse)=>{
     try {
-        const eleves = await prisma.inscription.findMany({
-            where :{
-                classe:{
-                    id:Number(idClasse)
-                }
-            },
-            include : {
-                eleve:true,
-            }
-        })
+        // listeElevesRequest scope déjà les élèves sur la classe ET
+        // l'année académique active de l'établissement de cette classe
+        // (sans quoi on récupérerait aussi les élèves d'années antérieures
+        // ayant occupé cette même classe).
+        const eleves = await listeElevesRequest(idClasse)
         let elevesWithMoy = []
         for(let eleve of eleves){
-            const moyenneMatieres = await calculerMoyenne(eleve.matricule_eleve)
+            const moyenneMatieres = await calculerMoyenne(eleve.matricule)
             const moyenneEleve = moyenne(moyenneMatieres)
             if(moyenneEleve >=10){
                 elevesWithMoy.push({
-                    nom:eleve.eleve.nom,
-                    prenom:eleve.eleve.prenom,
+                    nom:eleve.nom,
+                    prenom:eleve.prenom,
                     moyenne:moyenneEleve
                 })
             }
@@ -846,25 +865,16 @@ const meilleureByClasse = async (idClasse)=>{
 
 const mauvaisByClasse = async (idClasse)=>{
     try {
-        const eleves = await prisma.inscription.findMany({
-            where :{
-                classe:{
-                    id:Number(idClasse)
-                }
-            },
-            include : {
-                eleve:true,
-            }
-        })
+        const eleves = await listeElevesRequest(idClasse)
         let elevesWithMoy = []
         for(let eleve of eleves){
-            const moyenneMatieres = await calculerMoyenne(eleve.matricule_eleve)
+            const moyenneMatieres = await calculerMoyenne(eleve.matricule)
             const moyenneEleve = moyenne(moyenneMatieres)
             if(moyenneEleve < 10){
                 elevesWithMoy.push({
-                    nom:eleve.eleve.nom,
-                    prenom:eleve.eleve.prenom,
-                    moyenne:moyenneEleve 
+                    nom:eleve.nom,
+                    prenom:eleve.prenom,
+                    moyenne:moyenneEleve
                 })
             }
         }
@@ -932,11 +942,13 @@ const top1classeAndBad1 = async (idClasse, id_trimestre) => {
 }
 
 module.exports = {
-    calculerMoyenne, 
+    calculerMoyenne,
     listeElevesRequest,
     moyenne,
-    getBulletinInformation, 
+    getBulletinInformation,
     getRang,
+    getClassMoyennes,
+    buildClassRanking,
     getMention,
     getNotesClasseByMatiere,
     moyClasse,

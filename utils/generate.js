@@ -245,7 +245,8 @@ const ejs = require('ejs')
 const path = require('path')
 const os = require('os')
 const fs = require('fs')
-const { getBulletinInformation, getMention } = require('./util')
+const { getBulletinInformation, getMention, getClassMoyennes, buildClassRanking } = require('./util')
+const { getActiveInscriptionForEleve, getActiveTerm, getActiveSchoolYear } = require('./schoolContext')
 const { prisma } = require('../lib/prisma')
 const supabase = require('../lib/supabaseClient')
 
@@ -309,23 +310,33 @@ function Distinction(moyenneGenerale, rang) {
 }
 
 // bulletin d'un seul eleve
-const generate = async (matricule) => {
-    const tempDir = path.join(os.tmpdir(), 'puppeteer-session-' + Date.now())
-    fs.mkdirSync(tempDir, { recursive: true })
+// `precalcule` (optionnel) : classement de la classe déjà calculé, transmis
+// tel quel à getBulletinInformation (voir generateClasseBulletins).
+const generate = async (matricule, precalcule = null) => {
     let page;
     try {
-        const anneeAcademique = await prisma.anneeAcademique.findFirst({where:{actif:true}})
-        const trimestre = await prisma.trimestre.findFirst({
-            where : { actif: true }
-        })
-        const absences = await prisma.absence.findMany({
-            where:{
-                eleveId: matricule,
-                trimestreId: trimestre.id_trimestre,
-                anneeAcademiqueId: anneeAcademique.id
-            }
-        });
-
+        const inscriptionActive = await getActiveInscriptionForEleve(matricule)
+        if (!inscriptionActive) {
+            throw new Error("Aucune inscription pour l'année académique active")
+        }
+        const anneeAcademique = inscriptionActive.annee
+        const trimestre = await getActiveTerm(inscriptionActive.id_etablissement, anneeAcademique.id)
+        if (!trimestre) {
+            throw new Error("Aucun trimestre actif")
+        }
+        // Ces deux requêtes ne dépendent pas l'une de l'autre : autant les
+        // lancer en parallèle plutôt que d'attendre la première avant de
+        // démarrer la seconde.
+        const [absences, bulletinInfo] = await Promise.all([
+            prisma.absence.findMany({
+                where:{
+                    eleveId: matricule,
+                    trimestreId: trimestre.id_trimestre,
+                    anneeAcademiqueId: anneeAcademique.id
+                }
+            }),
+            getBulletinInformation(matricule, precalcule)
+        ]);
 
         const totalHeures = absences.reduce(
             (total, absence) => total + (absence.nombreHeures ?? 1),
@@ -341,16 +352,21 @@ const generate = async (matricule) => {
             heuresJustifiees,
             heuresNonJustifiees: totalHeures - heuresJustifiees,
         };
-        const { eleveInfo, matiere, moyenneGenerale, rang, enseignants, etablissement, rangMatiere, signature } = await getBulletinInformation(matricule)
-        const enseignantWithSignatures = await Promise.all(
-            enseignants.map(async (ens) => {
-                const pathName = await prisma.signature.findUnique({
-                    where : {
-                        compteInstitutionnelId:ens.compteInstitutionnelId
-                    }
-                })
-                return pathName?.url ??  ""
+        const { eleveInfo, matiere, moyenneGenerale, rang, enseignants, etablissement, rangMatiere, signature } = bulletinInfo
+        // Une seule requête pour toutes les signatures des enseignants
+        // plutôt qu'un aller-retour DB par enseignant.
+        const compteIds = enseignants.map(ens => ens.compteInstitutionnelId).filter(Boolean)
+        const signaturesEnseignants = compteIds.length
+            ? await prisma.signature.findMany({
+                where: { compteInstitutionnelId: { in: compteIds } },
+                select: { compteInstitutionnelId: true, url: true }
             })
+            : []
+        const signatureParCompte = Object.fromEntries(
+            signaturesEnseignants.map(s => [s.compteInstitutionnelId, s.url])
+        )
+        const enseignantWithSignatures = enseignants.map(
+            ens => signatureParCompte[ens.compteInstitutionnelId] ?? ""
         )
         const decision = moyenneGenerale >= 10 ? "Admis" : "Double"
         const distinction = Distinction(moyenneGenerale)
@@ -374,12 +390,15 @@ const generate = async (matricule) => {
         })
         const browser = await getBrowserFromPool()
         page = await browser.newPage()
-        
+
         await page.setDefaultNavigationTimeout(60000)
         await page.setDefaultTimeout(60000)
-        await page.setContent(html, { waitUntil: "domcontentloaded", timeout: 45000 })
-        await new Promise(resolve => setTimeout(resolve, 2000))
-        
+        // "networkidle0" attend que les images/polices aient fini de charger
+        // (contrairement à "domcontentloaded" suivi d'un sleep arbitraire) :
+        // c'est en général bien plus rapide, et surtout ça ne dépend plus
+        // d'une durée fixe devinée au hasard.
+        await page.setContent(html, { waitUntil: "networkidle0", timeout: 45000 })
+
         const pdfBuffer = await page.pdf({
                 format: 'A4',
                 printBackground: true,
@@ -395,7 +414,6 @@ const generate = async (matricule) => {
         // const chemin = `${annee}/${trimestreLibelle}/${classe.libelle}/${fileName}`
         const filePath = path.join(__dirname,'../uploads/bulletins', fileName)
         await fs.promises.writeFile(filePath, pdfBuffer)
-        await new Promise(resolve => setTimeout(resolve, 500))
         try {
             if (page && !page.isClosed()) {
                 await page.close()
@@ -415,14 +433,18 @@ const generate = async (matricule) => {
         //     console.error("Erreur upload :", error)
         //     throw error
         // }
-        await browser.close()
+        // NB : `browser` est le pool partagé (getBrowserFromPool) réutilisé
+        // par tous les bulletins — on ne le ferme jamais ici. Le fermer à
+        // chaque bulletin forçait Chromium à redémarrer en entier pour
+        // l'élève suivant (le gros du temps perdu lors de la génération
+        // d'une classe entière venait de là).
         const relativePath = `uploads/bulletins/${fileName}`
         await prisma.bulletin.upsert({
             where : {
                 eleveId_idtrimestre_id_annee:{
                     eleveId:eleveInfo.eleve.matricule,
                     idtrimestre:trimestre.id_trimestre,
-                    id_annee:1,
+                    id_annee:anneeAcademique.id,
                 }
             },
             update : {
@@ -431,7 +453,7 @@ const generate = async (matricule) => {
             create : {
                 eleveId: matricule,
                 idtrimestre: trimestre.id_trimestre,
-                id_annee: 1,
+                id_annee: anneeAcademique.id,
                 id_etablissement:etablissement.id,
                 moyenneGenerale,
                 decision,
@@ -451,9 +473,44 @@ const generate = async (matricule) => {
 }
 
 
+// Exécute fn sur chaque élément de `items` avec au plus `limit` appels en
+// vol simultanément (plutôt qu'un for...await strictement séquentiel, ou un
+// Promise.all sans limite qui ouvrirait autant de pages Puppeteer que
+// d'élèves d'un coup).
+async function mapWithConcurrency(items, limit, fn) {
+    const results = new Array(items.length)
+    let cursor = 0
+    async function worker() {
+        while (cursor < items.length) {
+            const i = cursor++
+            results[i] = await fn(items[i], i)
+        }
+    }
+    await Promise.all(
+        Array.from({ length: Math.min(limit, items.length) }, worker)
+    )
+    return results
+}
+
+// Nombre de bulletins générés en parallèle. Les pages Puppeteer partagent
+// le même navigateur (getBrowserFromPool), donc une valeur trop haute
+// grimperait vite en RAM/CPU sans forcément accélérer grand-chose.
+const BULLETIN_CONCURRENCY = 3
+
 const generateClasseBulletins = async (id_classe) => {
+    const classe = await prisma.classe.findUnique({
+        where: { id: Number(id_classe) },
+        select: { idEtablissement: true }
+    })
+    if (!classe) {
+        throw new Error("Classe introuvable")
+    }
+    const annee = await getActiveSchoolYear(classe.idEtablissement)
+    if (!annee) {
+        throw new Error("Aucune année académique active")
+    }
     const inscriptions = await prisma.inscription.findMany({
-        where: { id_classe },
+        where: { id_classe, id_annee_academique: annee.id },
         include: { eleve: true }
     })
 
@@ -461,23 +518,33 @@ const generateClasseBulletins = async (id_classe) => {
         throw new Error("Aucun élève")
     }
 
-    const results = []
+    // Le classement (moyennes + rangs) de toute la classe est calculé une
+    // seule fois ici, puis transmis à chaque generate() : sans ça, chaque
+    // bulletin recalculait indépendamment les moyennes de tous les autres
+    // élèves de la classe (O(N²) requêtes pour N élèves).
+    const classMoyennes = await getClassMoyennes(id_classe)
+    const classement = buildClassRanking(classMoyennes)
+    const moyennesParMatricule = Object.fromEntries(
+        classMoyennes.map(e => [e.matricule, e])
+    )
 
-    for (const ins of inscriptions) {
+    const results = await mapWithConcurrency(inscriptions, BULLETIN_CONCURRENCY, async (ins) => {
+        const matricule = ins.eleve.matricule
         try {
-            const file = await generate(ins.eleve.matricule)
-            results.push({
-                matricule: ins.eleve.matricule,
-                status: "success",
-                file
-            })
+            const infos = moyennesParMatricule[matricule]
+            const rangInfos = classement[matricule]
+            const precalcule = infos && rangInfos ? {
+                matieres: infos.matieres,
+                moyenneGenerale: infos.moyenneGenerale,
+                rang: rangInfos.rang,
+                rangMatiere: rangInfos.rangMatiere
+            } : null
+            const file = await generate(matricule, precalcule)
+            return { matricule, status: "success", file }
         } catch (err) {
-            results.push({
-                matricule: ins.eleve.matricule,
-                status: "error"
-            })
+            return { matricule, status: "error" }
         }
-    }
+    })
 
     return results
 }

@@ -40,4 +40,26 @@ async function getActiveTerm(etablissementId, anneeAcademiqueId) {
   });
 }
 
-module.exports = { getSchoolContext, getActiveSchoolYear, getActiveTerm };
+// Pour les routes identifiées par un matricule d'élève (et non par un compte
+// institutionnel), l'établissement se déduit de l'élève lui-même plutôt que
+// d'un etablissementId ambiant : chaque inscription porte sa propre année
+// académique, donc chercher celle dont l'année est active revient à
+// sélectionner automatiquement le bon établissement, sans dépendre de l'ordre
+// de retour de la base quand plusieurs établissements ont chacun une année active.
+async function getActiveInscriptionForEleve(matricule, extraInclude = {}) {
+  const eleve = await prisma.eleve.findUnique({
+    where: { matricule },
+    include: {
+      inscriptions: {
+        include: { annee: true, ...extraInclude }
+      }
+    }
+  });
+  if (!eleve) return null;
+  const inscription = eleve.inscriptions.find((i) => i.annee.actif === true);
+  if (!inscription) return null;
+  const { inscriptions, ...eleveSansInscriptions } = eleve;
+  return { ...inscription, eleve: eleveSansInscriptions };
+}
+
+module.exports = { getSchoolContext, getActiveSchoolYear, getActiveTerm, getActiveInscriptionForEleve };
