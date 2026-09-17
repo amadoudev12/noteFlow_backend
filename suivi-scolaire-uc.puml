@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+actor "Elève" as Eleve
+
+rectangle "Suivi Scolaire" {
+  usecase "Consulter les notes" as UC1
+  usecase "Consulter les absences" as UC2
+  usecase "Consulter le bulletin" as UC3
+  usecase "Télécharger le certificat de fréquentation" as UC4
+  usecase "S'authentifier" as UC0
+}
+
+Eleve -- UC1
+Eleve -- UC2
+Eleve -- UC3
+Eleve -- UC4
+
+UC1 ..> UC0 : <<include>>
+UC2 ..> UC0 : <<include>>
+UC3 ..> UC0 : <<include>>
+UC4 ..> UC0 : <<include>>
+
+@enduml

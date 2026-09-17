@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+actor "Administrateur" as Admin
+
+rectangle Administration {
+  usecase "Gerer les élèves" as UC1
+  usecase "Gérer les enseignants" as UC2
+  usecase "Gerer les classes" as UC3
+  usecase "Gérer les matières" as UC4
+  usecase "Gérer les affectations" as UC5
+  usecase "Gérer les années académiques" as UC6
+  usecase "Gérer les trimestres" as UC7
+  usecase "Consulter les archives" as UC8
+  usecase "S'authentifier" as UC0
+}
+
+Admin -- UC1
+Admin -- UC2
+Admin -- UC3
+Admin -- UC4
+Admin -- UC5
+Admin -- UC6
+Admin -- UC7
+Admin -- UC8
+
+UC1 ..> UC0 : <<include>>
+UC2 ..> UC0 : <<include>>
+UC3 ..> UC0 : <<include>>
+UC4 ..> UC0 : <<include>>
+UC5 ..> UC0 : <<include>>
+UC6 ..> UC0 : <<include>>
+UC7 ..> UC0 : <<include>>
+UC8 ..> UC0 : <<include>>
+
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+
+left to right direction
+
+actor Enseignant
+
+rectangle "Gestion pédagogique" {
+
+    usecase "Consulter les élèves" as UC1
+    usecase "Saisir les notes" as UC2
+    usecase "Consulter les classes" as UC3
+    usecase "Générer les fiches de notes" as UC4
+    usecase "Faire l'appel" as UC5
+    usecase "S'authentifier" as AUTH
+
+    ' Enseignant --> UC1
+    Enseignant -- UC2
+    Enseignant -- UC3
+    Enseignant --> UC4
+    Enseignant --> UC5
+
+    ' Authentification obligatoire
+    ' UC1 ..> AUTH : <<include>>
+    UC2 ..> AUTH : <<include>>
+    UC3 ..> AUTH : <<include>>
+    UC4 ..> AUTH : <<include>>
+    UC5 ..> AUTH : <<include>>
+
+    ' Saisie des notes
+    ' UC2 ..> UC3 : <<include>>
+    ' UC2 ..> UC1 : <<include>>
+
+    ' Génération des fiches de notes
+    UC4 ..> UC3 : <<include>>
+
+    ' Faire l'appel
+    UC5 ..> UC3 : <<include>>
+    UC5 ..> UC1 : <<include>>
+
+}
+
+@enduml

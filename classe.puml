@@ -1,150 +1,68 @@
 @startuml
-hide circle
 skinparam classAttributeIconSize 0
-
-' =========================
-' ENUMERATIONS
-' =========================
-
-enum Role {
-  ADMIN
-  ENSEIGNANT
-  ELEVE
+skinparam linetype ortho
+skinparam roundcorner 5
+skinparam shadowing false
+skinparam class {
+  BackgroundColor White
+  BorderColor #7A1330
+  ArrowColor #4A5568
+  HeaderBackgroundColor #7A1330
+  FontColor #222222
 }
+hide circle
+hide empty members
 
-enum TypeEtablissement {
-  PUBLIC
-  PRIVE
-  PROFESSIONNEL
-  UNIVERSITE
-}
+' =========================================================
+' HIERARCHIE UTILISATEUR (héritage)
+' =========================================================
 
-enum SEXE {
-  M
-  F
-}
-
-enum Redoublant {
-  oui
-  non
-}
-
-enum Bourse {
-  oui
-  non
-}
-
-enum Affecte {
-  oui
-  non
-}
-
-enum Justifie {
-  oui
-  non
-}
-
-enum StatutAbsence {
-  ABSENT
-  RETARD
-}
-
-
-' =========================
-' CLASSES
-' =========================
-
-class User {
+abstract class Utilisateur {
   - id : Int
-  - role : Role
-
+  - nom : String
+  - prenom : String
+  - email : String
+  --
   + seConnecter()
   + seDeconnecter()
 }
 
-class CompteInstitutionnel {
-  - id : Int
-  - login : String
-  - mot_passe : String
-  - firstLogin : Boolean
-  - signatureComplete : Boolean
-  - userId : Int
-  - etablissementId : Int
-
-  + modifierMotDePasse()
-  + ajouterSignature()
-}
-
-class Signature {
-  - id : Int
-  - url : String
-  - compteInstitutionnelId : Int
-  - createAt : DateTime
-  - updateAt : DateTime
-}
-
-class Eleve {
-  - matricule : String
-  - nom : String
-  - prenom : String
-  - email : String
-  - dateNaissance : DateTime
-  - lieuNaissance : String
-  - sexe : SEXE
-  - affecte : Affecte
-  - boursier : Bourse
-  - redoublant : Redoublant
-  - nationalite : String
-  - userId : Int
-
-  + consulterNotes()
-  + consulterBulletins()
-  + consulterAbsences()
-  + telechargerBulletin()
+class Administrateur {
+  --
+  + gererEtablissement()
+  + genererBulletins()
 }
 
 class Enseignant {
   - matricule : String
-  - nom : String
-  - prenom : String
-  - email : String
-  - userId : Int
-
+  --
   + saisirNotes()
-  + modifierNotes()
   + enregistrerAbsence()
-  + consulterClasses()
 }
 
-class Administrateur {
-  - id : Int
-  - nom : String
-  - prenom : String
-  - email : String
-  - userId : Int
-
-  + gererEleves()
-  + gererEnseignants()
-  + gererClasses()
-  + gererMatieres()
-  + gererInscriptions()
-  + gererAnneesAcademiques()
-  + gererTrimestres()
-  + genererBulletins()
+class Eleve {
+  - matricule : String
+  - dateNaissance : DateTime
+  - sexe : String
+  --
+  + consulterNotes()
+  + consulterBulletins()
 }
+
+Utilisateur <|-- Administrateur
+Utilisateur <|-- Enseignant
+Utilisateur <|-- Eleve
+
+' =========================================================
+' ETABLISSEMENT / STRUCTURE
+' =========================================================
 
 class Etablissement {
   - id : Int
   - nom : String
   - adresse : String
-  - phone : String
-  - email : String
-  - code : String
-  - statut : String
-  - directeur : String
-  - typeEtablissement : TypeEtablissement
-
-  + gererComptes()
+  - typeEtablissement : String
+  --
   + gererClasses()
   + gererMatieres()
 }
@@ -152,302 +70,108 @@ class Etablissement {
 class Classe {
   - id : Int
   - libelle : String
-  - idEtablissement : Int
 }
 
 class Matiere {
   - id : Int
   - nom : String
-  - etablissement_id : Int
 }
+
+class AnneeAcademique {
+  - id : Int
+  - libelle : String
+  - actif : Boolean
+  --
+  + activer()
+}
+
+class Trimestre {
+  - id : Int
+  - libelle : String
+  - actif : Boolean
+  --
+  + activer()
+}
+
+Etablissement "1" -- "1" Administrateur : géré par
+Etablissement "1" *-- "0..*" Classe : contient
+Etablissement "1" *-- "0..*" Matiere : propose
+Etablissement "1" *-- "1..*" AnneeAcademique : définit
+AnneeAcademique "1" *-- "1..*" Trimestre : contient
+
+' =========================================================
+' INSCRIPTION / AFFECTATION
+' =========================================================
 
 class Inscription {
   - id : Int
-  - matricule_eleve : String
-  - id_classe : Int
-  - id_annee_academique : Int
-  - id_etablissement : Int
   - dateInscription : DateTime
-
+  --
   + inscrireEleve()
 }
 
 class Affectation {
   - id : Int
-  - classeId : Int
-  - matiereId : Int
-  - compteInstitutionnelId : Int
-  - anneeAcademiqueId : Int
   - coefficient : Int
-
+  --
   + affecterEnseignant()
 }
+
+Eleve "1" -- "0..*" Inscription : effectue
+Inscription "1" -- "1" Classe
+Inscription "1" -- "1" AnneeAcademique
+
+Enseignant "1" -- "0..*" Affectation : reçoit
+Affectation "1" -- "1" Classe : concerne
+Affectation "1" -- "1" Matiere
+
+' =========================================================
+' NOTE / ABSENCE / BULLETIN
+' =========================================================
 
 class Note {
   - id : Int
   - valeur : Float
-  - typeEvaluation : String
   - coefficient : Int
-  - id_inscription : Int
-  - id_matiere : Int
-  - id_trimestre : Int
-  - dateEvaluation : DateTime
-
+  --
   + ajouterNote()
-  + modifierNote()
 }
 
 class Absence {
   - id : Int
-  - eleveId : String
-  - affectationId : Int
-  - anneeAcademiqueId : Int
-  - trimestreId : Int
   - date : DateTime
-  - nombreHeures : Int
-  - statut : StatutAbsence
-  - justifie : Justifie
-  - motif : String
-  - commentaire : String
-  - createdBy : Int
-  - createdAt : DateTime
-  - updatedAt : DateTime
-
+  - statut : String
+  - justifie : Boolean
+  --
   + enregistrer()
   + justifier()
 }
 
 class Bulletin {
   - id : Int
-  - eleveId : String
-  - idtrimestre : Int
-  - id_annee : Int
-  - id_etablissement : Int
   - moyenneGenerale : Float
-  - decision : String
   - rang : Int
   - mention : String
-  - fichier_url : String
-
+  --
   + generer()
   + telecharger()
 }
 
-class Trimestre {
-  - id_trimestre : Int
-  - libelle : String
-  - date_debut : DateTime
-  - date_fin : DateTime
-  - actif : Boolean
-  - ordre : Int
-  - anneeAcademiqueId : Int
+Inscription "1" *-- "0..*" Note : contient
+Note "1" -- "1" Matiere
+Note "1" -- "1" Trimestre
 
-  + activer()
-  + desactiver()
-}
-
-class AnneeAcademique {
-  - id : Int
-  - libelle : String
-  - date_debut : DateTime
-  - date_fin : DateTime
-  - actif : Boolean
-  - etablissementId : Int
-
-  + activer()
-  + desactiver()
-}
-
-class CertificatFrequentation {
-  - id : String
-  - numero : String
-  - date_emission : DateTime
-  - eleve_id : String
-  - annee_academique_id : Int
-  - createdAt : DateTime
-
-  + generer()
-  + telecharger()
-}
-
-class CompteurCertificat {
-  - id : String
-  - annee_academique_id : Int
-  - compteur : Int
-  - createdAt : DateTime
-  - updatedAt : DateTime
-
-  + incrementer()
-}
-
-class EnseignantEtablissement {
-  - id : Int
-  - enseignant_id : String
-  - etablissement_id : Int
-}
-
-
-' =========================
-' RELATIONS USER
-' =========================
-
-User "1" -- "0..1" Eleve : possède
-User "1" -- "0..1" Enseignant : possède
-User "1" -- "0..1" Administrateur : possède
-
-User "1" -- "0..*" CompteInstitutionnel : possède
-User "1" -- "0..*" Absence : enregistre
-
-
-' =========================
-' COMPTES
-' =========================
-
-CompteInstitutionnel "1" -- "1" Etablissement : appartient à
-CompteInstitutionnel "1" -- "0..*" Signature : possède
-CompteInstitutionnel "1" -- "0..*" Affectation : reçoit
-
-
-' =========================
-' ETABLISSEMENT
-' =========================
-
-Etablissement "1" -- "1" Administrateur : est géré par
-Etablissement "1" -- "0..*" Classe : contient
-Etablissement "1" -- "0..*" Matiere : propose
-Etablissement "1" -- "0..*" Inscription : enregistre
-Etablissement "1" -- "0..*" CompteInstitutionnel : possède
-Etablissement "1" -- "0..*" AnneeAcademique : définit
-Etablissement "1" -- "0..*" Bulletin : produit
-Etablissement "1" -- "0..*" EnseignantEtablissement : emploie
-
-
-' =========================
-' ELEVE
-' =========================
-
-Eleve "1" -- "0..*" Inscription : effectue
-Eleve "1" -- "0..*" Bulletin : reçoit
 Eleve "1" -- "0..*" Absence : cumule
-Eleve "1" -- "0..*" CertificatFrequentation : possède
+Absence "1" -- "1" Trimestre
 
+Eleve "1" -- "0..*" Bulletin : reçoit
+Bulletin "1" -- "1" Trimestre
 
-' =========================
-' CLASSE
-' =========================
-
-Classe "1" -- "0..*" Inscription : concerne
-Classe "1" -- "0..*" Affectation : possède
-
-
-' =========================
-' MATIERE
-' =========================
-
-Matiere "1" -- "0..*" Affectation : fait l'objet de
-Matiere "1" -- "0..*" Note : concerne
-
-
-' =========================
-' INSCRIPTION
-' =========================
-
-Inscription "1" -- "0..*" Note : contient
-Inscription "1" -- "1" Classe : concerne
-Inscription "1" -- "1" AnneeAcademique : appartient à
-Inscription "1" -- "1" Etablissement : réalisée dans
-
-
-' =========================
-' AFFECTATION
-' =========================
-
-Affectation "1" -- "1" Classe : concerne
-Affectation "1" -- "1" Matiere : concerne
-Affectation "1" -- "1" CompteInstitutionnel : attribuée à
-Affectation "1" -- "1" AnneeAcademique : pour
-
-
-' =========================
-' NOTES
-' =========================
-
-Note "1" -- "1" Matiere : concerne
-Note "1" -- "1" Trimestre : appartient à
-Note "1" -- "1" Inscription : appartient à
-
-
-' =========================
-' ABSENCES
-' =========================
-
-Absence "1" -- "1" Eleve : concerne
-Absence "1" -- "1" Affectation : liée à
-Absence "1" -- "1" AnneeAcademique : durant
-Absence "1" -- "1" Trimestre : durant
-
-
-' =========================
-' BULLETIN
-' =========================
-
-Bulletin "1" -- "1" Eleve : concerne
-Bulletin "1" -- "1" Trimestre : correspond à
-Bulletin "1" -- "1" AnneeAcademique : appartient à
-Bulletin "1" -- "1" Etablissement : produit
-
-
-' =========================
-' ANNEE ACADEMIQUE
-' =========================
-
-AnneeAcademique "1" -- "0..*" Trimestre : contient
-AnneeAcademique "1" -- "0..*" Inscription : concerne
-AnneeAcademique "1" -- "0..*" Affectation : concerne
-AnneeAcademique "1" -- "0..*" Absence : concerne
-AnneeAcademique "1" -- "0..*" Bulletin : produit
-AnneeAcademique "1" -- "0..*" CertificatFrequentation : génère
-AnneeAcademique "1" -- "0..1" CompteurCertificat : possède
-
-
-' =========================
-' TRIMESTRE
-' =========================
-
-Trimestre "1" -- "0..*" Note : contient
-Trimestre "1" -- "0..*" Absence : contient
-Trimestre "1" -- "0..*" Bulletin : produit
-
-
-' =========================
-' CERTIFICAT
-' =========================
-
-CertificatFrequentation "1" -- "1" Eleve : délivré à
-CertificatFrequentation "1" -- "1" AnneeAcademique : pour
-
-CompteurCertificat "1" -- "1" AnneeAcademique : associé à
-
-
-' =========================
-' ENSEIGNANT / ETABLISSEMENT
-' =========================
-
-Enseignant "1" -- "0..*" EnseignantEtablissement : travaille dans
-Etablissement "1" -- "0..*" EnseignantEtablissement : emploie
-
-
-' =========================
-' ENUM RELATIONS
-' =========================
-
-User ..> Role
-Etablissement ..> TypeEtablissement
-Eleve ..> SEXE
-Eleve ..> Redoublant
-Eleve ..> Bourse
-Eleve ..> Affecte
-Absence ..> Justifie
-Absence ..> StatutAbsence
+note bottom of AnneeAcademique
+  Règles essentielles :
+  • une seule inscription active par élève et par année
+  • une seule année académique active par établissement
+  • une note appartient à une évaluation et à une inscription
+end note
 
 @enduml
